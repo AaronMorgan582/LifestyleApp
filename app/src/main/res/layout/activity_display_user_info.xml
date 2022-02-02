@@ -66,6 +66,42 @@
         app:layout_constraintTop_toBottomOf="@+id/displayFirstName"
         app:layout_constraintVertical_bias="0.027" />
 
+    <TextView
+        android:id="@+id/displayHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintStart_toEndOf="@+id/tvHeight"
+        app:layout_constraintTop_toBottomOf="@+id/displayLastName"
+        app:layout_constraintVertical_bias="0.026" />
+
+    <TextView
+        android:id="@+id/displayCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintStart_toEndOf="@+id/tvCity"
+        app:layout_constraintTop_toBottomOf="@+id/displayLastName"
+        app:layout_constraintVertical_bias="0.191" />
+
+    <TextView
+        android:id="@+id/displayCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintStart_toEndOf="@+id/tvCountry"
+        app:layout_constraintTop_toBottomOf="@+id/displayLastName"
+        app:layout_constraintVertical_bias="0.244" />
+
     <ImageView
         android:id="@+id/profilePicture"
         android:layout_width="65dp"
