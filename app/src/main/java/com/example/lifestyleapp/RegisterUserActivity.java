@@ -5,19 +5,38 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.AdapterView;
 
-public class RegisterUserActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class RegisterUserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Button submitButton;
     private EditText firstNameView, lastNameView, cityView, countryView;
     private String firstName, lastName, city, country;
+    private Spinner spDropdown;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Submit button
         setContentView(R.layout.activity_register_user);
         submitButton = (Button) findViewById(R.id.button);
+
+        // Set up for gender selection and dropdown menu
+        spDropdown = (Spinner) findViewById(R.id.spinnerGenderSelect);
+        spDropdown.setOnItemSelectedListener(this);
+        List<String> options = new ArrayList<String>();
+        options.add("Male");
+        options.add("Female");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spDropdown.setAdapter(dataAdapter);
+
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,5 +83,18 @@ public class RegisterUserActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+        String item = adapterView.getItemAtPosition(i).toString();
+        Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }
