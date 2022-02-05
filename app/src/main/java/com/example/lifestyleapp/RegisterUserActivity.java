@@ -17,8 +17,8 @@ import java.util.List;
 
 public class RegisterUserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Button submitButton;
-    private EditText firstNameView, lastNameView, cityView, countryView;
-    private String firstName, lastName, city, country;
+    private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView, genderView;
+    private String firstName, lastName, city, country, gender, height, weight;
     private Spinner spDropdown;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,21 +55,30 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
         lastNameView = (EditText) findViewById(R.id.editTextLastName);
         cityView = (EditText) findViewById(R.id.editTextCity);
         countryView = (EditText) findViewById(R.id.editTextCountry);
+        this.heightView = (EditText) findViewById(R.id.editTextHeight);
+        this.weightView = (EditText) findViewById(R.id.editTextWeight);
 
 
-        String firstName = firstNameView.getText().toString();
-        String lastName = lastNameView.getText().toString();
-        String city = cityView.getText().toString();
-        String country = countryView.getText().toString();
+        this.firstName = firstNameView.getText().toString();
+        this.lastName = lastNameView.getText().toString();
+        this.city = cityView.getText().toString();
+        this.country = countryView.getText().toString();
+        this.height = this.heightView.getText().toString();
+        this.weight = this.weightView.getText().toString();
+
 
         // First attempt at creating some error checking
         // Will need to be more robust later on
         if(checkInput(firstName, lastName, city, country)){
             Intent displayUserInfoIntent = new Intent(this, DisplayUserInfoActivity.class);
-            displayUserInfoIntent.putExtra("USER_FIRST_NAME", firstName);
-            displayUserInfoIntent.putExtra("USER_LAST_NAME", lastName);
-            displayUserInfoIntent.putExtra("USER_CITY", city);
-            displayUserInfoIntent.putExtra("USER_COUNTRY", country);
+            displayUserInfoIntent.putExtra("USER_FIRST_NAME", this.firstName);
+            displayUserInfoIntent.putExtra("USER_LAST_NAME", this.lastName);
+            displayUserInfoIntent.putExtra("USER_CITY", this.city);
+            displayUserInfoIntent.putExtra("USER_COUNTRY", this.country);
+            displayUserInfoIntent.putExtra("USER_GENDER", this.gender);
+            displayUserInfoIntent.putExtra("USER_WEIGHT", this.weight);
+            displayUserInfoIntent.putExtra("USER_HEIGHT", this.height);
+
             startActivity(displayUserInfoIntent);
         }
         else{
@@ -91,6 +100,7 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
 
         String item = adapterView.getItemAtPosition(i).toString();
         Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        this.gender = item;
     }
 
     @Override
