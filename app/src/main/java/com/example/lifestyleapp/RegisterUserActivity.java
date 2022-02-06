@@ -1,9 +1,18 @@
 package com.example.lifestyleapp;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,16 +25,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RegisterUserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    private Button submitButton;
+    private Button submitButton, cameraButton;
     private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView, genderView;
     private String firstName, lastName, city, country, gender, height, weight;
     private Spinner spDropdown;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    //ActivityResultLauncher<Intent> activityResultLauncher;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Submit button
         setContentView(R.layout.activity_register_user);
         submitButton = (Button) findViewById(R.id.button);
+        this.cameraButton = (Button) findViewById(R.id.addPictureButton);
+        /*
+        The original method for getting an image after taking a photo is deprecated,
+        I'm using the new one, but is not implemented yet.
+
+        activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+
+                    }
+                });
+
+         */
 
         // Set up for gender selection and dropdown menu
         spDropdown = (Spinner) findViewById(R.id.spinnerGenderSelect);
@@ -44,6 +70,13 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
                 showUserInfo();
             }
         });
+
+//        this.cameraButton.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view) {
+//                getProfilePicture();
+//            }
+//        });
 
     }
     /**
@@ -85,6 +118,15 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
             Toast.makeText(this, "Enter all required parameters", Toast.LENGTH_SHORT).show();
         }
     }
+
+//    public void getProfilePicture(){
+//        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        if(cameraIntent.resolveActivity(getPackageManager())!=null){
+//            registerForActivityResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
+//
+//        }
+//
+//    }
 
     public boolean checkInput(String firstName, String lastName, String city, String country){
 

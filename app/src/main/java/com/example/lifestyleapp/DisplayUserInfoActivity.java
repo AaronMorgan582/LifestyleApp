@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,11 +14,13 @@ import org.w3c.dom.Text;
 public class DisplayUserInfoActivity extends AppCompatActivity {
 
     private TextView firstNameDisplay, lastNameDisplay, height, weight, city, country, sex;
+    private Button editProfile;
     private ImageView userImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_user_info);
+        this.editProfile = (Button) findViewById(R.id.buttonEditProfile);
         Intent receivedIntent = getIntent();
         String receivedFirstName = receivedIntent.getStringExtra("USER_FIRST_NAME");
         String receivedLastName = receivedIntent.getStringExtra("USER_LAST_NAME");
@@ -42,8 +46,20 @@ public class DisplayUserInfoActivity extends AppCompatActivity {
         this.sex.setText(receivedGender);
         this.height.setText(receivedHeight);
         this.weight.setText(receivedWeight);
-
-
-
+/*
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                returnToRegisterUserDisplay();
+            }
+        });
+*/
     }
+    /*
+    public void returnToRegisterUserDisplay(){
+        Intent intent = new Intent(this, RegisterUserActivity.class);
+        startActivity(intent);
+    }
+    */
+
 }
