@@ -8,8 +8,10 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.Image;
@@ -50,6 +52,7 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
         super.onCreate(savedInstanceState);
         // Submit button
         setContentView(R.layout.activity_register_user);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 110);
 
         this.submitButton = (Button) findViewById(R.id.button);
         this.cameraButton = (Button) findViewById(R.id.addPictureButton);
