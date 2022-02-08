@@ -36,6 +36,8 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
     private Spinner spDropdown;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private ImageView profPicImageView;
+    private Bitmap imageBitmap;
+    //private String mStringFullName,mStringFirstName,mStringLastName, mStringCity, mStringCountry, mStringWeight;
 
     ActivityResultLauncher<Intent> activityResultLauncher =  registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -86,18 +88,9 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
                 else{
                     Toast.makeText(RegisterUserActivity.this, "Not able to open camera", Toast.LENGTH_SHORT).show();
                 }
-                /*
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if(cameraIntent.resolveActivity(getPackageManager())!=null){
-                    activityResultLauncher.launch(cameraIntent);
-                }
-                else{
-                    Toast.makeText(RegisterUserActivity.this, "Not able to open camera", Toast.LENGTH_SHORT).show();
-                }
-                /
-                 */
             }
         });
+
 
     }
     /**
@@ -105,13 +98,13 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
      * in another activity
      * */
     public void showUserInfo(){
+
         firstNameView = (EditText) findViewById(R.id.editTextFirstName);
         lastNameView = (EditText) findViewById(R.id.editTextLastName);
         cityView = (EditText) findViewById(R.id.editTextCity);
         countryView = (EditText) findViewById(R.id.editTextCountry);
         this.heightView = (EditText) findViewById(R.id.editTextHeight);
         this.weightView = (EditText) findViewById(R.id.editTextWeight);
-
 
         this.firstName = firstNameView.getText().toString();
         this.lastName = lastNameView.getText().toString();
@@ -132,16 +125,13 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
             displayUserInfoIntent.putExtra("USER_GENDER", this.gender);
             displayUserInfoIntent.putExtra("USER_WEIGHT", this.weight);
             displayUserInfoIntent.putExtra("USER_HEIGHT", this.height);
+            displayUserInfoIntent.putExtra("USER_PIC", this.imageBitmap);
 
             startActivity(displayUserInfoIntent);
         }
         else{
             Toast.makeText(this, "Enter all required parameters", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    public void getProfilePicture(){
-
     }
 
     public boolean checkInput(String firstName, String lastName, String city, String country){
@@ -155,7 +145,6 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
         String item = adapterView.getItemAtPosition(i).toString();
         Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
         this.gender = item;
@@ -165,4 +154,19 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            this.imageBitmap = (Bitmap) extras.get("data");
+            this.profPicImageView.setImageBitmap(this.imageBitmap);
+        }
+        else{
+            Toast.makeText(this, "Image could not be saved", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
 }
