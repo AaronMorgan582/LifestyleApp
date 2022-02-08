@@ -70,14 +70,13 @@
         android:id="@+id/displayGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="236dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toEndOf="@+id/tvSex"
-        app:layout_constraintTop_toBottomOf="@+id/displayLastName"
-        app:layout_constraintVertical_bias="0.137" />
+        app:layout_constraintTop_toBottomOf="@+id/displayWeight"
+        app:layout_constraintVertical_bias="0.025" />
 
     <TextView
         android:id="@+id/displayCity"
@@ -88,8 +87,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.197"
         app:layout_constraintStart_toEndOf="@+id/tvCity"
-        app:layout_constraintTop_toBottomOf="@+id/displayLastName"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintTop_toBottomOf="@+id/displayGender"
+        app:layout_constraintVertical_bias="0.025" />
 
     <TextView
         android:id="@+id/displayCountry"
@@ -100,8 +99,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toEndOf="@+id/tvCountry"
-        app:layout_constraintTop_toBottomOf="@+id/displayLastName"
-        app:layout_constraintVertical_bias="0.244" />
+        app:layout_constraintTop_toBottomOf="@+id/displayCity"
+        app:layout_constraintVertical_bias="0.024" />
 
     <ImageView
         android:id="@+id/profilePicture"
@@ -187,25 +186,27 @@
         android:id="@+id/displayHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="12dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/displayGender"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintHorizontal_bias="0.016"
         app:layout_constraintStart_toEndOf="@+id/tvHeight"
         app:layout_constraintTop_toBottomOf="@+id/displayLastName"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.005" />
 
     <TextView
         android:id="@+id/displayWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/displayGender"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toEndOf="@+id/tvWeight"
         app:layout_constraintTop_toBottomOf="@+id/displayHeight"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.022" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
