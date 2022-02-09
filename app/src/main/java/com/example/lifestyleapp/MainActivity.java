@@ -70,18 +70,18 @@ public class MainActivity extends AppCompatActivity{
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-//        fusedLocationClient.getLastLocation()
-//                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-//                    @Override
-//                    public void onSuccess(Location location) {
-//                        // Got last known location. In some rare situations this can be null.
-//                        locx=location.getLongitude();
-//                        locx=location.getLatitude();
-//                        if (location != null) {
-//                            // Logic to handle location object
-//                        }
-//                    }
-//                });
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        locx=location.getLongitude();
+                        locx=location.getLatitude();
+                        if (location != null) {
+                            // Logic to handle location object
+                        }
+                    }
+                });
 
 
 
