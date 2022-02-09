@@ -3,6 +3,7 @@ package com.example.lifestyleapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,7 @@ public class DisplayUserInfoActivity extends AppCompatActivity {
         String receivedGender = receivedIntent.getStringExtra("USER_GENDER");
         String receivedWeight = receivedIntent.getStringExtra("USER_WEIGHT");
         String receivedHeight = receivedIntent.getStringExtra("USER_HEIGHT");
+        Bitmap receivedPic = receivedIntent.getParcelableExtra("USER_PIC");
 
         this.firstNameDisplay = (TextView) findViewById(R.id.displayFirstName);
         this.lastNameDisplay = (TextView) findViewById(R.id.displayLastName);
@@ -37,6 +39,8 @@ public class DisplayUserInfoActivity extends AppCompatActivity {
         this.sex = (TextView) findViewById(R.id.displayGender);
         this.height = (TextView) findViewById(R.id.displayHeight);
         this.weight = (TextView) findViewById(R.id.displayWeight);
+        this.userImage = (ImageView) findViewById(R.id.profilePicture);
+
 
 
         this.firstNameDisplay.setText(receivedFirstName);
@@ -46,20 +50,20 @@ public class DisplayUserInfoActivity extends AppCompatActivity {
         this.sex.setText(receivedGender);
         this.height.setText(receivedHeight);
         this.weight.setText(receivedWeight);
-/*
-        editProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                returnToRegisterUserDisplay();
-            }
-        });
-*/
+        this.userImage.setImageBitmap(receivedPic);
+
+//        editProfile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                returnToRegisterUserDisplay();
+//            }
+//        });
+
     }
-    /*
-    public void returnToRegisterUserDisplay(){
-        Intent intent = new Intent(this, RegisterUserActivity.class);
-        startActivity(intent);
-    }
-    */
+
+//    public void returnToRegisterUserDisplay(){
+//        Intent intent = new Intent(this, RegisterUserActivity.class);
+//        startActivity(intent);
+//    }
 
 }
