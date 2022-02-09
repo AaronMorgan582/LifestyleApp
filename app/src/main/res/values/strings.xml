@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">LifestyleApp</string>
+
+<!--User Info-->
+    <string name="first_name_field">First Name:</string>
+    <string name="last_name_field">Last Name:</string>
+    <string name="height_field">Height:</string>
+    <string name="weight_field">Weight:</string>
+    <string name="sex_field">Sex:</string>
+    <string name="city_field">City:</string>
+    <string name="country_field">Country:</string>
+
+    <string name="edit_profile_button">Edit Profile</string>
+    <string name="profile_image">Profile Image</string>
+
+<!--Headers-->
+    <string name="profile_header">Your Profile</string>
+
+<!--General-->
+    <string name="default_text">Text View</string>
+
 </resources>
