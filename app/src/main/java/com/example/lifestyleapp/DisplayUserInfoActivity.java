@@ -32,13 +32,13 @@ public class DisplayUserInfoActivity extends AppCompatActivity {
         String receivedHeight = receivedIntent.getStringExtra("USER_HEIGHT");
         Bitmap receivedPic = receivedIntent.getParcelableExtra("USER_PIC");
 
-        this.firstNameDisplay = (TextView) findViewById(R.id.displayFirstName);
-        this.lastNameDisplay = (TextView) findViewById(R.id.displayLastName);
-        this.city = (TextView) findViewById(R.id.displayCity);
-        this.country = (TextView) findViewById(R.id.displayCountry);
-        this.sex = (TextView) findViewById(R.id.displayGender);
-        this.height = (TextView) findViewById(R.id.displayHeight);
-        this.weight = (TextView) findViewById(R.id.displayWeight);
+        this.firstNameDisplay = (TextView) findViewById(R.id.tvDisplayFirstName);
+        this.lastNameDisplay = (TextView) findViewById(R.id.tvDisplayLastName);
+        this.city = (TextView) findViewById(R.id.tvDisplayCity);
+        this.country = (TextView) findViewById(R.id.tvDisplayCountry);
+        this.sex = (TextView) findViewById(R.id.tvDisplaySex);
+        this.height = (TextView) findViewById(R.id.tvDisplayHeight);
+        this.weight = (TextView) findViewById(R.id.tvDisplayWeight);
         this.userImage = (ImageView) findViewById(R.id.profilePicture);
 
 

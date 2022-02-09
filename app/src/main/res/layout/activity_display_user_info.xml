@@ -7,105 +7,22 @@
     tools:context=".DisplayUserInfoActivity">
 
     <TextView
-        android:id="@+id/tvWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weight:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHeight"
-        app:layout_constraintVertical_bias="0.024" />
-
-    <TextView
-        android:id="@+id/tvHeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Height:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLastName"
-        app:layout_constraintVertical_bias="0.003" />
-
-    <TextView
         android:id="@+id/userDisplayTitle"
-        android:layout_width="270dp"
-        android:layout_height="52dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Your Profile"
+        android:text="@string/profile_header"
         android:textSize="40sp"
         app:layout_constraintEnd_toStartOf="@+id/profilePicture"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/displayFirstName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
-        app:layout_constraintStart_toEndOf="@+id/tvFirstName"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119" />
-
-    <TextView
-        android:id="@+id/displayLastName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
-        app:layout_constraintStart_toEndOf="@+id/tvLastName"
-        app:layout_constraintTop_toBottomOf="@+id/displayFirstName"
-        app:layout_constraintVertical_bias="0.027" />
-
-    <TextView
-        android:id="@+id/displayGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toEndOf="@+id/tvSex"
-        app:layout_constraintTop_toBottomOf="@+id/displayWeight"
-        app:layout_constraintVertical_bias="0.025" />
-
-    <TextView
-        android:id="@+id/displayCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
-        app:layout_constraintStart_toEndOf="@+id/tvCity"
-        app:layout_constraintTop_toBottomOf="@+id/displayGender"
-        app:layout_constraintVertical_bias="0.025" />
-
-    <TextView
-        android:id="@+id/displayCountry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
-        app:layout_constraintStart_toEndOf="@+id/tvCountry"
-        app:layout_constraintTop_toBottomOf="@+id/displayCity"
-        app:layout_constraintVertical_bias="0.024" />
-
     <ImageView
+        android:contentDescription="@string/profile_image"
         android:id="@+id/profilePicture"
-        android:layout_width="65dp"
-        android:layout_height="51dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -116,98 +33,156 @@
         android:id="@+id/tvFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="First Name:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="88dp"
+        android:paddingBottom="4dp"
+        android:text="@string/first_name_field"
+        app:layout_constraintBottom_toTopOf="@+id/tvLastName"
+        app:layout_constraintStart_toStartOf="@+id/userDisplayTitle"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvDisplayFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="88dp"
+        android:text="@string/default_text"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplayWeight"
+        app:layout_constraintStart_toEndOf="@+id/tvFirstName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/tvLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Last Name:"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/last_name_field"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvHeight"
+        app:layout_constraintStart_toStartOf="@+id/tvFirstName"
         app:layout_constraintTop_toBottomOf="@+id/tvFirstName" />
 
     <TextView
-        android:id="@+id/tvCity"
+        android:id="@+id/tvDisplayLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:text="City:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSex"
-        app:layout_constraintVertical_bias="0.002" />
+        android:text="@string/default_text"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplaySex"
+        app:layout_constraintStart_toStartOf="@+id/tvDisplayWeight"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayWeight" />
 
     <TextView
-        android:id="@+id/tvCountry"
+        android:id="@+id/tvHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Country:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCity"
-        app:layout_constraintVertical_bias="0.024" />
+        android:text="@string/height_field"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvWeight"
+        app:layout_constraintStart_toStartOf="@+id/tvLastName"
+        app:layout_constraintTop_toBottomOf="@+id/tvLastName" />
+
+    <TextView
+        android:id="@+id/tvDisplayHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/default_text"
+        android:paddingBottom="4dp"
+        app:layout_constraintStart_toStartOf="@+id/tvDisplayCountry"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayCountry" />
+
+    <TextView
+        android:id="@+id/tvWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weight_field"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvSex"
+        app:layout_constraintStart_toStartOf="@+id/tvHeight"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeight" />
+
+    <TextView
+        android:id="@+id/tvDisplayWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/default_text"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplayLastName"
+        app:layout_constraintStart_toStartOf="@+id/tvDisplayFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayFirstName" />
 
     <TextView
         android:id="@+id/tvSex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sex:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWeight"
-        app:layout_constraintVertical_bias="0.023" />
+        android:text="@string/sex_field"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvCity"
+        app:layout_constraintStart_toStartOf="@+id/tvWeight"
+        app:layout_constraintTop_toBottomOf="@+id/tvWeight" />
+
+    <TextView
+        android:id="@+id/tvDisplaySex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/default_text"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplayCity"
+        app:layout_constraintStart_toStartOf="@+id/tvDisplayLastName"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayLastName" />
+
+    <TextView
+        android:id="@+id/tvCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/city_field"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvCountry"
+        app:layout_constraintStart_toStartOf="@+id/tvSex"
+        app:layout_constraintTop_toBottomOf="@+id/tvSex" />
+
+    <TextView
+        android:id="@+id/tvDisplayCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/default_text"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplayCountry"
+        app:layout_constraintStart_toStartOf="@+id/tvDisplaySex"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplaySex" />
+
+    <TextView
+        android:id="@+id/tvCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/country_field"
+        android:paddingBottom="4dp"
+        app:layout_constraintStart_toStartOf="@+id/tvCity"
+        app:layout_constraintTop_toBottomOf="@+id/tvCity" />
+
+    <TextView
+        android:id="@+id/tvDisplayCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/default_text"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplayHeight"
+        app:layout_constraintStart_toStartOf="@+id/tvDisplayCity"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayCity" />
 
     <Button
         android:id="@+id/buttonEditProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit Profile"
+        android:text="@string/edit_profile_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.588" />
-
-    <TextView
-        android:id="@+id/displayHeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="12dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.016"
-        app:layout_constraintStart_toEndOf="@+id/tvHeight"
-        app:layout_constraintTop_toBottomOf="@+id/displayLastName"
-        app:layout_constraintVertical_bias="0.005" />
-
-    <TextView
-        android:id="@+id/displayWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
-        app:layout_constraintStart_toEndOf="@+id/tvWeight"
-        app:layout_constraintTop_toBottomOf="@+id/displayHeight"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
