@@ -19,12 +19,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:contentDescription="@string/profile_image"
         android:id="@+id/profilePicture"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/profile_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -46,21 +46,21 @@
         android:id="@+id/tvDisplayFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:paddingBottom="4dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="88dp"
         android:text="@string/default_text"
-        android:paddingBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvDisplayWeight"
-        app:layout_constraintStart_toEndOf="@+id/tvFirstName"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplayLastName"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvFirstName"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/tvLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/last_name_field"
         android:paddingBottom="4dp"
+        android:text="@string/last_name_field"
         app:layout_constraintBottom_toTopOf="@+id/tvHeight"
         app:layout_constraintStart_toStartOf="@+id/tvFirstName"
         app:layout_constraintTop_toBottomOf="@+id/tvFirstName" />
@@ -69,18 +69,18 @@
         android:id="@+id/tvDisplayLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_text"
         android:paddingBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvDisplaySex"
-        app:layout_constraintStart_toStartOf="@+id/tvDisplayWeight"
-        app:layout_constraintTop_toBottomOf="@+id/tvDisplayWeight" />
+        android:text="@string/default_text"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplayHeight"
+        app:layout_constraintStart_toStartOf="@+id/tvDisplayFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayFirstName" />
 
     <TextView
         android:id="@+id/tvHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/height_field"
         android:paddingBottom="4dp"
+        android:text="@string/height_field"
         app:layout_constraintBottom_toTopOf="@+id/tvWeight"
         app:layout_constraintStart_toStartOf="@+id/tvLastName"
         app:layout_constraintTop_toBottomOf="@+id/tvLastName" />
@@ -89,17 +89,18 @@
         android:id="@+id/tvDisplayHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_text"
         android:paddingBottom="4dp"
-        app:layout_constraintStart_toStartOf="@+id/tvDisplayCountry"
-        app:layout_constraintTop_toBottomOf="@+id/tvDisplayCountry" />
+        android:text="@string/default_text"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplayWeight"
+        app:layout_constraintStart_toStartOf="@+id/tvDisplayLastName"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayLastName" />
 
     <TextView
         android:id="@+id/tvWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/weight_field"
         android:paddingBottom="4dp"
+        android:text="@string/weight_field"
         app:layout_constraintBottom_toTopOf="@+id/tvSex"
         app:layout_constraintStart_toStartOf="@+id/tvHeight"
         app:layout_constraintTop_toBottomOf="@+id/tvHeight" />
@@ -108,18 +109,18 @@
         android:id="@+id/tvDisplayWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_text"
         android:paddingBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvDisplayLastName"
-        app:layout_constraintStart_toStartOf="@+id/tvDisplayFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/tvDisplayFirstName" />
+        android:text="@string/default_text"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplaySex"
+        app:layout_constraintStart_toStartOf="@+id/tvDisplayHeight"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayHeight" />
 
     <TextView
         android:id="@+id/tvSex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sex_field"
         android:paddingBottom="4dp"
+        android:text="@string/sex_field"
         app:layout_constraintBottom_toTopOf="@+id/tvCity"
         app:layout_constraintStart_toStartOf="@+id/tvWeight"
         app:layout_constraintTop_toBottomOf="@+id/tvWeight" />
@@ -128,18 +129,18 @@
         android:id="@+id/tvDisplaySex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_text"
         android:paddingBottom="4dp"
+        android:text="@string/default_text"
         app:layout_constraintBottom_toTopOf="@+id/tvDisplayCity"
-        app:layout_constraintStart_toStartOf="@+id/tvDisplayLastName"
-        app:layout_constraintTop_toBottomOf="@+id/tvDisplayLastName" />
+        app:layout_constraintStart_toStartOf="@+id/tvDisplayWeight"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayWeight" />
 
     <TextView
         android:id="@+id/tvCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/city_field"
         android:paddingBottom="4dp"
+        android:text="@string/city_field"
         app:layout_constraintBottom_toTopOf="@+id/tvCountry"
         app:layout_constraintStart_toStartOf="@+id/tvSex"
         app:layout_constraintTop_toBottomOf="@+id/tvSex" />
@@ -148,8 +149,8 @@
         android:id="@+id/tvDisplayCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_text"
         android:paddingBottom="4dp"
+        android:text="@string/default_text"
         app:layout_constraintBottom_toTopOf="@+id/tvDisplayCountry"
         app:layout_constraintStart_toStartOf="@+id/tvDisplaySex"
         app:layout_constraintTop_toBottomOf="@+id/tvDisplaySex" />
@@ -158,8 +159,8 @@
         android:id="@+id/tvCountry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/country_field"
         android:paddingBottom="4dp"
+        android:text="@string/country_field"
         app:layout_constraintStart_toStartOf="@+id/tvCity"
         app:layout_constraintTop_toBottomOf="@+id/tvCity" />
 
@@ -167,9 +168,8 @@
         android:id="@+id/tvDisplayCountry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_text"
         android:paddingBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvDisplayHeight"
+        android:text="@string/default_text"
         app:layout_constraintStart_toStartOf="@+id/tvDisplayCity"
         app:layout_constraintTop_toBottomOf="@+id/tvDisplayCity" />
 
