@@ -90,8 +90,6 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
                 }
             }
         });
-
-
     }
     /**
      * Temporary method to show a summary of the user information

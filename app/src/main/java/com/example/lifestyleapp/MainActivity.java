@@ -26,7 +26,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class MainActivity extends AppCompatActivity{
 
-    private Button mButtonCreateProfile;
+    private Button mButtonCreateProfile, drawerActivityBtn;
     private ImageButton mButtonHikes;
     private FusedLocationProviderClient fusedLocationClient;
     private double locx=0;
@@ -83,7 +83,13 @@ public class MainActivity extends AppCompatActivity{
                     }
                 });
 
-
+        drawerActivityBtn = findViewById(R.id.drawerActivity);
+        drawerActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToDrawerActivity();
+            }
+        });
 
         //Get the button
         mButtonHikes = (ImageButton)findViewById(R.id.imageButton3);
@@ -121,5 +127,10 @@ public class MainActivity extends AppCompatActivity{
         Intent profileIntent = new Intent(this, RegisterUserActivity.class);
         startActivity(profileIntent);
 
+    }
+    public void goToDrawerActivity()
+    {
+        Intent drawerIntent = new Intent(this, DrawerActivity.class);
+        startActivity(drawerIntent);
     }
 }
