@@ -13,6 +13,8 @@
         <entry key="app/src/main/res/layout/activity_drawer.xml" value="0.2296875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_register_user.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.5" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.25729166666666664" />
         <entry key="app/src/main/res/menu/drawer_menu.xml" value="0.25729166666666664" />
       </map>
