@@ -10,9 +10,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.media.Image;
 import android.os.Bundle;
@@ -30,14 +33,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RegisterUserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    private Button submitButton, cameraButton;
+    private Button submitButton, cameraButton, saveUserButton;
     private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView, genderView;
     private String firstName, lastName, city, country, gender, height, weight;
     private Spinner spDropdown;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private ImageView profPicImageView;
     private Bitmap imageBitmap;
-    //private String mStringFullName,mStringFirstName,mStringLastName, mStringCity, mStringCountry, mStringWeight;
 
     ActivityResultLauncher<Intent> activityResultLauncher =  registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -59,6 +61,7 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
         this.submitButton = (Button) findViewById(R.id.button);
         this.cameraButton = (Button) findViewById(R.id.addPictureButton);
         this.profPicImageView = (ImageView) findViewById(R.id.profilePicView);
+        saveUserButton = findViewById(R.id.saveTestUser);
 
         // Set up for gender selection and dropdown menu
         spDropdown = (Spinner) findViewById(R.id.spinnerGenderSelect);
@@ -88,6 +91,15 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
                 else{
                     Toast.makeText(RegisterUserActivity.this, "Not able to open camera", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        // Method for testing if we can save a user locally so that
+        // we can change the user's data at any given point.
+        saveUserButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveTestUser();
             }
         });
     }
@@ -165,6 +177,26 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
             Toast.makeText(this, "Image could not be saved", Toast.LENGTH_SHORT).show();
 
         }
+    }
+
+    private void saveTestUser(){
+        SharedPreferences sharedPreferences = this.getSharedPreferences(
+                "USER_TEST", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("FIRST_NAME", "Ripley");
+        editor.putString("CITY", "Olympia Colony");
+        editor.putString("WEIGHT", "76");
+        boolean success = editor.commit();
+        if(success){
+            Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, DrawerActivity.class);
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
 }

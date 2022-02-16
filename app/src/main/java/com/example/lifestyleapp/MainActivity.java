@@ -5,10 +5,14 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
@@ -16,6 +20,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -24,13 +29,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private Button mButtonCreateProfile, drawerActivityBtn;
     private ImageButton mButtonHikes;
     private FusedLocationProviderClient fusedLocationClient;
-    private double locx=0;
-    private double locy=0;
+    private double locx = 0;
+    private double locy = 0;
 
 
     ActivityResultLauncher<String[]> locationPermissionRequest =
@@ -39,7 +44,7 @@ public class MainActivity extends AppCompatActivity{
                         Boolean fineLocationGranted = result.getOrDefault(
                                 Manifest.permission.ACCESS_FINE_LOCATION, false);
                         Boolean coarseLocationGranted = result.getOrDefault(
-                                Manifest.permission.ACCESS_COARSE_LOCATION,false);
+                                Manifest.permission.ACCESS_COARSE_LOCATION, false);
                         if (fineLocationGranted != null && fineLocationGranted) {
                             // Precise location access granted.
                         } else if (coarseLocationGranted != null && coarseLocationGranted) {
@@ -51,14 +56,10 @@ public class MainActivity extends AppCompatActivity{
             );
 
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        locationPermissionRequest.launch(new String[] {
+        locationPermissionRequest.launch(new String[]{
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION
         });
@@ -75,8 +76,8 @@ public class MainActivity extends AppCompatActivity{
                     @Override
                     public void onSuccess(Location location) {
                         // Got last known location. In some rare situations this can be null.
-                        locx=location.getLongitude();
-                        locx=location.getLatitude();
+                        locx = location.getLongitude();
+                        locx = location.getLatitude();
                         if (location != null) {
                             // Logic to handle location object
                         }
@@ -133,4 +134,5 @@ public class MainActivity extends AppCompatActivity{
         Intent drawerIntent = new Intent(this, DrawerActivity.class);
         startActivity(drawerIntent);
     }
+
 }
