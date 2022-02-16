@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">LifestyleApp</string>
 
-<!--User Info-->
+    <!--User Info-->
     <string name="first_name_field">First Name:</string>
     <string name="last_name_field">Last Name:</string>
     <string name="height_field">Height:</string>
@@ -13,10 +13,26 @@
     <string name="edit_profile_button">Edit Profile</string>
     <string name="profile_image">Profile Image</string>
 
-<!--Headers-->
+    <!--Headers-->
     <string name="profile_header">Your Profile</string>
+    <string name="goals_header">Fitness Goals</string>
 
-<!--General-->
+    <!--Goals-->
+    <string name="goal_select">I want to</string>
+    <string name="enter">Enter:</string>
+    <string name="lose_weight">Lose Weight</string>
+    <string name="maintain_weight">Maintain Weight</string>
+    <string name="gain_weight">Gain Weight</string>
+    <string name="activity_level">I am:</string>
+    <string name="active">Active</string>
+    <string name="sedentary">Sedentary</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="BMR">Basal Metabolic Rate:</string>
+    <string name="goal_end">pounds per week.</string>
+    <string name="calorie_estimate">Calorie Estimate:</string>
+
+    <!--General-->
     <string name="default_text">Text View</string>
 
 </resources>
