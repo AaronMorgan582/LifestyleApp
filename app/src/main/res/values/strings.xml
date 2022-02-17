@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">LifestyleApp</string>
 
-<!--User Info-->
+    <!--User Info-->
     <string name="first_name_field">First Name:</string>
     <string name="last_name_field">Last Name:</string>
     <string name="height_field">Height:</string>
@@ -13,10 +13,15 @@
     <string name="edit_profile_button">Edit Profile</string>
     <string name="profile_image">Profile Image</string>
 
-<!--Headers-->
+    <!--Headers-->
     <string name="profile_header">Your Profile</string>
 
-<!--General-->
+    <!--General-->
     <string name="default_text">Text View</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="user_test">firstUser</string>
 
 </resources>
