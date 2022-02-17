@@ -15,24 +15,13 @@
 
     <!--Headers-->
     <string name="profile_header">Your Profile</string>
-    <string name="goals_header">Fitness Goals</string>
-
-    <!--Goals-->
-    <string name="goal_select">I want to</string>
-    <string name="enter">Enter:</string>
-    <string name="lose_weight">Lose Weight</string>
-    <string name="maintain_weight">Maintain Weight</string>
-    <string name="gain_weight">Gain Weight</string>
-    <string name="activity_level">I am:</string>
-    <string name="active">Active</string>
-    <string name="sedentary">Sedentary</string>
-    <string name="male">Male</string>
-    <string name="female">Female</string>
-    <string name="BMR">Basal Metabolic Rate:</string>
-    <string name="goal_end">pounds per week.</string>
-    <string name="calorie_estimate">Calorie Estimate:</string>
 
     <!--General-->
     <string name="default_text">Text View</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="user_test">firstUser</string>
 
 </resources>
