@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GoalsActivity">
+
+    <TextView
+        android:id="@+id/goalsHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/goals_header"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvEnter_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/enter"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goalsHeader" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/goalsHeightField"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:helperText="Inches"
+        app:layout_constraintStart_toEndOf="@+id/tvEnter_info"
+        app:layout_constraintTop_toBottomOf="@id/goalsHeader">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/goalsEditTextHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Height" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/goalsWeightField"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:helperText="Pounds"
+        app:layout_constraintStart_toEndOf="@+id/goalsHeightField"
+        app:layout_constraintTop_toBottomOf="@id/goalsHeader">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/goalsEditTextWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Weight" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/goalsAgeField"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@id/goalsWeightField"
+        app:layout_constraintTop_toBottomOf="@id/goalsHeader">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/goalsEditTextAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Age" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvActivityLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/activity_level"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/tvEnter_info"
+        app:layout_constraintTop_toBottomOf="@id/tvEnter_info" />
+
+    <RadioGroup
+        android:id="@+id/activeButtonGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvActivityLevel"
+        app:layout_constraintTop_toBottomOf="@+id/goalsWeightField">
+
+        <RadioButton
+            android:id="@+id/radioActive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/active" />
+
+        <RadioButton
+            android:id="@+id/radioSedentary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="@string/sedentary" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/maleFemaleButtonGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/activeButtonGroup"
+        app:layout_constraintTop_toBottomOf="@id/activeButtonGroup">
+
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/male" />
+
+        <RadioButton
+            android:id="@+id/radioFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="39dp"
+            android:text="@string/female" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvBMR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/BMR"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/tvActivityLevel"
+        app:layout_constraintTop_toBottomOf="@id/maleFemaleButtonGroup" />
+
+    <TextView
+        android:id="@+id/bmrCalculation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/default_text"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tvBMR"
+        app:layout_constraintTop_toTopOf="@+id/tvBMR" />
+
+    <TextView
+        android:id="@+id/tvGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/goal_select"
+        app:layout_constraintBottom_toBottomOf="@+id/goalSpinner"
+        app:layout_constraintStart_toStartOf="@+id/tvBMR" />
+
+    <Spinner
+        android:id="@+id/goalSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintStart_toEndOf="@+id/tvGoal" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@id/goalSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/tvBMR">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Amount" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvGoalEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/goal_end"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintStart_toEndOf="@+id/textInputLayout" />
+
+    <TextView
+        android:id="@+id/tvCalorieEstimate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/calorie_estimate"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/tvGoal"
+        app:layout_constraintTop_toBottomOf="@+id/tvGoal" />
+
+    <TextView
+        android:id="@+id/tvCalculatedEstimate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/default_text"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tvCalorieEstimate"
+        app:layout_constraintTop_toTopOf="@+id/tvCalorieEstimate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
