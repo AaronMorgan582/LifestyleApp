@@ -32,7 +32,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public class MainActivity extends AppCompatActivity {
 
     private Button mButtonCreateProfile, drawerActivityBtn;
-    private ImageButton mButtonHikes;
+    private ImageButton mButtonHikes, mButtonGoals;
     private FusedLocationProviderClient fusedLocationClient;
     private double locx = 0;
     private double locy = 0;
@@ -114,6 +114,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mButtonGoals = findViewById(R.id.imageButton4);
+        mButtonGoals.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                openFitnessGoals();
+            }
+        });
+
 
         mButtonCreateProfile = (Button)findViewById(R.id.button2);
         mButtonCreateProfile.setOnClickListener(new View.OnClickListener() {
@@ -133,6 +141,11 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent drawerIntent = new Intent(this, DrawerActivity.class);
         startActivity(drawerIntent);
+    }
+
+    public void openFitnessGoals(){
+        Intent goalsIntent = new Intent(this, GoalsActivity.class);
+        startActivity(goalsIntent);
     }
 
 }
