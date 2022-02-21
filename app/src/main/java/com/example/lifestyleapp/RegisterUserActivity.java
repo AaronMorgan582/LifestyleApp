@@ -20,6 +20,7 @@ import android.graphics.Bitmap;
 import android.media.Image;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -109,6 +110,7 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
      * */
     public void showUserInfo(){
 
+
         firstNameView = (EditText) findViewById(R.id.editTextFirstName);
         lastNameView = (EditText) findViewById(R.id.editTextLastName);
         cityView = (EditText) findViewById(R.id.editTextCity);
@@ -118,6 +120,12 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
 
         this.firstName = firstNameView.getText().toString();
         this.lastName = lastNameView.getText().toString();
+
+        if(TextUtils.isEmpty(firstNameView.getText()) || TextUtils.isEmpty(lastNameView.getText())){
+            Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         this.city = cityView.getText().toString();
         this.country = countryView.getText().toString();
         this.height = this.heightView.getText().toString();
@@ -140,7 +148,7 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
             startActivity(displayUserInfoIntent);
         }
         else{
-            Toast.makeText(this, "Enter all required parameters", Toast.LENGTH_SHORT).show();
+
         }
     }
 
