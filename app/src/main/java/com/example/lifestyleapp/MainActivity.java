@@ -76,10 +76,15 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Location location) {
                         // Got last known location. In some rare situations this can be null.
-                        locx = location.getLongitude();
-                        locx = location.getLatitude();
-                        if (location != null) {
-                            // Logic to handle location object
+                        try{
+                            locx = location.getLongitude();
+                            locx = location.getLatitude();
+                            if (location != null) {
+                                // Logic to handle location object
+                            }
+                        }
+                        catch(Exception e){
+
                         }
                     }
                 });

@@ -33,6 +33,7 @@ import android.widget.AdapterView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class RegisterUserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Button submitButton, cameraButton, saveUserButton;
     private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView, genderView;
@@ -41,6 +42,9 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private ImageView profPicImageView;
     private Bitmap imageBitmap;
+
+    public static String heightGlobal;
+    public static String weightGlobal;
 
     ActivityResultLauncher<Intent> activityResultLauncher =  registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -130,7 +134,8 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
         this.country = countryView.getText().toString();
         this.height = this.heightView.getText().toString();
         this.weight = this.weightView.getText().toString();
-
+        heightGlobal = this.heightView.getText().toString();
+        weightGlobal = this.weightView.getText().toString();
 
         // First attempt at creating some error checking
         // Will need to be more robust later on

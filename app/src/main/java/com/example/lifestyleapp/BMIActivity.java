@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.lifestyleapp.RegisterUserActivity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,16 +20,28 @@ public class BMIActivity extends AppCompatActivity implements  View.OnClickListe
 
 
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmi);
+
+
 
         //User Input
         height = findViewById(R.id.bmiEditTextHeight);
         height2 = findViewById((R.id.bmiEditTextHeight2));
         weight = findViewById(R.id.bmiEditTextWeight);
 
+
+        try {
+            String[] split = RegisterUserActivity.heightGlobal.split(" ");
+            height.setText(split[0]);
+            height2.setText(split[1]);
+            weight.setText(RegisterUserActivity.weightGlobal);
+        }catch(Exception e){
+
+        }
 
         //Text Views
         tvBMI = findViewById(R.id.bmiCalculation);
