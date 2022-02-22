@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BMIActivity">
+
+    <TextView
+        android:id="@+id/bmiHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="BMI Calculator"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvEnter_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/enter"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bmiHeader" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/bmiHeightField"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:helperText="Feet"
+        app:layout_constraintStart_toEndOf="@+id/tvEnter_info"
+        app:layout_constraintTop_toBottomOf="@id/bmiHeader">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/bmiEditTextHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Height" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/bmiHeightField2"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:helperText="Inches"
+        app:layout_constraintStart_toEndOf="@+id/bmiHeightField"
+        app:layout_constraintTop_toBottomOf="@id/bmiHeader">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/bmiEditTextHeight2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Height" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/bmiWeightField"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:helperText="Pounds"
+        app:layout_constraintStart_toEndOf="@id/bmiHeightField2"
+        app:layout_constraintTop_toBottomOf="@id/bmiHeader">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/bmiEditTextWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Weight" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/buttonBMI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:text="Calculate BMI"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bmiHeightField" />
+
+    <TextView
+        android:id="@+id/bmiCalculation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonBMI"
+        app:layout_constraintStart_toEndOf="@+id/buttonBMI"
+        app:layout_constraintTop_toTopOf="@+id/buttonBMI" />
+
+    <TextView
+        android:id="@+id/bmiInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Underweight = &lt;18.5 \n\nNormal weight = 18.5–24.9 \n\nOverweight = 25–29.9 \n\nObesity = BMI of 30 or greater"
+        app:layout_constraintStart_toStartOf="@+id/buttonBMI"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBMI" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

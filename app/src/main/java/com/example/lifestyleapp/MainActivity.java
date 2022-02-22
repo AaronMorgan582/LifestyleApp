@@ -32,7 +32,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public class MainActivity extends AppCompatActivity {
 
     private Button mButtonCreateProfile, drawerActivityBtn;
-    private ImageButton mButtonHikes, mButtonGoals;
+    private ImageButton mButtonHikes, mButtonGoals,mButtonBMI;
     private FusedLocationProviderClient fusedLocationClient;
     private double locx = 0;
     private double locy = 0;
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 //We have to grab the search term and construct a URI object from it.
-                //We'll hardcode WEB's location here
+
                 Uri searchUri = Uri.parse("geo:"+locx+","+locy+"?q=" + "hikes");
 
                 //Create the implicit intent
@@ -130,6 +130,15 @@ public class MainActivity extends AppCompatActivity {
                 openProfileCreate();
             }
         });
+
+
+        mButtonBMI = findViewById(R.id.imageButton);
+        mButtonBMI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openBMICalculator();
+            }
+        });
     }
 
     public void openProfileCreate() {
@@ -146,6 +155,11 @@ public class MainActivity extends AppCompatActivity {
     public void openFitnessGoals(){
         Intent goalsIntent = new Intent(this, GoalsActivity.class);
         startActivity(goalsIntent);
+    }
+
+    public void openBMICalculator(){
+        Intent bmiIntent = new Intent(this, BMIActivity.class);
+        startActivity(bmiIntent);
     }
 
 }
