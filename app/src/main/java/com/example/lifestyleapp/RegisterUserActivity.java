@@ -23,6 +23,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,11 +35,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class RegisterUserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class RegisterUserActivity extends AppCompatActivity {
     private Button submitButton, cameraButton, saveUserButton;
-    private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView, genderView;
+    private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView;
     private String firstName, lastName, city, country, gender, height, weight;
-    private Spinner spDropdown;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private ImageView profPicImageView;
     private Bitmap imageBitmap;
@@ -68,16 +68,17 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
         this.profPicImageView = (ImageView) findViewById(R.id.profilePicView);
         saveUserButton = findViewById(R.id.saveTestUser);
 
-        // Set up for gender selection and dropdown menu
-        spDropdown = (Spinner) findViewById(R.id.spinnerGenderSelect);
-        spDropdown.setOnItemSelectedListener(this);
-        List<String> options = new ArrayList<String>();
-        options.add("Male");
-        options.add("Female");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spDropdown.setAdapter(dataAdapter);
-
+        //Sets up the Spinner
+        String[] spinner_list = new String[]{"Male", "Female"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.dropdown_menu, spinner_list);
+        AutoCompleteTextView editTextFilledExposedDropdown = findViewById(R.id.sexSelectSpinner);
+        editTextFilledExposedDropdown.setAdapter(adapter);
+        editTextFilledExposedDropdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                gender = adapterView.getItemAtPosition(i).toString();
+            }
+        });
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,12 +109,12 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
             }
         });
     }
+
     /**
      * Temporary method to show a summary of the user information
      * in another activity
      * */
     public void showUserInfo(){
-
 
         firstNameView = (EditText) findViewById(R.id.editTextFirstName);
         lastNameView = (EditText) findViewById(R.id.editTextLastName);
@@ -165,19 +166,6 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
         return false;
     }
 
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String item = adapterView.getItemAtPosition(i).toString();
-        Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-        this.gender = item;
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -208,8 +196,6 @@ public class RegisterUserActivity extends AppCompatActivity implements AdapterVi
         else{
             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
 }

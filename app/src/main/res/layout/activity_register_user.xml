@@ -23,57 +23,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addPictureButton"
         app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addPictureButton"
 
 
         app:layout_constraintVertical_bias="0.9" />
-
-    <Spinner
-        android:id="@+id/spinnerGenderSelect"
-        android:layout_width="151dp"
-        android:layout_height="33dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/sexTextView"
-        app:layout_constraintTop_toBottomOf="@+id/countryField"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="662dp" />
-
-    <TextView
-        android:id="@+id/sexTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:text="Sex:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/countryField" />
 
     <Button
         android:id="@+id/addPictureButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:text="Capture Image"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="24dp"
-        app:layout_constraintStart_toEndOf="@+id/profilePictureField"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerGenderSelect"
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="556dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/profilePictureField"
+        app:layout_constraintStart_toEndOf="@id/profilePictureField"
+        app:layout_constraintTop_toTopOf="@+id/profilePictureField" />
 
     <TextView
         android:id="@+id/profilePictureField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
         android:text="Profile Picture:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sexTextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="604dp" />
+        app:layout_constraintTop_toBottomOf="@+id/sexField" />
 
     <ImageView
         android:id="@+id/profilePicView"
@@ -90,6 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
+        app:boxBackgroundColor="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -104,6 +82,7 @@
         android:id="@+id/textLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:boxBackgroundColor="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@id/TextFirstName">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -116,34 +95,39 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/heightField"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textLastName">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextHeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Height" />
+            android:hint="Height (inches)" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/weightField"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/heightField">
+        app:boxBackgroundColor="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/heightField">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Weight" />
+            android:hint="Weight (pounds)" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/cityField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:boxBackgroundColor="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@+id/weightField">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -157,6 +141,7 @@
         android:id="@+id/countryField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:boxBackgroundColor="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@+id/cityField">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -170,14 +155,30 @@
         android:id="@+id/saveTestUser"
         android:layout_width="48dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="136dp"
         android:text="S"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"
-        app:layout_constraintStart_toEndOf="@+id/addPictureButton"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.997" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sexField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Sex"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countryField">
+        
+        <AutoCompleteTextView
+            android:id="@+id/sexSelectSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </AutoCompleteTextView>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
