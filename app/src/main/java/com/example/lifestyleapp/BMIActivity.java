@@ -73,7 +73,7 @@ public class BMIActivity extends AppCompatActivity implements  View.OnClickListe
         }
     }
 
-    private boolean checkBMIInput(){
+    public boolean checkBMIInput(){
         heightString = height.getText().toString();
         height2String = height2.getText().toString();
         weightString = weight.getText().toString();
