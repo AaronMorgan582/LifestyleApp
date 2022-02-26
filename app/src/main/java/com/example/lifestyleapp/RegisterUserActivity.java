@@ -38,7 +38,7 @@ import java.util.List;
 public class RegisterUserActivity extends AppCompatActivity {
     private Button submitButton, cameraButton, saveUserButton;
     private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView;
-    private String firstName, lastName, city, country, gender, height, weight;
+    private static String firstName, lastName, city, country, gender, height, weight;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private ImageView profPicImageView;
     private Bitmap imageBitmap;
@@ -180,8 +180,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         // 1. Create user object from text fields in Activity/fragment
 
         //2. When creating shared preferences, use member variables from that user object
-        SharedPreferences sharedPreferences = this.getSharedPreferences(
-                "USER_TEST", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = this.getSharedPreferences(firstName, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("FIRST_NAME", "Ripley");
         editor.putString("CITY", "Olympia Colony");
@@ -195,6 +194,10 @@ public class RegisterUserActivity extends AppCompatActivity {
         else{
             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public static String getUserName(){
+        return firstName;
     }
 
 }
