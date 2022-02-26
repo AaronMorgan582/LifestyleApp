@@ -120,8 +120,8 @@ public class RegisterUserActivity extends AppCompatActivity {
         lastNameView = (EditText) findViewById(R.id.editTextLastName);
         cityView = (EditText) findViewById(R.id.editTextCity);
         countryView = (EditText) findViewById(R.id.editTextCountry);
-        this.heightView = (EditText) findViewById(R.id.editTextHeight);
-        this.weightView = (EditText) findViewById(R.id.editTextWeight);
+        heightView = (EditText) findViewById(R.id.editTextHeight);
+        weightView = (EditText) findViewById(R.id.editTextWeight);
 
         this.firstName = firstNameView.getText().toString();
         this.lastName = lastNameView.getText().toString();
@@ -176,7 +176,6 @@ public class RegisterUserActivity extends AppCompatActivity {
         }
         else{
             Toast.makeText(this, "Image could not be saved", Toast.LENGTH_SHORT).show();
-
         }
     }
 
