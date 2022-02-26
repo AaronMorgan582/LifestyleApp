@@ -140,7 +140,7 @@ public class RegisterUserActivity extends AppCompatActivity {
 
         // First attempt at creating some error checking
         // Will need to be more robust later on
-        if(checkInput(firstName, lastName, city, country)){
+        if(checkInput(firstName, lastName, city, country)) {
             Intent displayUserInfoIntent = new Intent(this, DisplayUserInfoActivity.class);
             displayUserInfoIntent.putExtra("USER_FIRST_NAME", this.firstName);
             displayUserInfoIntent.putExtra("USER_LAST_NAME", this.lastName);
@@ -152,9 +152,6 @@ public class RegisterUserActivity extends AppCompatActivity {
             displayUserInfoIntent.putExtra("USER_PIC", this.imageBitmap);
 
             startActivity(displayUserInfoIntent);
-        }
-        else{
-
         }
     }
 
@@ -180,6 +177,9 @@ public class RegisterUserActivity extends AppCompatActivity {
     }
 
     private void saveTestUser(){
+        // 1. Create user object from text fields in Activity/fragment
+
+        //2. When creating shared preferences, use member variables from that user object
         SharedPreferences sharedPreferences = this.getSharedPreferences(
                 "USER_TEST", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
