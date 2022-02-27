@@ -70,18 +70,6 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            this.user_image = (Bitmap) extras.get("data");
-        }
-        else{
-            Toast.makeText(this, "Image could not be saved", Toast.LENGTH_SHORT).show();
-        }
-    }
     @Override
     public void editProfileClick() {
         Fragment register_fragment = new RegisterUserFragment();
@@ -104,17 +92,6 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     public void cameraButtonClick() {
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if(cameraIntent.resolveActivity(getPackageManager())!=null){
-            startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
-        }
-        else{
-            Toast.makeText(this, "Not able to open camera", Toast.LENGTH_SHORT).show();
-        }
-
-        //TODO:
-        //What needs to happen next is take the image captured from the camera (line 79, user_image)
-        //and pass that back
     }
 
 }

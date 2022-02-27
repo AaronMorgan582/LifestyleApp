@@ -1,9 +1,6 @@
 package com.example.lifestyleapp;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +15,7 @@ import androidx.fragment.app.Fragment;
 
 public class DisplayUserFragment extends Fragment {
     private TextView firstNameDisplay, lastNameDisplay, heightDisplay, weightDisplay, cityDisplay, countryDisplay, sexDisplay;
-    private Button editProfile;
     private ImageView userImage;
-    private Context context;
     private ButtonListener listener;
 
     @Nullable
@@ -30,7 +25,7 @@ public class DisplayUserFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_display_user_info, container, false);
 
         //Get the context that this fragment is attached to (which should be the DrawerActivity).
-        context = container.getContext();
+        Context context = container.getContext();
         try{
             listener = (ButtonListener) context;
         }catch(ClassCastException e){
@@ -38,7 +33,7 @@ public class DisplayUserFragment extends Fragment {
         }
 
         //Layout elements
-        this.editProfile = view.findViewById(R.id.buttonEditProfile);
+        Button editProfile = view.findViewById(R.id.buttonEditProfile);
         this.firstNameDisplay = view.findViewById(R.id.tvDisplayFirstName);
         this.lastNameDisplay =  view.findViewById(R.id.tvDisplayLastName);
         this.cityDisplay = view.findViewById(R.id.tvDisplayCity);

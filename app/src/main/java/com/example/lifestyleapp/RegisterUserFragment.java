@@ -1,20 +1,12 @@
 package com.example.lifestyleapp;
 
 import android.content.Context;
-import android.content.Intent;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
+
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -26,11 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class RegisterUserFragment extends Fragment implements View.OnClickListener{
-    private Button submitButton, cameraButton;
-    private RadioGroup sexButtonGroup;
     private RadioButton sexRadioButton;
     private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView;
-    private Context context;
     private ButtonListener listener;
 
     @Nullable
@@ -39,7 +28,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
 
         View view = inflater.inflate(R.layout.activity_register_user, container, false);
 
-        context = container.getContext();
+        Context context = container.getContext();
         try{
             listener = (ButtonListener) context;
         }catch(ClassCastException e){
@@ -55,6 +44,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
 
         return view;
     }
+
 
     @Override
     public void onClick(View view) {
@@ -85,13 +75,13 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         weightView = view.findViewById(R.id.editTextWeight);
 
         //Layout elements: Buttons
-        submitButton = view.findViewById(R.id.button);
-        cameraButton = view.findViewById(R.id.addPictureButton);
+        Button submitButton = view.findViewById(R.id.button);
+        Button cameraButton = view.findViewById(R.id.addPictureButton);
         submitButton.setOnClickListener(this);
         cameraButton.setOnClickListener(this);
 
         //Radio Group
-        sexButtonGroup = view.findViewById(R.id.sexRadioGroup);
+        RadioGroup sexButtonGroup = view.findViewById(R.id.sexRadioGroup);
 
         //Get the selection from the radio group.
         int selected_sex = sexButtonGroup.getCheckedRadioButtonId();
