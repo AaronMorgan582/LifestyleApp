@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/aaron/AndroidStudioProjects/LifestyleApp2/app/src/main/res/layout/activity_register_user.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/aaron/AndroidStudioProjects/LifestyleApp2/app/src/main/res/layout/activity_bmr.xml" value="0.1693840579710145" />
+        <entry key="..\:/Users/aaron/AndroidStudioProjects/LifestyleApp2/app/src/main/res/layout/activity_display_user_info.xml" value="0.4" />
+        <entry key="..\:/Users/aaron/AndroidStudioProjects/LifestyleApp2/app/src/main/res/layout/activity_drawer.xml" value="0.10235507246376811" />
+        <entry key="..\:/Users/aaron/AndroidStudioProjects/LifestyleApp2/app/src/main/res/layout/activity_logging_place_holder.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/aaron/AndroidStudioProjects/LifestyleApp2/app/src/main/res/layout/activity_register_user.xml" value="0.264" />
+        <entry key="..\:/Users/aaron/AndroidStudioProjects/LifestyleApp2/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/aaron/AndroidStudioProjects/LifestyleApp2/app/src/main/res/layout/fragment_profile.xml" value="0.10099637681159421" />
         <entry key="..\:/Users/u1214728/AndroidStudioProjects/LifestyleApp/app/src/main/res/layout-land/activity_main.xml" value="0.486331569664903" />
         <entry key="..\:/Users/u1214728/AndroidStudioProjects/LifestyleApp/app/src/main/res/layout/activity_display_user_info.xml" value="0.32864583333333336" />
         <entry key="..\:/Users/u1214728/AndroidStudioProjects/LifestyleApp/app/src/main/res/layout/activity_logging_place_holder.xml" value="0.32864583333333336" />

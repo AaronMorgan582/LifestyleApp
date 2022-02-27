@@ -6,16 +6,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ButtonListener{
 
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
     private DrawerLayout drawerLayout;
-    private static String user;
+    private User user;
+    private Bitmap user_image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +47,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
+
     }
 
     @Override
@@ -44,11 +57,64 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                 break;
             case R.id.nav_profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DisplayUserFragment()).commit();
+                DisplayUserFragment displayUserFragment = new DisplayUserFragment();
+                if(user != null){
+                    Bundle fragment_bundle = new Bundle();
+                    fragment_bundle.putParcelable("user_data", user);
+                    displayUserFragment.setArguments(fragment_bundle);
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, displayUserFragment).commit();
                 break;
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            this.user_image = (Bitmap) extras.get("data");
+        }
+        else{
+            Toast.makeText(this, "Image could not be saved", Toast.LENGTH_SHORT).show();
+        }
+    }
+    @Override
+    public void editProfileClick() {
+        Fragment register_fragment = new RegisterUserFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, register_fragment);
+        ft.commit();
+    }
+
+    @Override
+    public void submitButtonClick(String firstName, String lastName, String gender, String city, String country, String weight, String height) {
+        user = new User(firstName, lastName, gender, city, country, weight, height);
+        Bundle fragment_bundle = new Bundle();
+        fragment_bundle.putParcelable("user_data", user);
+        Fragment displayUserFragment = new DisplayUserFragment();
+        displayUserFragment.setArguments(fragment_bundle);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, displayUserFragment);
+        ft.commit();
+    }
+
+    @Override
+    public void cameraButtonClick() {
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(cameraIntent.resolveActivity(getPackageManager())!=null){
+            startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
+        }
+        else{
+            Toast.makeText(this, "Not able to open camera", Toast.LENGTH_SHORT).show();
+        }
+
+        //TODO:
+        //What needs to happen next is take the image captured from the camera (line 79, user_image)
+        //and pass that back
+    }
+
 }

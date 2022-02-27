@@ -21,6 +21,7 @@ public class DisplayUserFragment extends Fragment {
     private Button editProfile;
     private ImageView userImage;
     private Context context;
+    private ButtonListener listener;
 
     @Nullable
     @Override
@@ -30,6 +31,11 @@ public class DisplayUserFragment extends Fragment {
 
         //Get the context that this fragment is attached to (which should be the DrawerActivity).
         context = container.getContext();
+        try{
+            listener = (ButtonListener) context;
+        }catch(ClassCastException e){
+            throw new ClassCastException(context.toString() + " must implement ButtonListener interface.");
+        }
 
         //Layout elements
         this.editProfile = view.findViewById(R.id.buttonEditProfile);
@@ -42,16 +48,30 @@ public class DisplayUserFragment extends Fragment {
         this.weightDisplay = view.findViewById(R.id.tvDisplayWeight);
         this.userImage = view.findViewById(R.id.profilePicture);
 
-        String user_key = RegisterUserActivity.getUserName();
-        SharedPreferences sp = getActivity().getSharedPreferences(user_key, Context.MODE_PRIVATE);
+        if (getArguments() != null) {
+            fillUserInfo();
+        }
 
-        String firstName = sp.getString("FIRST_NAME", "");
-        String lastName = sp.getString("LAST_NAME", "");
-        String city = sp.getString("CITY", "");
-        String country = sp.getString("COUNTRY", "");
-        String sex = sp.getString("SEX", "");
-        String height = sp.getString("HEIGHT", "");
-        String weight = sp.getString("WEIGHT", "");
+        //When the Edit Profile button is clicked, signal DrawerActivity to activate the Register User Fragment.
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.editProfileClick();
+            }
+        });
+
+        return view;
+    }
+
+    private void fillUserInfo() {
+        User user = getArguments().getParcelable("user_data");
+        String firstName = user.getFirstName();
+        String lastName = user.getLastName();
+        String city = user.getCity();
+        String country = user.getCountry();
+        String sex = user.getGender();
+        String height = user.getHeight();
+        String weight = user.getWeight();
 
         firstNameDisplay.setText(firstName);
         lastNameDisplay.setText(lastName);
@@ -60,15 +80,5 @@ public class DisplayUserFragment extends Fragment {
         sexDisplay.setText(sex);
         heightDisplay.setText(height);
         weightDisplay.setText(weight);
-
-        //When the Edit Profile button is clicked, signal DrawerActivity to activate the Register User Fragment.
-        editProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-
-        return view;
     }
-
 }

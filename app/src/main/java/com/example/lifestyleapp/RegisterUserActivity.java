@@ -36,7 +36,7 @@ import java.util.List;
 
 
 public class RegisterUserActivity extends AppCompatActivity {
-    private Button submitButton, cameraButton, saveUserButton;
+    private Button submitButton, cameraButton;
     private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView;
     private static String firstName, lastName, city, country, gender, height, weight;
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -66,19 +66,18 @@ public class RegisterUserActivity extends AppCompatActivity {
         this.submitButton = (Button) findViewById(R.id.button);
         this.cameraButton = (Button) findViewById(R.id.addPictureButton);
         this.profPicImageView = (ImageView) findViewById(R.id.profilePicView);
-        saveUserButton = findViewById(R.id.saveTestUser);
 
         //Sets up the Spinner
-        String[] spinner_list = new String[]{"Male", "Female"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.dropdown_menu, spinner_list);
-        AutoCompleteTextView editTextFilledExposedDropdown = findViewById(R.id.sexSelectSpinner);
-        editTextFilledExposedDropdown.setAdapter(adapter);
-        editTextFilledExposedDropdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                gender = adapterView.getItemAtPosition(i).toString();
-            }
-        });
+//        String[] spinner_list = new String[]{"Male", "Female"};
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.dropdown_menu, spinner_list);
+//        AutoCompleteTextView editTextFilledExposedDropdown = findViewById(R.id.sexSelectSpinner);
+//        editTextFilledExposedDropdown.setAdapter(adapter);
+//        editTextFilledExposedDropdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                gender = adapterView.getItemAtPosition(i).toString();
+//            }
+//        });
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,15 +96,6 @@ public class RegisterUserActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(RegisterUserActivity.this, "Not able to open camera", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-        // Method for testing if we can save a user locally so that
-        // we can change the user's data at any given point.
-        saveUserButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveTestUser();
             }
         });
     }
@@ -194,10 +184,6 @@ public class RegisterUserActivity extends AppCompatActivity {
         else{
             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    public static String getUserName(){
-        return firstName;
     }
 
 }
