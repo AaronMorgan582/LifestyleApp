@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,6 +29,9 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_bmi, container, false);
+
+
+
         height = view.findViewById(R.id.fr_bmiEditTextHeight);
         height2 = view.findViewById((R.id.fr_bmiEditTextHeight2));
         weight = view.findViewById(R.id.fr_bmiEditTextWeight);
@@ -41,6 +46,7 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
         tvBMI = view.findViewById(R.id.fr_bmiCalculation);
         bmi_calculate = view.findViewById(R.id.fr_buttonBMI);
         bmi_calculate.setOnClickListener(this);
+
         return view;
     }
 
