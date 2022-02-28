@@ -110,17 +110,6 @@
         app:layout_constraintStart_toStartOf="@+id/fr_buttonBMI"
         app:layout_constraintTop_toBottomOf="@+id/fr_buttonBMI" />
 
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
-        android:layout_width="220dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
-        android:completionThreshold="1"
-        android:completionHint="Select a a game"
-        android:hint="Games"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bmiInfo" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

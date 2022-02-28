@@ -22,9 +22,6 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
     private TextView tvBMI;
     private Button bmi_calculate;
     private String heightString, height2String, weightString;
-    private static final String[] GAMES = new String[]{
-            "Horizon Forbidden West", "Silent Hill", "Elden Ring", "Hades"
-    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,9 +47,6 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
         bmi_calculate = view.findViewById(R.id.fr_buttonBMI);
         bmi_calculate.setOnClickListener(this);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_expandable_list_item_1, GAMES);
-        AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView);
-        autoCompleteTextView.setAdapter(adapter);
         return view;
     }
 
