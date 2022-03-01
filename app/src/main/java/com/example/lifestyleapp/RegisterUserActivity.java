@@ -36,9 +36,9 @@ import java.util.List;
 
 
 public class RegisterUserActivity extends AppCompatActivity {
-    private Button submitButton, cameraButton, saveUserButton;
+    private Button submitButton, cameraButton;
     private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView;
-    private String firstName, lastName, city, country, gender, height, weight;
+    private static String firstName, lastName, city, country, gender, height, weight;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private ImageView profPicImageView;
     private Bitmap imageBitmap;
@@ -66,19 +66,18 @@ public class RegisterUserActivity extends AppCompatActivity {
         this.submitButton = (Button) findViewById(R.id.button);
         this.cameraButton = (Button) findViewById(R.id.addPictureButton);
         this.profPicImageView = (ImageView) findViewById(R.id.profilePicView);
-        saveUserButton = findViewById(R.id.saveTestUser);
 
         //Sets up the Spinner
-        String[] spinner_list = new String[]{"Male", "Female"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.dropdown_menu, spinner_list);
-        AutoCompleteTextView editTextFilledExposedDropdown = findViewById(R.id.sexSelectSpinner);
-        editTextFilledExposedDropdown.setAdapter(adapter);
-        editTextFilledExposedDropdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                gender = adapterView.getItemAtPosition(i).toString();
-            }
-        });
+//        String[] spinner_list = new String[]{"Male", "Female"};
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.dropdown_menu, spinner_list);
+//        AutoCompleteTextView editTextFilledExposedDropdown = findViewById(R.id.sexSelectSpinner);
+//        editTextFilledExposedDropdown.setAdapter(adapter);
+//        editTextFilledExposedDropdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                gender = adapterView.getItemAtPosition(i).toString();
+//            }
+//        });
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,15 +98,6 @@ public class RegisterUserActivity extends AppCompatActivity {
                 }
             }
         });
-
-        // Method for testing if we can save a user locally so that
-        // we can change the user's data at any given point.
-        saveUserButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveTestUser();
-            }
-        });
     }
 
     /**
@@ -120,8 +110,8 @@ public class RegisterUserActivity extends AppCompatActivity {
         lastNameView = (EditText) findViewById(R.id.editTextLastName);
         cityView = (EditText) findViewById(R.id.editTextCity);
         countryView = (EditText) findViewById(R.id.editTextCountry);
-        this.heightView = (EditText) findViewById(R.id.editTextHeight);
-        this.weightView = (EditText) findViewById(R.id.editTextWeight);
+        heightView = (EditText) findViewById(R.id.editTextHeight);
+        weightView = (EditText) findViewById(R.id.editTextWeight);
 
         this.firstName = firstNameView.getText().toString();
         this.lastName = lastNameView.getText().toString();
@@ -173,7 +163,6 @@ public class RegisterUserActivity extends AppCompatActivity {
         }
         else{
             Toast.makeText(this, "Image could not be saved", Toast.LENGTH_SHORT).show();
-
         }
     }
 
@@ -181,8 +170,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         // 1. Create user object from text fields in Activity/fragment
 
         //2. When creating shared preferences, use member variables from that user object
-        SharedPreferences sharedPreferences = this.getSharedPreferences(
-                "USER_TEST", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = this.getSharedPreferences(firstName, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("FIRST_NAME", "Ripley");
         editor.putString("CITY", "Olympia Colony");

@@ -6,15 +6,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ButtonListener{
 
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
     private DrawerLayout drawerLayout;
+    private User user;
+    private Bitmap user_image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +47,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
+
     }
 
     @Override
@@ -43,7 +57,13 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                 break;
             case R.id.nav_profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+                DisplayUserFragment displayUserFragment = new DisplayUserFragment();
+                if(user != null){
+                    Bundle fragment_bundle = new Bundle();
+                    fragment_bundle.putParcelable("user_data", user);
+                    displayUserFragment.setArguments(fragment_bundle);
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, displayUserFragment).commit();
                 break;
             case R.id.nav_bmi:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new bmiFragment()).commit();
@@ -55,4 +75,28 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+    @Override
+    public void editProfileClick() {
+        Fragment register_fragment = new RegisterUserFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, register_fragment);
+        ft.commit();
+    }
+
+    @Override
+    public void submitButtonClick(String firstName, String lastName, String gender, String city, String country, String weight, String height) {
+        user = new User(firstName, lastName, gender, city, country, weight, height);
+        Bundle fragment_bundle = new Bundle();
+        fragment_bundle.putParcelable("user_data", user);
+        Fragment displayUserFragment = new DisplayUserFragment();
+        displayUserFragment.setArguments(fragment_bundle);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, displayUserFragment);
+        ft.commit();
+    }
+
+    @Override
+    public void cameraButtonClick() {
+    }
+
 }

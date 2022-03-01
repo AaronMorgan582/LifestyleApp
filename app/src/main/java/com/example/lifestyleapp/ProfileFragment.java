@@ -27,7 +27,7 @@ public class ProfileFragment extends Fragment {
         tv_firstName = view.findViewById(R.id.firstNametv);
         tv_weight = view.findViewById(R.id.weighttv);
 
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("USER_TEST", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("USER_NAME", Context.MODE_PRIVATE);
         String firstName = sharedPreferences.getString("FIRST_NAME", new String());
         String city = sharedPreferences.getString("CITY", new String());
         String weight = sharedPreferences.getString("WEIGHT", new String());
