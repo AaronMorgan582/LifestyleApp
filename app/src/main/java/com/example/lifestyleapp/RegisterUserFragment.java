@@ -12,22 +12,24 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class RegisterUserFragment extends Fragment implements View.OnClickListener{
-    private RadioButton sexRadioButton;
+    private RadioGroup sexButtonGroup;
+    private RadioButton sexRadioButton, maleRadioButton, femaleRadioButton;
     private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView;
     private ButtonListener listener;
+    private View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.activity_register_user, container, false);
+        view = inflater.inflate(R.layout.activity_register_user, container, false);
 
+        //Ensure that the activity coupled with this fragment has the ButtonListener interface implemented.
         Context context = container.getContext();
         try{
             listener = (ButtonListener) context;
@@ -35,33 +37,47 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
             throw new ClassCastException(context.toString() + " must implement ButtonListener interface.");
         }
 
+        //Get the elements from the layout.
         registerLayout(view);
 
         //If there are arguments from the Drawer Activity, use it to fill out the input fields.
         if (getArguments() != null) {
             User user_data = getArguments().getParcelable("user_data");
+            autoFill(user_data);
         }
 
         return view;
     }
 
-
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.button:
-
                 if(TextUtils.isEmpty(firstNameView.getText()) || TextUtils.isEmpty(lastNameView.getText())){
                     Toast.makeText(getActivity(), "Please enter your name", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     gatherInputAndSubmit();
                 }
-
                 break;
             case R.id.addPictureButton:
                 listener.cameraButtonClick();
                 break;
+        }
+    }
+
+    private void autoFill(User user) {
+        firstNameView.setText(user.getFirstName());
+        lastNameView.setText(user.getLastName());
+        cityView.setText(user.getCity());
+        countryView.setText(user.getCountry());
+        heightView.setText(user.getHeight());
+        weightView.setText(user.getWeight());
+        if(user.getGender().matches("Female")){
+            femaleRadioButton.setChecked(true);
+        }
+        else if(user.getGender().matches("Male")){
+            maleRadioButton.setChecked(true);
         }
     }
 
@@ -80,19 +96,22 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         submitButton.setOnClickListener(this);
         cameraButton.setOnClickListener(this);
 
-        //Radio Group
-        RadioGroup sexButtonGroup = view.findViewById(R.id.sexRadioGroup);
+        //Radio Group and Buttons
+        sexButtonGroup = view.findViewById(R.id.sexRadioGroup);
+        maleRadioButton = view.findViewById(R.id.maleRadioButton);
+        femaleRadioButton = view.findViewById(R.id.femaleRadioButton);
+    }
+
+    private void gatherInputAndSubmit() {
+        String firstName = firstNameView.getText().toString();
+        String lastName = lastNameView.getText().toString();
 
         //Get the selection from the radio group.
         int selected_sex = sexButtonGroup.getCheckedRadioButtonId();
 
         //Match the selection up with the appropriate button it's paired with.
         sexRadioButton = view.findViewById(selected_sex);
-    }
 
-    private void gatherInputAndSubmit() {
-        String firstName = firstNameView.getText().toString();
-        String lastName = lastNameView.getText().toString();
         String sex = sexRadioButton.getText().toString();
         String city = cityView.getText().toString();
         String country = countryView.getText().toString();

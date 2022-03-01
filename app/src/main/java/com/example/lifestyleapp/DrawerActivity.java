@@ -68,11 +68,9 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
             case R.id.nav_bmi:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new bmiFragment()).commit();
                 break;
-            case R.id.nav_bmr:
+            case R.id.nav_calories:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new bmrFragment()).commit();
                 break;
-
-
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -80,6 +78,12 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     @Override
     public void editProfileClick() {
         Fragment register_fragment = new RegisterUserFragment();
+        if(user != null){
+            Bundle fragment_bundle = new Bundle();
+            fragment_bundle.putParcelable("user_data", user);
+            register_fragment.setArguments(fragment_bundle);
+        }
+
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_container, register_fragment);
         ft.commit();
@@ -91,6 +95,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         Bundle fragment_bundle = new Bundle();
         fragment_bundle.putParcelable("user_data", user);
         Fragment displayUserFragment = new DisplayUserFragment();
+
         displayUserFragment.setArguments(fragment_bundle);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_container, displayUserFragment);

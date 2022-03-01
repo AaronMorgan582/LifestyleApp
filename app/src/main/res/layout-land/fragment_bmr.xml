@@ -1,226 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".bmrFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <TextView
-        android:id="@+id/fr_goalsHeader"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="Fitness Goals"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".bmrFragment">
 
-    <TextView
-        android:id="@+id/fr_tvEnter_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/enter"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fr_goalsHeightField"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        app:boxBackgroundColor="@android:color/transparent"
-        app:helperText="Inches"
-        app:layout_constraintStart_toEndOf="@+id/fr_tvEnter_info"
-        app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fr_goalsEditTextHeight"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/fr_goalsHeader"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/height" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Fitness Goals"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fr_goalsWeightField"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        app:boxBackgroundColor="@android:color/transparent"
-        app:helperText="Pounds"
-        app:layout_constraintStart_toEndOf="@+id/fr_goalsHeightField"
-        app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fr_goalsEditTextWeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/weight" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fr_goalsAgeField"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        app:boxBackgroundColor="@android:color/transparent"
-        app:helperText="Years"
-        app:layout_constraintStart_toEndOf="@id/fr_goalsWeightField"
-        app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fr_goalsEditTextAge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/age" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/fr_tvActivityLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="@string/activity_level"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/fr_tvEnter_info"
-        app:layout_constraintTop_toBottomOf="@id/fr_tvEnter_info" />
-
-    <RadioGroup
-        android:id="@+id/fr_activeButtonGroup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toEndOf="@id/fr_tvActivityLevel"
-        app:layout_constraintTop_toBottomOf="@+id/fr_goalsWeightField">
-
-        <RadioButton
-            android:id="@+id/fr_radioActive"
+        <TextView
+            android:id="@+id/fr_tvEnter_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@string/active" />
+            android:layout_marginTop="32dp"
+            android:text="@string/enter"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader" />
 
-        <RadioButton
-            android:id="@+id/fr_radioSedentary"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fr_goalsHeightField"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:helperText="Inches"
+            app:layout_constraintStart_toEndOf="@+id/fr_tvEnter_info"
+            app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fr_goalsEditTextHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/height" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fr_goalsWeightField"
+            android:layout_width="88dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:text="@string/sedentary" />
+            app:boxBackgroundColor="@android:color/transparent"
+            app:helperText="Pounds"
+            app:layout_constraintStart_toEndOf="@+id/fr_goalsHeightField"
+            app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader">
 
-    </RadioGroup>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fr_goalsEditTextWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/weight" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <RadioGroup
-        android:id="@+id/fr_maleFemaleButtonGroup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@id/fr_activeButtonGroup"
-        app:layout_constraintTop_toBottomOf="@id/fr_activeButtonGroup">
-        <RadioButton
-            android:id="@+id/fr_radioMale"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fr_goalsAgeField"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:helperText="Years"
+            app:layout_constraintStart_toEndOf="@id/fr_goalsWeightField"
+            app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fr_goalsEditTextAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/age" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/fr_tvActivityLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="@string/activity_level"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/fr_tvEnter_info"
+            app:layout_constraintTop_toBottomOf="@id/fr_tvEnter_info" />
+
+        <RadioGroup
+            android:id="@+id/fr_activeButtonGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/fr_tvActivityLevel"
+            app:layout_constraintStart_toEndOf="@+id/fr_tvActivityLevel"
+            app:layout_constraintTop_toTopOf="@+id/fr_tvActivityLevel">
+
+            <RadioButton
+                android:id="@+id/fr_radioActive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/active" />
+
+            <RadioButton
+                android:id="@+id/fr_radioSedentary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="@string/sedentary" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/fr_maleFemaleButtonGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/fr_goalsAgeField"
+            app:layout_constraintStart_toEndOf="@+id/fr_goalsAgeField"
+            app:layout_constraintTop_toTopOf="@+id/fr_goalsAgeField">
+
+            <RadioButton
+                android:id="@+id/fr_radioMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/male" />
+
+            <RadioButton
+                android:id="@+id/fr_radioFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:text="@string/female" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/fr_buttonBMR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/BMR"
+            app:layout_constraintStart_toEndOf="@+id/fr_tvGoal"
+            app:layout_constraintTop_toBottomOf="@+id/fr_textInputLayout" />
+
+        <TextView
+            android:id="@+id/fr_tvBmrCalculation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@string/male" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fr_buttonBMR"
+            app:layout_constraintStart_toEndOf="@+id/fr_buttonBMR"
+            app:layout_constraintTop_toTopOf="@+id/fr_buttonBMR" />
 
-        <RadioButton
-            android:id="@+id/fr_radioFemale"
+        <TextView
+            android:id="@+id/fr_tvGoal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="39dp"
-            android:text="@string/female" />
-    </RadioGroup>
+            android:layout_marginTop="32dp"
+            android:text="@string/goal_select"
+            app:layout_constraintStart_toStartOf="@+id/fr_tvActivityLevel"
+            app:layout_constraintTop_toBottomOf="@+id/fr_buttonCalorieEstimate" />
 
-    <Button
-        android:id="@+id/fr_buttonBMR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/BMR"
-        app:layout_constraintStart_toStartOf="@+id/fr_tvActivityLevel"
-        app:layout_constraintTop_toBottomOf="@id/fr_maleFemaleButtonGroup" />
-    <TextView
-        android:id="@+id/fr_tvBmrCalculation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/fr_buttonBMR"
-        app:layout_constraintStart_toEndOf="@+id/fr_buttonBMR"
-        app:layout_constraintTop_toTopOf="@+id/fr_buttonBMR" />
-
-    <TextView
-        android:id="@+id/fr_tvGoal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:text="@string/goal_select"
-        app:layout_constraintBottom_toTopOf="@+id/fr_buttonCalorieEstimate"
-        app:layout_constraintEnd_toStartOf="@+id/fr_goalSpinner"
-        app:layout_constraintTop_toBottomOf="@+id/fr_goalsAgeField"
-        app:layout_constraintVertical_bias="0.285" />
-
-    <Spinner
-        android:id="@+id/fr_goalSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/fr_buttonCalorieEstimate"
-        app:layout_constraintStart_toEndOf="@+id/fr_maleFemaleButtonGroup"
-        app:layout_constraintTop_toBottomOf="@+id/fr_goalsAgeField"
-        app:layout_constraintVertical_bias="0.027" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fr_textInputLayout"
-        android:layout_width="89dp"
-        android:layout_height="wrap_content"
-        app:boxBackgroundColor="@android:color/transparent"
-        app:layout_constraintStart_toEndOf="@id/fr_goalSpinner"
-        app:layout_constraintTop_toBottomOf="@+id/fr_goalsAgeField">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fr_goalsEditTextPounds"
-            android:layout_width="match_parent"
+        <Spinner
+            android:id="@+id/fr_goalSpinner"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/goal_amount" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintBottom_toBottomOf="@+id/fr_tvGoal"
+            app:layout_constraintStart_toEndOf="@+id/fr_tvGoal"
+            app:layout_constraintTop_toTopOf="@+id/fr_tvGoal" />
 
-    <TextView
-        android:id="@+id/fr_tvGoalEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="4dp"
-        android:text="@string/goal_end"
-        app:layout_constraintBottom_toBottomOf="@+id/fr_textInputLayout"
-        app:layout_constraintStart_toEndOf="@+id/fr_textInputLayout" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fr_textInputLayout"
+            android:layout_width="89dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:layout_constraintStart_toEndOf="@+id/fr_goalSpinner"
+            app:layout_constraintTop_toBottomOf="@+id/fr_buttonCalorieEstimate">
 
-    <Button
-        android:id="@+id/fr_buttonCalorieEstimate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="228dp"
-        android:text="@string/calorie_estimate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fr_textInputLayout" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fr_goalsEditTextPounds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/goal_amount" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/fr_tvCalories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/fr_buttonCalorieEstimate"
-        app:layout_constraintStart_toEndOf="@+id/fr_buttonCalorieEstimate"
-        app:layout_constraintTop_toTopOf="@+id/fr_buttonCalorieEstimate" />
+        <TextView
+            android:id="@+id/fr_tvGoalEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/goal_end"
+            app:layout_constraintBottom_toBottomOf="@+id/fr_textInputLayout"
+            app:layout_constraintStart_toEndOf="@+id/fr_textInputLayout" />
+
+        <Button
+            android:id="@+id/fr_buttonCalorieEstimate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/calorie_estimate"
+            app:layout_constraintStart_toEndOf="@+id/fr_tvActivityLevel"
+            app:layout_constraintTop_toBottomOf="@+id/fr_activeButtonGroup" />
+
+        <TextView
+            android:id="@+id/fr_tvCalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fr_buttonCalorieEstimate"
+            app:layout_constraintStart_toEndOf="@+id/fr_buttonCalorieEstimate"
+            app:layout_constraintTop_toTopOf="@+id/fr_buttonCalorieEstimate" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

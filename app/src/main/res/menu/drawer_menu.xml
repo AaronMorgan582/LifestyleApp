@@ -3,22 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view" >
     <group>
-        <item android:id="@+id/nav_home"
-           android:icon="@drawable/ic_home"
-            android:title="Home"></item>
-        <item android:id="@+id/nav_profile"
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_profile"
             android:icon="@drawable/ic_profile"
-            android:title="Profile"></item>
-        <item android:id="@+id/nav_calories"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_calories"
             android:icon="@drawable/ic_calories"
-            android:title="Calories"></item>
+            android:title="Fitness Goals" />
         <item android:id="@+id/nav_bmi"
             android:icon="@drawable/ic_bmi"
             android:title="Calculate BMI"
-            />
-        <item android:id="@+id/nav_bmr"
-            android:icon="@drawable/ic_bmr"
-            android:title="Calculate BMR"
             />
 
     </group>
