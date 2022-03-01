@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private Button mButtonCreateProfile, drawerActivityBtn;
     private ImageButton mButtonHikes, mButtonGoals,mButtonBMI;
     private FusedLocationProviderClient fusedLocationClient;
-    private double locx = 0;
-    private double locy = 0;
+    public static double locx = 0;
+    public static double locy = 0;
 
 
     ActivityResultLauncher<String[]> locationPermissionRequest =
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         // Got last known location. In some rare situations this can be null.
                         try{
                             locx = location.getLongitude();
-                            locx = location.getLatitude();
+                            locy = location.getLatitude();
                             if (location != null) {
                                 // Logic to handle location object
                             }
