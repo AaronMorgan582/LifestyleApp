@@ -1,39 +1,40 @@
 package com.example.lifestyleapp;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.lifestyleapp.RegisterUserActivity;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
-public class BMIActivity extends AppCompatActivity implements  View.OnClickListener {
+public class bmiFragment extends Fragment implements View.OnClickListener{
 
     private EditText height, height2, weight;
     private TextView tvBMI;
     private Button bmi_calculate;
     private String heightString, height2String, weightString;
 
-
-
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bmi);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+
+        View view = inflater.inflate(R.layout.fragment_bmi, container, false);
 
 
 
-        //User Input
-        height = findViewById(R.id.bmiEditTextHeight);
-        height2 = findViewById((R.id.bmiEditTextHeight2));
-        weight = findViewById(R.id.bmiEditTextWeight);
-
-
+        height = view.findViewById(R.id.fr_bmiEditTextHeight);
+        height2 = view.findViewById((R.id.fr_bmiEditTextHeight2));
+        weight = view.findViewById(R.id.fr_bmiEditTextWeight);
         try {
             String[] split = RegisterUserActivity.heightGlobal.split(" ");
             height.setText(split[0]);
@@ -42,47 +43,32 @@ public class BMIActivity extends AppCompatActivity implements  View.OnClickListe
         }catch(Exception e){
 
         }
-
-        //Text Views
-        tvBMI = findViewById(R.id.bmiCalculation);
-
-
-
-
-        //Buttons
-        bmi_calculate = findViewById(R.id.buttonBMI);
-
+        tvBMI = view.findViewById(R.id.fr_bmiCalculation);
+        bmi_calculate = view.findViewById(R.id.fr_buttonBMI);
         bmi_calculate.setOnClickListener(this);
 
+        return view;
     }
 
-
-
-
     @Override
-    public void onClick(View view) {
+    public void onClick(@NonNull View view) {
         switch(view.getId()){
-            case R.id.buttonBMI:{
+            case R.id.fr_buttonBMI:{
                 double bmi = calculateBMI();
                 int scale = (int) Math.pow(10, 1);
                 bmi = (double) Math.round(bmi * scale) / scale;
                 tvBMI.setText(bmi+ " ");
                 break;
             }
-
         }
     }
-
     public boolean checkBMIInput(){
         heightString = height.getText().toString();
         height2String = height2.getText().toString();
         weightString = weight.getText().toString();
 
-
-
         if(heightString.matches("") || height2String.matches("") || weightString.matches("")){
-
-            Toast.makeText(this, "Please enter all of the above information.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Please enter all of the above information.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -104,6 +90,4 @@ public class BMIActivity extends AppCompatActivity implements  View.OnClickListe
 
         return 0;
     }
-
-
 }

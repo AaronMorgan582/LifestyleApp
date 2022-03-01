@@ -12,5 +12,14 @@
         <item android:id="@+id/nav_calories"
             android:icon="@drawable/ic_calories"
             android:title="Calories"></item>
+        <item android:id="@+id/nav_bmi"
+            android:icon="@drawable/ic_bmi"
+            android:title="Calculate BMI"
+            />
+        <item android:id="@+id/nav_bmr"
+            android:icon="@drawable/ic_bmr"
+            android:title="Calculate BMR"
+            />
+
     </group>
 </menu>
