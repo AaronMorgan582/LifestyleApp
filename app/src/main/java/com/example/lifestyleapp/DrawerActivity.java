@@ -66,10 +66,22 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, displayUserFragment).commit();
                 break;
             case R.id.nav_bmi:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new bmiFragment()).commit();
+                bmiFragment bmi = new bmiFragment();
+                if(user != null){
+                    Bundle fragment_bundle = new Bundle();
+                    fragment_bundle.putParcelable("user_data", user);
+                    bmi.setArguments(fragment_bundle);
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, bmi).commit();
                 break;
             case R.id.nav_calories:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new bmrFragment()).commit();
+                bmrFragment fitness_goals = new bmrFragment();
+                if(user != null){
+                    Bundle fragment_bundle = new Bundle();
+                    fragment_bundle.putParcelable("user_data", user);
+                    fitness_goals.setArguments(fragment_bundle);
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fitness_goals).commit();
                 break;
             case R.id.nav_weather:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WeatherFragment()).commit();

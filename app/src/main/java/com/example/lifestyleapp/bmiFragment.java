@@ -30,22 +30,25 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
 
         View view = inflater.inflate(R.layout.fragment_bmi, container, false);
 
-
-
         height = view.findViewById(R.id.fr_bmiEditTextHeight);
         height2 = view.findViewById((R.id.fr_bmiEditTextHeight2));
         weight = view.findViewById(R.id.fr_bmiEditTextWeight);
-        try {
-            String[] split = RegisterUserActivity.heightGlobal.split(" ");
-            height.setText(split[0]);
-            height2.setText(split[1]);
-            weight.setText(RegisterUserActivity.weightGlobal);
-        }catch(Exception e){
-
-        }
         tvBMI = view.findViewById(R.id.fr_bmiCalculation);
         bmi_calculate = view.findViewById(R.id.fr_buttonBMI);
         bmi_calculate.setOnClickListener(this);
+
+        if(getArguments() != null){
+            User user_data = getArguments().getParcelable("user_data");
+            if(!user_data.getHeight().matches("")){
+                String feet = String.valueOf(Integer.parseInt(user_data.getHeight())/12);
+                String inches = String.valueOf(Integer.parseInt(user_data.getHeight())%12);
+                height.setText(feet);
+                height2.setText(inches);
+            }
+            if(!user_data.getWeight().matches("")){
+                weight.setText(user_data.getWeight());
+            }
+        }
 
         return view;
     }

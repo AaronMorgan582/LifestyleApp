@@ -23,7 +23,7 @@ public class LoggingPlaceHolderActivity extends AppCompatActivity {
         });
     }
     public void openRegistrationView(){
-        Intent intent = new Intent(this, RegisterUserActivity.class);
+        Intent intent = new Intent(this, DrawerActivity.class);
         startActivity(intent);
     }
 }

@@ -69,6 +69,16 @@ public class bmrFragment extends Fragment implements AdapterView.OnItemSelectedL
         bmr_calculate.setOnClickListener(this);
         calories_calculate.setOnClickListener(this);
 
+        if(getArguments() != null){
+            User user_data = getArguments().getParcelable("user_data");
+            if(!user_data.getHeight().matches("")){
+                height.setText(user_data.getHeight());
+            }
+            if(!user_data.getWeight().matches("")){
+                weight.setText(user_data.getWeight());
+            }
+        }
+
         return view;
     }
 
