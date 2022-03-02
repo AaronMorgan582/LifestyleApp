@@ -153,18 +153,6 @@ public class RegisterUserActivity extends AppCompatActivity {
         return false;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            this.imageBitmap = (Bitmap) extras.get("data");
-            this.profPicImageView.setImageBitmap(this.imageBitmap);
-        }
-        else{
-            Toast.makeText(this, "Image could not be saved", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     private void saveTestUser(){
         // 1. Create user object from text fields in Activity/fragment

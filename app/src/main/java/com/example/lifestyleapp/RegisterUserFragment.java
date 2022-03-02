@@ -1,9 +1,16 @@
 package com.example.lifestyleapp;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +23,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class RegisterUserFragment extends Fragment implements View.OnClickListener{
+public class RegisterUserFragment extends Fragment implements View.OnClickListener, ButtonListener{
     private RadioGroup sexButtonGroup;
     private RadioButton sexRadioButton, maleRadioButton, femaleRadioButton;
     private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView;
     private ButtonListener listener;
     private View view;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Nullable
     @Override
@@ -61,7 +69,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
                 }
                 break;
             case R.id.addPictureButton:
-                listener.cameraButtonClick();
+                cameraButtonClick();
                 break;
         }
     }
@@ -119,4 +127,42 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         String height = heightView.getText().toString();
         listener.submitButtonClick(firstName, lastName, sex, city, country, weight, height);
     }
+
+    @Override
+    public void editProfileClick() {
+
+        Toast.makeText(getActivity(), "Edit profile Click", Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void submitButtonClick(String firstName, String lastName, String gender, String city, String country, String weight, String height) {
+
+        Toast.makeText(getActivity(), "Submit click", Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void cameraButtonClick() {
+
+        Intent takeProfilePic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        try{
+            startActivityForResult(takeProfilePic, REQUEST_IMAGE_CAPTURE);
+        }catch (ActivityNotFoundException e) {
+            Toast.makeText(getActivity(), "Could not open Camera Intent", Toast.LENGTH_SHORT).show();
+        }
+        Toast.makeText(getActivity(), "Camera Click", Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+           // imageView.setImageBitmap(imageBitmap);
+        }
+    }
+
+
 }
