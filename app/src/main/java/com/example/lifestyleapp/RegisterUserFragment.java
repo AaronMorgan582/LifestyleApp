@@ -2,26 +2,39 @@ package com.example.lifestyleapp;
 
 import static android.app.Activity.RESULT_OK;
 
+
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class RegisterUserFragment extends Fragment implements View.OnClickListener, ButtonListener{
     private RadioGroup sexButtonGroup;
@@ -30,6 +43,8 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
     private ButtonListener listener;
     private View view;
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    private ImageView profPicImage;
+    private String currentPath;
 
     @Nullable
     @Override
@@ -97,6 +112,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         countryView = view.findViewById(R.id.editTextCountry);
         heightView = view.findViewById(R.id.editTextHeight);
         weightView = view.findViewById(R.id.editTextWeight);
+        profPicImage = view.findViewById(R.id.profilePicView);
 
         //Layout elements: Buttons
         Button submitButton = view.findViewById(R.id.button);
@@ -144,6 +160,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void cameraButtonClick() {
+        //takePictureAndSaveIt();
 
         Intent takeProfilePic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         try{
@@ -152,6 +169,9 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
             Toast.makeText(getActivity(), "Could not open Camera Intent", Toast.LENGTH_SHORT).show();
         }
         Toast.makeText(getActivity(), "Camera Click", Toast.LENGTH_SHORT).show();
+        saveTheImage();
+
+
 
     }
 
@@ -160,7 +180,76 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-           // imageView.setImageBitmap(imageBitmap);
+            profPicImage.setImageBitmap(imageBitmap);
+        }
+    }
+
+    /**
+     * @return The required file to save the image
+     * @throws IOException
+     */
+    private File createImageFile() throws IOException {
+        // Generate name for files and and paths
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG" + timeStamp + "_";
+        File directory = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File profPicFile = File.createTempFile(imageFileName,
+                "jpeg",
+                directory);
+
+        // Save the file's path for the image
+        currentPath = profPicFile.getAbsolutePath();
+        return profPicFile;
+    }
+
+    /**
+     * Create the intent for the image and open Camera.
+     * Save the image.
+     */
+    private void takePictureAndSaveIt(){
+        Intent pictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(pictureIntent.resolveActivity(getActivity().getPackageManager()) != null){
+            File file = null;
+            try {
+                file = createImageFile();
+            } catch (IOException e) {
+                Toast.makeText(getActivity(), "File Not Created", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+            if(file != null){
+                Uri photUri = FileProvider.getUriForFile(getActivity(),
+                        "com.example.android.fileprovider", file);
+                pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photUri);
+                startActivityForResult(pictureIntent, REQUEST_IMAGE_CAPTURE);
+                Toast.makeText(getActivity(), "Image Saved", Toast.LENGTH_SHORT).show();
+
+            }
+        }
+        else{
+            Toast.makeText(getActivity(), "Could not open Camera Intent", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    private void saveTheImage(){
+        BitmapDrawable imageDrawable = (BitmapDrawable) profPicImage.getDrawable();
+        Bitmap image = imageDrawable.getBitmap();
+        FileOutputStream outputStream = null;
+        File sdCard = Environment.getExternalStorageDirectory();
+        File directory = new File(sdCard.getAbsolutePath() + "/PictureFolder");
+        directory.mkdir();
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG" + timeStamp + "_";
+        File outFile = new File(directory, imageFileName);
+        try{
+            outputStream = new FileOutputStream(outFile);
+            image.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            outputStream.flush();
+            outputStream.close();
+        }catch(FileNotFoundException e){
+            Toast.makeText(getActivity(), "File Not found", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
