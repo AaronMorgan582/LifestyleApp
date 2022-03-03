@@ -13,14 +13,25 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ButtonListener{
 
@@ -39,8 +50,10 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        profPic = headerView.findViewById(R.id.navHeaderProfPic);
         navigationView.setNavigationItemSelectedListener(this);
-        profPic = findViewById(R.id.navHeaderProfPic);
+
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -97,6 +110,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     public void submitButtonClick(String firstName, String lastName, String gender, String city, String country, String weight, String height) {
+        saveImageBitmap();
         user = new User(firstName, lastName, gender, city, country, weight, height);
         Bundle fragment_bundle = new Bundle();
         fragment_bundle.putParcelable("user_data", user);
@@ -117,6 +131,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
             Toast.makeText(this, "Could not take picture", Toast.LENGTH_SHORT).show();
         }
 
+
     }
 
     @Override
@@ -127,6 +142,31 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             profPic.setImageBitmap(imageBitmap);
         }
+    }
+    private void saveImageBitmap (){
+
+        BitmapDrawable drawable = (BitmapDrawable) profPic.getDrawable();
+        Bitmap image = drawable.getBitmap();
+
+        FileOutputStream outputStream;
+        File sdCard = Environment.getExternalStorageDirectory();
+        File directory = new File(sdCard.getAbsolutePath() + "/PictureFolder");
+        directory.mkdir();
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG" + timeStamp + "_";
+        File outFile = new File(directory, imageFileName);
+        try{
+            outputStream = new FileOutputStream(outFile);
+            image.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            outputStream.flush();
+            outputStream.close();
+        }catch(FileNotFoundException e){
+            Toast.makeText(this, "File Not found", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
