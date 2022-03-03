@@ -36,7 +36,7 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class RegisterUserFragment extends Fragment implements View.OnClickListener, ButtonListener{
+public class RegisterUserFragment extends Fragment implements View.OnClickListener{
     private RadioGroup sexButtonGroup;
     private RadioButton sexRadioButton, maleRadioButton, femaleRadioButton;
     private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView;
@@ -84,7 +84,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
                 }
                 break;
             case R.id.addPictureButton:
-                cameraButtonClick();
+                getProfilePicture();
                 break;
         }
     }
@@ -144,45 +144,11 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         listener.submitButtonClick(firstName, lastName, sex, city, country, weight, height);
     }
 
-    @Override
-    public void editProfileClick() {
-
-        Toast.makeText(getActivity(), "Edit profile Click", Toast.LENGTH_SHORT).show();
-
+    private void getProfilePicture(){
+        listener.cameraButtonClick();
     }
 
-    @Override
-    public void submitButtonClick(String firstName, String lastName, String gender, String city, String country, String weight, String height) {
 
-        Toast.makeText(getActivity(), "Submit click", Toast.LENGTH_SHORT).show();
-
-    }
-
-    @Override
-    public void cameraButtonClick() {
-        //takePictureAndSaveIt();
-
-        Intent takeProfilePic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        try{
-            startActivityForResult(takeProfilePic, REQUEST_IMAGE_CAPTURE);
-        }catch (ActivityNotFoundException e) {
-            Toast.makeText(getActivity(), "Could not open Camera Intent", Toast.LENGTH_SHORT).show();
-        }
-        Toast.makeText(getActivity(), "Camera Click", Toast.LENGTH_SHORT).show();
-        saveTheImage();
-
-
-
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            profPicImage.setImageBitmap(imageBitmap);
-        }
-    }
 
     /**
      * @return The required file to save the image
