@@ -1,6 +1,8 @@
 package com.example.lifestyleapp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import java.io.FileNotFoundException;
 
 public class DisplayUserFragment extends Fragment {
     private TextView firstNameDisplay, lastNameDisplay, heightDisplay, weightDisplay, cityDisplay, countryDisplay, sexDisplay;
@@ -75,5 +79,17 @@ public class DisplayUserFragment extends Fragment {
         sexDisplay.setText(sex);
         heightDisplay.setText(height);
         weightDisplay.setText(weight);
+
+        //It's possible that the image has not been set, so check to see if it's in the User class.
+        if(!user.getImageFileName().matches("")){
+            //The try/catch block is mostly for openFileInput; it's possible the filepath doesn't exist
+            //even if it is in the User class.
+            try {
+                Bitmap image = BitmapFactory.decodeStream(getActivity().openFileInput(user.getImageFileName()));
+                userImage.setImageBitmap(image);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
