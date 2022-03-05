@@ -13,6 +13,10 @@ public class User implements Parcelable {
     private String weight;
     private String height;
 
+    //This is the string that is associated with finding the user's picture they took with the
+    //camera. It's defaulted to blank because it's not necessary to fill in.
+    private String fileName = "";
+
     public User(String firstName, String lastName, String gender,
                 String city, String country, String weight, String height){
 
@@ -23,6 +27,11 @@ public class User implements Parcelable {
         this.country = country;
         this.weight = weight;
         this.height = height;
+
+        //Note: The fileName is not set in the constructor because it makes it easier to pass
+        //around with the fragments - In the current setup, the Register User Fragment is
+        //responsible for generating all of this info, but the Drawer Activity is responsible
+        //for generating the string for the fileName.
     }
 
     protected User(Parcel in) {
@@ -33,6 +42,7 @@ public class User implements Parcelable {
         country = in.readString();
         weight = in.readString();
         height = in.readString();
+        fileName = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -68,6 +78,8 @@ public class User implements Parcelable {
     public String getHeight(){
         return this.height;
     }
+    public String getImageFileName() { return this.fileName; }
+    public void setImageFileName(String file) { this.fileName = file; }
 
     @Override
     public int describeContents() {
@@ -83,5 +95,6 @@ public class User implements Parcelable {
         parcel.writeString(country);
         parcel.writeString(weight);
         parcel.writeString(height);
+        parcel.writeString(fileName);
     }
 }

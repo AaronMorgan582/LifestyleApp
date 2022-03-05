@@ -8,6 +8,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:background="@color/design_default_color_primary">
     <ImageView
+        android:id="@+id/navHeaderProfPic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_launcher_round"
@@ -16,10 +17,12 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1">
 
     </ImageView>
+
     <TextView
+        android:id="@+id/navHeaderUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User name"></TextView>
+        android:text="User name" />
 
 
 </LinearLayout>
