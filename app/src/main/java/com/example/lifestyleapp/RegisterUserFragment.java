@@ -1,20 +1,11 @@
 package com.example.lifestyleapp;
 
-import static android.app.Activity.RESULT_OK;
 
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-
-
-import android.content.Intent;
-import android.graphics.Bitmap;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +31,6 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
     private ImageView profilePicture;
     private ButtonListener listener;
     private View view;
-    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Nullable
     @Override
@@ -155,16 +145,6 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         String height = heightView.getText().toString();
 
         listener.submitButtonClick(firstName, lastName, sex, city, country, weight, height);
-    }
-
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            // imageView.setImageBitmap(imageBitmap);
-        }
     }
 
 }
