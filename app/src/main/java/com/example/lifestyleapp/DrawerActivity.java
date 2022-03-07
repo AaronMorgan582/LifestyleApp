@@ -73,7 +73,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                     fragment_bundle.putParcelable("user_data", user);
                     displayUserFragment.setArguments(fragment_bundle);
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, displayUserFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, displayUserFragment).addToBackStack("Profile").commit();
                 break;
             case R.id.nav_bmi:
                 bmiFragment bmi = new bmiFragment();
@@ -82,7 +82,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                     fragment_bundle.putParcelable("user_data", user);
                     bmi.setArguments(fragment_bundle);
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, bmi).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, bmi).addToBackStack("BMI").commit();
                 break;
             case R.id.nav_calories:
                 bmrFragment fitness_goals = new bmrFragment();
@@ -91,10 +91,10 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                     fragment_bundle.putParcelable("user_data", user);
                     fitness_goals.setArguments(fragment_bundle);
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fitness_goals).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fitness_goals).addToBackStack("Goals").commit();
                 break;
             case R.id.nav_weather:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WeatherFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WeatherFragment()).addToBackStack("Weather").commit();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -110,7 +110,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         }
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_container, register_fragment);
+        ft.replace(R.id.fragment_container, register_fragment).addToBackStack("Register User");
         ft.commit();
     }
 
@@ -127,7 +127,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
         displayUserFragment.setArguments(fragment_bundle);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_container, displayUserFragment);
+        ft.replace(R.id.fragment_container, displayUserFragment).addToBackStack("Profile");
         ft.commit();
     }
 
