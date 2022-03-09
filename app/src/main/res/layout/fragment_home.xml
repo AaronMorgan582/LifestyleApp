@@ -5,6 +5,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#22333B"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingBottom="32dp">
@@ -12,11 +13,12 @@
     <TextView
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:background="#2196F3"
-        android:backgroundTint="#FFFFFF"
+        android:background="#22333B"
         android:fontFamily="sans-serif-black"
-        android:text="Home Screen"
-        android:textColor="#6A1B9A"
+        android:text="Home"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:textColor="@color/white"
         android:textColorHighlight="#5C3535"
         android:textColorHint="#852B2B"
         android:textSize="34sp">
@@ -64,17 +66,17 @@
                 android:layout_marginEnd="192dp"
                 android:backgroundTint="#FFFFFF"
                 android:fontFamily="sans-serif-medium"
-                android:text="Find them"
+                android:text="Find hikes"
                 android:textColor="#C735CD"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"></Button>
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:layout_width="300dp"
-        android:layout_height="8dp"></TextView>
+        android:layout_height="8dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/weather_card_view"
@@ -95,7 +97,7 @@
                 app:layout_constraintHorizontal_bias="0.476"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/w_image"></ImageView>
+                app:srcCompat="@drawable/w_image" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -109,21 +111,21 @@
                 app:layout_constraintHorizontal_bias="0.363"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView6"
-                app:layout_constraintVertical_bias="0.0"></TextView>
+                app:layout_constraintVertical_bias="0.0" />
 
             <Button
                 android:id="@+id/card_weather_btn"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="82dp"
+                android:layout_width="200dp"
                 android:layout_height="53dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="216dp"
+                android:layout_marginEnd="128dp"
                 android:backgroundTint="#FFFFFF"
                 android:fontFamily="sans-serif-medium"
-                android:text="Check"
+                android:text="Check Weather"
                 android:textColor="#C735CD"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4"></Button>
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
