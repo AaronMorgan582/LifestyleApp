@@ -1,5 +1,6 @@
 package com.example.lifestyleapp;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -84,6 +85,7 @@ public class bmrFragment extends Fragment implements AdapterView.OnItemSelectedL
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        ((TextView) adapterView.getChildAt(0)).setTextColor(Color.WHITE);
         this.goal = adapterView.getItemAtPosition(i).toString();
 
     }
