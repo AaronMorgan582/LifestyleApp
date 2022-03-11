@@ -3,6 +3,9 @@ package com.example.lifestyleapp;
 import static com.example.lifestyleapp.MainActivity.locx;
 import static com.example.lifestyleapp.MainActivity.locy;
 
+import android.graphics.Bitmap;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -19,6 +22,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +43,9 @@ public class WeatherFragment extends Fragment{
 
 
     TextView temp, humid, pres,place;
+    private ImageView therm, hum;
+    private Drawable therm_image;
+    private Drawable hum_image;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -53,6 +60,15 @@ public class WeatherFragment extends Fragment{
         humid = view.findViewById(R.id.humidity);
         pres = view.findViewById(R.id.pressure);
         place = view.findViewById(R.id.place);
+
+        //Changes the color of the temperature and humidity icons to white.
+        therm = view.findViewById(R.id.imageView);
+        hum = view.findViewById(R.id.imageView2);
+        therm_image = therm.getDrawable();
+        therm_image.setColorFilter(0xFFFFFFFF, PorterDuff.Mode.SRC_IN);
+        hum_image = hum.getDrawable();
+        hum_image.setColorFilter(0xFFFFFFFF, PorterDuff.Mode.SRC_IN);
+
         displayWeather();
         return view;
     }

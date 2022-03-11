@@ -7,7 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/dark_blue">
 
         <TextView
             android:id="@+id/registerUserTitle"
@@ -16,6 +17,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/profile_header"
+            android:textColor="@color/white"
             android:textSize="40sp"
             app:layout_constraintEnd_toStartOf="@+id/profilePicView"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +50,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:text="Profile Picture:"
-            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/countryField"
             app:layout_constraintTop_toBottomOf="@+id/countryField" />
 
@@ -67,7 +70,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="96dp"
-            app:boxBackgroundColor="@android:color/transparent"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            app:boxBackgroundColor="@color/dark_blue"
+            app:hintTextColor="@color/white"
+            app:helperTextTextColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -75,21 +82,27 @@
                 android:id="@+id/editTextFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="First Name" />
+                android:hint="First Name"
+                android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxBackgroundColor="@android:color/transparent"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            app:boxBackgroundColor="@color/dark_blue"
+            app:hintTextColor="@color/white"
+            app:helperTextTextColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/TextFirstName">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Last Name" />
+                android:hint="Last Name"
+                android:textColor="@color/white"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,7 +110,11 @@
             android:id="@+id/heightField"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            app:boxBackgroundColor="@android:color/transparent"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            app:boxBackgroundColor="@color/dark_blue"
+            app:hintTextColor="@color/white"
+            app:helperTextTextColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textLastName">
 
@@ -105,14 +122,19 @@
                 android:id="@+id/editTextHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Height (inches)" />
+                android:hint="Height (inches)"
+                android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/weightField"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            app:boxBackgroundColor="@android:color/transparent"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            app:boxBackgroundColor="@color/dark_blue"
+            app:hintTextColor="@color/white"
+            app:helperTextTextColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/heightField">
 
@@ -120,7 +142,8 @@
                 android:id="@+id/editTextWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Weight (pounds)" />
+                android:hint="Weight (pounds)"
+                android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -128,7 +151,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:boxBackgroundColor="@android:color/transparent"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            app:boxBackgroundColor="@color/dark_blue"
+            app:hintTextColor="@color/white"
+            app:helperTextTextColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sexRadioGroup">
 
@@ -136,14 +163,19 @@
                 android:id="@+id/editTextCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="City" />
+                android:hint="City"
+                android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/countryField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxBackgroundColor="@android:color/transparent"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            app:boxBackgroundColor="@color/dark_blue"
+            app:hintTextColor="@color/white"
+            app:helperTextTextColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cityField">
 
@@ -151,7 +183,8 @@
                 android:id="@+id/editTextCountry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Country" />
+                android:hint="Country"
+                android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -161,6 +194,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="24dp"
             android:text="@string/sex_field"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/heightField"
             app:layout_constraintTop_toBottomOf="@+id/heightField" />
@@ -179,14 +213,18 @@
                 android:id="@+id/maleRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/male" />
+                android:text="@string/male"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"/>
 
             <RadioButton
                 android:id="@+id/femaleRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="@string/female" />
+                android:text="@string/female"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"/>
 
         </RadioGroup>
 

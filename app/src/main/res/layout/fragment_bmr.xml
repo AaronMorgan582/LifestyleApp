@@ -7,7 +7,6 @@
     android:background="@color/dark_blue"
     tools:context=".bmrFragment">
 
-
     <TextView
         android:id="@+id/fr_goalsHeader"
         android:layout_width="0dp"
@@ -39,11 +38,12 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:backgroundTint="@color/white"
         android:textColorHint="@color/white"
         app:boxBackgroundColor="@color/dark_blue"
         app:helperText="Inches"
-        app:hintTextColor="@color/white"
         app:helperTextTextColor="@color/white"
+        app:hintTextColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/fr_tvEnter_info"
         app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader">
 
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/height"
-            />
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -63,8 +63,8 @@
         android:textColorHint="@color/white"
         app:boxBackgroundColor="@color/dark_blue"
         app:helperText="Pounds"
-        app:hintTextColor="@color/white"
         app:helperTextTextColor="@color/white"
+        app:hintTextColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/fr_goalsHeightField"
         app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader">
 
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/weight"
-            android:textColorHint="@color/white"/>
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -84,15 +84,17 @@
         android:textColorHint="@color/white"
         app:boxBackgroundColor="@color/dark_blue"
         app:helperText="Years"
-        app:hintTextColor="@color/white"
         app:helperTextTextColor="@color/white"
+        app:hintTextColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/fr_goalsWeightField"
         app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fr_goalsEditTextAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Age" />
+            android:hint="Age"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -105,6 +107,7 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/fr_tvEnter_info"
         app:layout_constraintTop_toBottomOf="@id/fr_tvEnter_info" />
+
     <RadioGroup
         android:id="@+id/fr_activeButtonGroup"
         android:layout_width="0dp"
@@ -120,18 +123,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:buttonTint="@color/white"
             android:text="@string/active"
-            android:textColor="@color/white"
-            android:buttonTint="@color/white"/>
+            android:textColor="@color/white" />
 
         <RadioButton
             android:id="@+id/fr_radioSedentary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
+            android:buttonTint="@color/white"
             android:text="@string/sedentary"
-            android:textColor="@color/white"
-            android:buttonTint="@color/white"/>
+            android:textColor="@color/white" />
 
     </RadioGroup>
 
@@ -142,75 +145,85 @@
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="@id/fr_activeButtonGroup"
         app:layout_constraintTop_toBottomOf="@id/fr_activeButtonGroup">
+
         <RadioButton
             android:id="@+id/fr_radioMale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:buttonTint="@color/white"
             android:text="@string/male"
-            android:textColor="@color/white"
-            android:buttonTint="@color/white"/>
+            android:textColor="@color/white" />
 
         <RadioButton
             android:id="@+id/fr_radioFemale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="39dp"
+            android:buttonTint="@color/white"
             android:text="@string/female"
-            android:textColor="@color/white"
-            android:buttonTint="@color/white"/>
+            android:textColor="@color/white" />
     </RadioGroup>
 
     <Button
         android:id="@+id/fr_buttonBMR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/BMR"
         app:layout_constraintStart_toStartOf="@+id/fr_tvActivityLevel"
         app:layout_constraintTop_toBottomOf="@id/fr_maleFemaleButtonGroup" />
+
     <TextView
         android:id="@+id/fr_tvBmrCalculation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/fr_buttonBMR"
         app:layout_constraintStart_toEndOf="@+id/fr_buttonBMR"
         app:layout_constraintTop_toTopOf="@+id/fr_buttonBMR" />
+
     <TextView
         android:id="@+id/fr_tvGoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/goal_select"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/fr_goalSpinner"
-        app:layout_constraintStart_toStartOf="@+id/fr_buttonBMR" />
+        app:layout_constraintBottom_toTopOf="@+id/fr_buttonCalorieEstimate"
+        app:layout_constraintStart_toStartOf="@+id/fr_buttonBMR"
+        app:layout_constraintTop_toBottomOf="@+id/fr_buttonBMR" />
 
     <Spinner
         android:id="@+id/fr_goalSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/fr_textInputLayout"
-        app:layout_constraintStart_toEndOf="@+id/fr_tvGoal" />
+        app:layout_constraintBottom_toBottomOf="@+id/fr_tvGoal"
+        app:layout_constraintStart_toEndOf="@+id/fr_tvGoal"
+        app:layout_constraintTop_toTopOf="@+id/fr_tvGoal" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/fr_textInputLayout"
         android:layout_width="89dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
         android:textColorHint="@color/white"
         app:boxBackgroundColor="@color/dark_blue"
-        app:hintTextColor="@color/white"
-        app:helperTextTextColor="@color/white"
         app:helperText="Pounds"
-        app:layout_constraintStart_toEndOf="@id/fr_goalSpinner"
+        app:helperTextTextColor="@color/white"
+        app:hintTextColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/fr_goalSpinner"
         app:layout_constraintTop_toBottomOf="@+id/fr_buttonBMR">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fr_goalsEditTextPounds"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/goal_amount" />
+            android:hint="@string/goal_amount"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -219,26 +232,27 @@
         android:layout_height="wrap_content"
         android:text="@string/goal_end"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/fr_textInputLayout"
-        app:layout_constraintStart_toEndOf="@+id/fr_textInputLayout" />
+        app:layout_constraintBottom_toBottomOf="@+id/fr_goalSpinner"
+        app:layout_constraintStart_toEndOf="@+id/fr_textInputLayout"
+        app:layout_constraintTop_toTopOf="@+id/fr_goalSpinner" />
+
     <Button
         android:id="@+id/fr_buttonCalorieEstimate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="@string/calorie_estimate"
         app:layout_constraintStart_toStartOf="@+id/fr_tvGoal"
-        app:layout_constraintTop_toBottomOf="@+id/fr_tvGoal" />
+        app:layout_constraintTop_toBottomOf="@+id/fr_textInputLayout" />
 
     <TextView
         android:id="@+id/fr_tvCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/fr_buttonCalorieEstimate"
         app:layout_constraintStart_toEndOf="@+id/fr_buttonCalorieEstimate"
         app:layout_constraintTop_toTopOf="@+id/fr_buttonCalorieEstimate" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

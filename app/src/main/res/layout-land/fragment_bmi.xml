@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_blue"
     tools:context=".bmiFragment">
 
 
@@ -14,6 +15,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="BMI Calculator"
+        android:textColor="@color/white"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -27,6 +29,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:text="@string/enter"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fr_bmiHeader" />
@@ -36,7 +39,11 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="136dp"
-        app:boxBackgroundColor="@android:color/transparent"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        app:boxBackgroundColor="@color/dark_blue"
+        app:hintTextColor="@color/white"
+        app:helperTextTextColor="@color/white"
         app:helperText="Feet"
         app:layout_constraintStart_toEndOf="@+id/tvEnter_info"
         app:layout_constraintTop_toBottomOf="@id/fr_bmiHeader">
@@ -45,7 +52,8 @@
             android:id="@+id/fr_bmiEditTextHeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Height" />
+            android:hint="Height"
+            android:textColor="@color/white"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -53,7 +61,11 @@
         android:layout_width="88dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        app:boxBackgroundColor="@android:color/transparent"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        app:boxBackgroundColor="@color/dark_blue"
+        app:hintTextColor="@color/white"
+        app:helperTextTextColor="@color/white"
         app:helperText="Inches"
         app:layout_constraintStart_toEndOf="@+id/fr_bmiHeightField"
         app:layout_constraintTop_toBottomOf="@id/fr_bmiHeader">
@@ -62,7 +74,8 @@
             android:id="@+id/fr_bmiEditTextHeight2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Height" />
+            android:hint="Height"
+            android:textColor="@color/white"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -70,7 +83,11 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        app:boxBackgroundColor="@android:color/transparent"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        app:boxBackgroundColor="@color/dark_blue"
+        app:hintTextColor="@color/white"
+        app:helperTextTextColor="@color/white"
         app:helperText="Pounds"
         app:layout_constraintStart_toEndOf="@id/fr_bmiHeightField2"
         app:layout_constraintTop_toBottomOf="@id/fr_bmiHeader">
@@ -79,7 +96,8 @@
             android:id="@+id/fr_bmiEditTextWeight"
             android:layout_width="92dp"
             android:layout_height="wrap_content"
-            android:hint="Weight" />
+            android:hint="Weight"
+            android:textColor="@color/white"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -109,6 +127,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Underweight = &lt;18.5 \n\nNormal weight = 18.5–24.9 \n\nOverweight = 25–29.9 \n\nObesity = BMI of 30 or greater"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/fr_buttonBMI"
         app:layout_constraintTop_toBottomOf="@+id/fr_buttonBMI" />
 
