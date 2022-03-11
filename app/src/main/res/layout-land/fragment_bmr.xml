@@ -7,6 +7,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/dark_blue"
         tools:context=".bmrFragment">
 
         <TextView
@@ -16,6 +17,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:text="Fitness Goals"
+            android:textColor="@color/white"
             android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -29,6 +31,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:text="@string/enter"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader" />
@@ -38,7 +41,11 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            app:boxBackgroundColor="@android:color/transparent"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            app:boxBackgroundColor="@color/dark_blue"
+            app:hintTextColor="@color/white"
+            app:helperTextTextColor="@color/white"
             app:helperText="Inches"
             app:layout_constraintStart_toEndOf="@+id/fr_tvEnter_info"
             app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader">
@@ -47,7 +54,8 @@
                 android:id="@+id/fr_goalsEditTextHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/height" />
+                android:hint="@string/height"
+                android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -55,7 +63,11 @@
             android:layout_width="88dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            app:boxBackgroundColor="@android:color/transparent"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            app:boxBackgroundColor="@color/dark_blue"
+            app:hintTextColor="@color/white"
+            app:helperTextTextColor="@color/white"
             app:helperText="Pounds"
             app:layout_constraintStart_toEndOf="@+id/fr_goalsHeightField"
             app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader">
@@ -64,7 +76,8 @@
                 android:id="@+id/fr_goalsEditTextWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/weight" />
+                android:hint="@string/weight"
+                android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -72,7 +85,11 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            app:boxBackgroundColor="@android:color/transparent"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            app:boxBackgroundColor="@color/dark_blue"
+            app:hintTextColor="@color/white"
+            app:helperTextTextColor="@color/white"
             app:helperText="Years"
             app:layout_constraintStart_toEndOf="@id/fr_goalsWeightField"
             app:layout_constraintTop_toBottomOf="@id/fr_goalsHeader">
@@ -81,7 +98,8 @@
                 android:id="@+id/fr_goalsEditTextAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/age" />
+                android:hint="@string/age"
+                android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -90,6 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:text="@string/activity_level"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/fr_tvEnter_info"
             app:layout_constraintTop_toBottomOf="@id/fr_tvEnter_info" />
@@ -108,14 +127,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="@string/active" />
+                android:text="@string/active"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"/>
 
             <RadioButton
                 android:id="@+id/fr_radioSedentary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:text="@string/sedentary" />
+                android:text="@string/sedentary"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"/>
 
         </RadioGroup>
 
@@ -133,14 +156,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="@string/male" />
+                android:text="@string/male"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"/>
 
             <RadioButton
                 android:id="@+id/fr_radioFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="39dp"
-                android:text="@string/female" />
+                android:text="@string/female"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"/>
         </RadioGroup>
 
         <Button
@@ -157,6 +184,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/fr_buttonBMR"
             app:layout_constraintStart_toEndOf="@+id/fr_buttonBMR"
@@ -168,6 +196,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/goal_select"
+            android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/fr_tvActivityLevel"
             app:layout_constraintTop_toBottomOf="@+id/fr_buttonCalorieEstimate" />
 
@@ -175,6 +204,7 @@
             android:id="@+id/fr_goalSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/fr_tvGoal"
             app:layout_constraintStart_toEndOf="@+id/fr_tvGoal"
             app:layout_constraintTop_toTopOf="@+id/fr_tvGoal" />
@@ -184,7 +214,11 @@
             android:layout_width="89dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:boxBackgroundColor="@android:color/transparent"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            app:boxBackgroundColor="@color/dark_blue"
+            app:hintTextColor="@color/white"
+            app:helperTextTextColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/fr_goalSpinner"
             app:layout_constraintTop_toBottomOf="@+id/fr_buttonCalorieEstimate">
 
@@ -192,7 +226,8 @@
                 android:id="@+id/fr_goalsEditTextPounds"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/goal_amount" />
+                android:hint="@string/goal_amount"
+                android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -202,6 +237,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginBottom="4dp"
             android:text="@string/goal_end"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/fr_textInputLayout"
             app:layout_constraintStart_toEndOf="@+id/fr_textInputLayout" />
 
@@ -219,6 +255,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/fr_buttonCalorieEstimate"
             app:layout_constraintStart_toEndOf="@+id/fr_buttonCalorieEstimate"
