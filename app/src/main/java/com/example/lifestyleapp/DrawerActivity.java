@@ -28,6 +28,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
+/**
+ * Handles the layout of the application.
+ */
 public class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ButtonListener{
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -56,8 +59,8 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         toggle.syncState();
 
         if(savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_home);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RegisterUserFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_profile);
         }
 
     }
@@ -158,8 +161,13 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         }
     }
 
-    //This method uses a byte array stream to write the image to the app's internal storage.
-    //This does not save the image externally.
+
+    /**
+     * This method uses a byte array stream to write the image to the app's internal storage.
+     * Does not save the image externally.
+     * @param image image to be saved
+     * @return name of file
+     */
     private String saveImageToString(Bitmap image){
         String fileName = "user_Image";
         try{
