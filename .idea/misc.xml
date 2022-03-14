@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/u1214728/AndroidStudioProjects/LifestyleApp/app/src/main/res/font/caladea.xml" value="0.584375" />
+        <entry key="..\:/Users/u1214728/AndroidStudioProjects/LifestyleApp/app/src/main/res/layout/activity_drawer.xml" value="0.44427083333333334" />
+        <entry key="..\:/Users/u1214728/AndroidStudioProjects/LifestyleApp/app/src/main/res/layout/fragment_bmi.xml" value="0.3140625" />
+        <entry key="..\:/Users/u1214728/AndroidStudioProjects/LifestyleApp/app/src/main/res/layout/fragment_home.xml" value="0.5541666666666667" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.16927083333333334" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.13271604938271606" />
-        <entry key="app/src/main/res/layout-land/fragment_bmr.xml" value="0.22864583333333333" />
-        <entry key="app/src/main/res/layout-land/fragment_home.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/activity_bmi.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_bmr.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_display_user_info.xml" value="0.67" />
