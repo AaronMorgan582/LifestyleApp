@@ -75,6 +75,15 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
             return false;
         }
 
+        try{
+            Integer inches = Integer.parseInt(heightString);
+            Integer feet = Integer.parseInt(height2String);
+            Integer weight = Integer.parseInt(weightString);
+        }catch (NumberFormatException e){
+            Toast.makeText(getActivity(), R.string.invalid_bmi_input, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         return true;
     }
 
