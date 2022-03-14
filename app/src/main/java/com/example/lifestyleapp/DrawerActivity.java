@@ -13,6 +13,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 public class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ButtonListener{
@@ -170,5 +172,44 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
             fileName = null;
         }
         return fileName;
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        if(user != null){
+            outState.putString("first_name", user.getFirstName());
+            outState.putString("last_name", user.getLastName());
+            outState.putString("gender", user.getGender());
+            outState.putString("city", user.getCity());
+            outState.putString("country", user.getCountry());
+            outState.putString("weight", user.getWeight());
+            outState.putString("height", user.getHeight());
+            outState.putString("image_filepath", user.getImageFileName());
+        }
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        String first_name = savedInstanceState.getString("first_name");
+        String last_name = savedInstanceState.getString("last_name");
+        String gender = savedInstanceState.getString("gender");
+        String city = savedInstanceState.getString("city");
+        String country = savedInstanceState.getString("country");
+        String weight = savedInstanceState.getString("weight");
+        String height = savedInstanceState.getString("height");
+        String filepath = savedInstanceState.getString("image_filepath");
+
+        user = new User(first_name, last_name, gender, city, country, weight, height);
+        user.setImageFileName(filepath);
+        user_name.setText(first_name + " " + last_name);
+        try {
+            Bitmap image = BitmapFactory.decodeStream(openFileInput(filepath));
+            profilePicture.setImageBitmap(image);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }
