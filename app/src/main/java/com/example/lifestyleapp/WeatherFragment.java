@@ -89,15 +89,15 @@ public class WeatherFragment extends Fragment{
 
                             JSONObject ob = response.getJSONObject("main");
                                 JSONObject pl = response.getJSONObject("sys");
-                            String name = response.getString("name");
+                            //String name = response.getString("name");
                             String tempvalue = ob.getString("temp");
                             double tempvaluedouble = Double.parseDouble(tempvalue);
                             tempvaluedouble = (tempvaluedouble - 273.15) * 9/5 + 32;
                             tempvalue = Double.toString(tempvaluedouble).substring(0,5);
                             String humidvalue = ob.getString("humidity");
                             String presvalue = ob.getString("pressure");
-                            String placestr =  name + ", "+pl.getString("country");
-                            place.setText(placestr);
+                            //String placestr =  name + ", "+pl.getString("country");
+                            //place.setText(placestr);
                             temp.setText("Temperature : " + tempvalue + " F");
                             humid.setText("Humidity : " + humidvalue + "%");
                             pres.setText("Pressure : " + presvalue + " Pa");
