@@ -105,6 +105,7 @@ public class bmrFragment extends Fragment implements AdapterView.OnItemSelectedL
             case R.id.fr_buttonCalorieEstimate:{
                 if(checkBMRInput()){
                     int calorieEstimate = calculateCalories();
+
                     if( (calorieEstimate < 1200 && genderRadio.getText().toString().matches("Male") )  ||
                             (calorieEstimate < 1100 && genderRadio.getText().toString().matches("Female") )){
                         Toast.makeText(getActivity(), "Calorie intake may be too low.", Toast.LENGTH_SHORT).show();

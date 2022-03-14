@@ -19,6 +19,8 @@
             android:text="Fitness Goals"
             android:textColor="@color/white"
             android:textSize="40sp"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

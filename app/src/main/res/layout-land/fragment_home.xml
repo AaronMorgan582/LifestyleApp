@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#22333B"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="32dp">
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="#22333B"
+        android:fontFamily="sans-serif-black"
+        android:text="Home"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textColorHighlight="#5C3535"
+        android:textColorHint="#852B2B"
+        android:textSize="34sp">
+
+    </TextView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hike_card_view"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        card_view:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/design_default_color_on_primary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/image2" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="277dp"
+                android:layout_height="39dp"
+                android:text="Be as white as any other person in Utah. Go hike and get those Insta pics."
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView5"
+                app:layout_constraintStart_toStartOf="@+id/imageView5"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+            <Button
+                android:id="@+id/card_hike_btn"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="108dp"
+                android:layout_height="48dp"
+                android:backgroundTint="#FFFFFF"
+                android:fontFamily="sans-serif-medium"
+                android:text="Find hikes"
+                android:textColor="#C735CD"
+                app:layout_constraintEnd_toEndOf="@+id/textView3"
+                app:layout_constraintStart_toStartOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="8dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/weather_card_view"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        card_view:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="321dp"
+                android:layout_height="149dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.476"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/w_image" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="257dp"
+                android:layout_height="32dp"
+                android:fontFamily="sans-serif"
+                android:text="Utah Weather is whack, so better check it out. Might be snowing in June."
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView6"
+                app:layout_constraintStart_toStartOf="@+id/imageView6"
+                app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+            <Button
+                android:id="@+id/card_weather_btn"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="200dp"
+                android:layout_height="53dp"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="#FFFFFF"
+                android:fontFamily="sans-serif-medium"
+                android:text="Check Weather"
+                android:textColor="#C735CD"
+                app:layout_constraintEnd_toEndOf="@+id/textView4"
+                app:layout_constraintStart_toStartOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
+</ScrollView>

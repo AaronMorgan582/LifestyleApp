@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,6 +18,8 @@
         android:text="BMI Calculator"
         android:textColor="@color/white"
         android:textSize="40sp"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,9 +129,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Underweight = &lt;18.5 \n\nNormal weight = 18.5–24.9 \n\nOverweight = 25–29.9 \n\nObesity = BMI of 30 or greater"
+        android:text="Underweight = &lt;18.5 \n\nNormal weight = 18.5–24.9"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/fr_buttonBMI"
         app:layout_constraintTop_toBottomOf="@+id/fr_buttonBMI" />
+
+    <TextView
+        android:id="@+id/bmiInfo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Overweight = 25–29.9 \n\nObesity = BMI of 30 or greater"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/bmiInfo"
+        app:layout_constraintStart_toEndOf="@+id/bmiInfo"
+        app:layout_constraintTop_toTopOf="@+id/bmiInfo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
