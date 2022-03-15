@@ -132,6 +132,15 @@ public class bmrFragment extends Fragment implements AdapterView.OnItemSelectedL
             return false;
         }
 
+        try{
+            Integer inches = Integer.parseInt(heightString);
+            Integer age = Integer.parseInt(ageString);
+            Integer weight = Integer.parseInt(weightString);
+        }catch (NumberFormatException e){
+            Toast.makeText(getActivity(), "Please enter valid information", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         return true;
     }
 
