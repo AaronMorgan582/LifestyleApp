@@ -130,8 +130,8 @@ public class bmrFragmentTest {
         fragmentScenario = FragmentScenario.launchInContainer(new bmrFragment().getClass(), null, R.style.Base_Theme_AppCompat);
 
         // Enter text to UI input
-        onView(withId(R.id.fr_goalsEditTextHeight)).perform(typeText("a"));
-        onView(withId(R.id.fr_goalsEditTextWeight)).perform(typeText("110"));
+        onView(withId(R.id.fr_goalsEditTextHeight)).perform(typeText("67"));
+        onView(withId(R.id.fr_goalsEditTextWeight)).perform(typeText("b"));
         onView(withId(R.id.fr_goalsEditTextAge)).perform(typeText("27"));
 
         onView(withId(R.id.fr_radioActive)).perform((click()));
@@ -149,9 +149,28 @@ public class bmrFragmentTest {
         fragmentScenario = FragmentScenario.launchInContainer(new bmrFragment().getClass(), null, R.style.Base_Theme_AppCompat);
 
         // Enter text to UI input
-        onView(withId(R.id.fr_goalsEditTextHeight)).perform(typeText("a"));
+        onView(withId(R.id.fr_goalsEditTextHeight)).perform(typeText("67"));
         onView(withId(R.id.fr_goalsEditTextWeight)).perform(typeText("110"));
-        onView(withId(R.id.fr_goalsEditTextAge)).perform(typeText("27"));
+        onView(withId(R.id.fr_goalsEditTextAge)).perform(typeText("c"));
+
+        onView(withId(R.id.fr_radioActive)).perform((click()));
+        onView(withId(R.id.fr_radioFemale)).perform((click()));
+
+        onView(withId(R.id.fr_buttonBMR)).perform(click());
+
+        onView(withId(R.id.fr_tvBmrCalculation)).check(matches((withText("0 daily calories."))));
+
+    }
+
+    @Test
+    public void testWrongInput4(){
+
+        fragmentScenario = FragmentScenario.launchInContainer(new bmrFragment().getClass(), null, R.style.Base_Theme_AppCompat);
+
+        // Enter text to UI input
+        onView(withId(R.id.fr_goalsEditTextHeight)).perform(typeText("67"));
+        onView(withId(R.id.fr_goalsEditTextWeight)).perform(typeText("110"));
+        onView(withId(R.id.fr_goalsEditTextAge)).perform(typeText("2c"));
 
         onView(withId(R.id.fr_radioActive)).perform((click()));
         onView(withId(R.id.fr_radioFemale)).perform((click()));
