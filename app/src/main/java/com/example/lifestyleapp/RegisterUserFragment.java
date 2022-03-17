@@ -65,7 +65,9 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
                 if (TextUtils.isEmpty(firstNameView.getText()) || TextUtils.isEmpty(lastNameView.getText())) {
                     Toast.makeText(getActivity(), "Please enter your name", Toast.LENGTH_SHORT).show();
                 } else {
-                    gatherInputAndSubmit();
+
+                    if(checkHeightAndWeightForDigits(heightView.getText().toString(), weightView.getText().toString()))
+                        gatherInputAndSubmit();
                 }
                 break;
             case R.id.addPictureButton:
@@ -145,6 +147,43 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         String height = heightView.getText().toString();
 
         listener.submitButtonClick(firstName, lastName, sex, city, country, weight, height);
+    }
+
+    /**
+     * Checks that the input of height and weight are numbers for further use between the
+     * other views in case the user wants to use this information for BMR and
+     * BMI calculations.
+     * @param height height to be parsed
+     * @param weight weight to be parsed
+     * @return true if the inputs are empty, true if either of the inputs is a number,
+     *         false if they can't be parsed into numbers.
+     */
+    private boolean checkHeightAndWeightForDigits(String height, String weight){
+
+
+        if(height.equals("") && weight.equals("")){
+            return true;
+        }
+
+        if(!height.equals("")){
+            try {
+                Integer heightInt = Integer.parseInt(height);
+            }catch (NumberFormatException e){
+                Toast.makeText(getActivity(), "Height needs to be a number", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if(!weight.equals("")){
+            try{
+                Integer weightInt = Integer.parseInt(weight);
+            }catch (NumberFormatException e){
+                Toast.makeText(getActivity(), "Weight needs to be number", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }
