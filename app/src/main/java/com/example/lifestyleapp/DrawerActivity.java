@@ -98,9 +98,6 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fitness_goals).addToBackStack("Goals").commit();
                 break;
-            case R.id.nav_weather:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WeatherFragment()).addToBackStack("Weather").commit();
-                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

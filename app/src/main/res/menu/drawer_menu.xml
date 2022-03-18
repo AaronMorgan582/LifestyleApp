@@ -19,10 +19,6 @@
             android:icon="@drawable/ic_bmi"
             android:title="Calculate BMI"
             />
-        <item
-            android:id="@+id/nav_weather"
-            android:icon="@android:drawable/ic_menu_mapmode"
-            android:title="Weather" />
 
     </group>
 </menu>
