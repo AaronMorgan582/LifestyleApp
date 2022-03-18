@@ -93,11 +93,9 @@ public class HomeFragment extends Fragment {
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager
                         .beginTransaction();
-
+                //Go to weather fragment when button is clicked
                 WeatherFragment fragment3 = new WeatherFragment();
                 fragmentTransaction.replace(R.id.fragment_container, fragment3);
-//provide the fragment ID of your first fragment which you have given in
-//fragment_layout_example.xml file in place of first argument
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
@@ -130,7 +128,7 @@ client.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>(
         if (location != null) {
             locx = location.getLatitude();
             locy = location.getLongitude();
-
+            //Send request to API to get trails
             String URL = "https://my-trails-backend.herokuapp.com/api/v1/trails-by-location?lat="+locx+"&lon="+locy;
             RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
             JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, URL, null, new Response.Listener<JSONArray>() {
@@ -164,7 +162,7 @@ client.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>(
             });
             queue.add(request);
 
-
+            //Send request to API to get weather data
             String URL2 = "https://api.openweathermap.org/data/2.5/weather?lat="+locx+"&lon="+locy+ "&appid=c1a1e58da8b47c04fbd012a495ba933a";
             RequestQueue queue2 = Volley.newRequestQueue(getActivity().getApplicationContext());
             JsonObjectRequest request2 = new JsonObjectRequest(Request.Method.GET, URL2, null, new Response.Listener<JSONObject>() {
@@ -212,7 +210,7 @@ client.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>(
 
                     locx = location1.getLatitude();
                     locy = location1.getLongitude();
-
+                    //Send request to API to get data
                     String URL = "https://my-trails-backend.herokuapp.com/api/v1/trails-by-location?lat="+locx+"&lon="+locy;
                     RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
                     JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, URL, null, new Response.Listener<JSONArray>() {
@@ -247,7 +245,7 @@ client.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>(
                     queue.add(request);
 
 
-
+                    //Send request to API to get data
                     String URL2 = "https://api.openweathermap.org/data/2.5/weather?lat="+locx+"&lon="+locy+ "&appid=c1a1e58da8b47c04fbd012a495ba933a";
                     RequestQueue queue2 = Volley.newRequestQueue(getActivity().getApplicationContext());
                     JsonObjectRequest request2 = new JsonObjectRequest(Request.Method.GET, URL2, null, new Response.Listener<JSONObject>() {
