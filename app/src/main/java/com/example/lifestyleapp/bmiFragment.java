@@ -40,10 +40,15 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
         if(getArguments() != null){
             User user_data = getArguments().getParcelable("user_data");
             if(!user_data.getHeight().matches("")){
-                String feet = String.valueOf(Integer.parseInt(user_data.getHeight())/12);
-                String inches = String.valueOf(Integer.parseInt(user_data.getHeight())%12);
-                height.setText(feet);
-                height2.setText(inches);
+                try {
+                    String feet = String.valueOf(Integer.parseInt(user_data.getHeight()) / 12);
+                    String inches = String.valueOf(Integer.parseInt(user_data.getHeight()) % 12);
+                    height.setText(feet);
+                    height2.setText(inches);
+                }catch(Exception e){
+                    height.setText("");
+                    height2.setText("");
+                }
             }
             if(!user_data.getWeight().matches("")){
                 weight.setText(user_data.getWeight());
