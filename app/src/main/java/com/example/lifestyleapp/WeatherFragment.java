@@ -1,7 +1,7 @@
 package com.example.lifestyleapp;
 
-import static com.example.lifestyleapp.MainActivity.locx;
-import static com.example.lifestyleapp.MainActivity.locy;
+import static com.example.lifestyleapp.HomeFragment.locx;
+import static com.example.lifestyleapp.HomeFragment.locy;
 
 import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
@@ -47,6 +47,7 @@ public class WeatherFragment extends Fragment{
     private Drawable therm_image;
     private Drawable hum_image;
 
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,7 +80,7 @@ public class WeatherFragment extends Fragment{
             private void displayWeather(){
 
 
-                String URL = "https://api.openweathermap.org/data/2.5/weather?lat="+locy+"&lon="+locx+ "&appid=c1a1e58da8b47c04fbd012a495ba933a";
+                String URL = "https://api.openweathermap.org/data/2.5/weather?lat="+locx+"&lon="+locy+ "&appid=c1a1e58da8b47c04fbd012a495ba933a";
                 RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
                     @Override
@@ -89,19 +90,24 @@ public class WeatherFragment extends Fragment{
 
                             JSONObject ob = response.getJSONObject("main");
                                 JSONObject pl = response.getJSONObject("sys");
-                            //String name = response.getString("name");
+
                             String tempvalue = ob.getString("temp");
                             double tempvaluedouble = Double.parseDouble(tempvalue);
                             tempvaluedouble = (tempvaluedouble - 273.15) * 9/5 + 32;
                             tempvalue = Double.toString(tempvaluedouble).substring(0,5);
                             String humidvalue = ob.getString("humidity");
                             String presvalue = ob.getString("pressure");
-                            //String placestr =  name + ", "+pl.getString("country");
-                            //place.setText(placestr);
+
                             temp.setText("Temperature : " + tempvalue + " F");
                             humid.setText("Humidity : " + humidvalue + "%");
                             pres.setText("Pressure : " + presvalue + " Pa");
-
+                            try{
+                                String name = response.getString("name");
+                                String placestr =  name + ", "+pl.getString("country");
+                                place.setText(placestr);
+                            }catch(Exception e){
+                                place.setText(locx+", "+locy);
+                            }
                         } catch (JSONException e) {
     e.printStackTrace();
                         }

@@ -50,8 +50,8 @@
                 android:id="@+id/textView3"
                 android:layout_width="277dp"
                 android:layout_height="39dp"
-                android:text="Be as white as any other person in Utah. Go hike and get those Insta pics."
-                android:textSize="12sp"
+                android:text="Click the button below to find hikes near your location!"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView5"
                 app:layout_constraintStart_toStartOf="@+id/imageView5"
                 app:layout_constraintTop_toBottomOf="@+id/imageView5" />
@@ -102,8 +102,8 @@
                 android:layout_width="257dp"
                 android:layout_height="32dp"
                 android:fontFamily="sans-serif"
-                android:text="Utah Weather is whack, so better check it out. Might be snowing in June."
-                android:textSize="12sp"
+                android:text="Click the button below to find information about the weather!"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView6"
                 app:layout_constraintStart_toStartOf="@+id/imageView6"
                 app:layout_constraintTop_toBottomOf="@+id/imageView6" />
