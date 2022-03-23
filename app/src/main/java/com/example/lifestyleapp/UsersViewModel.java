@@ -20,6 +20,7 @@ public class UsersViewModel extends ViewModel {
         }
         userRepository = UserRepository.getInstance(str);
         selected = userRepository.getData(str);
+
     }
 
     public void select(User user){

@@ -73,11 +73,9 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         model.getSelected().observe(this, user ->{
             // something happens here. Retrieve the found user from the db
             // what happens if doesn't exist?
-            if(user != null){
-                // send to home screen
-            }
-            else{
-                // send to register user fragment
+
+            if(user == null){
+
             }
         });
 
@@ -128,11 +126,15 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     @Override
     public void editProfileClick() {
         Fragment register_fragment = new RegisterUserFragment();
+
+        /*
         if(user != null){
             Bundle fragment_bundle = new Bundle();
             fragment_bundle.putParcelable("user_data", user);
             register_fragment.setArguments(fragment_bundle);
         }
+
+         */
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_container, register_fragment).addToBackStack("Register User");
@@ -141,6 +143,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
     @Override
     public void submitButtonClick(String firstName, String lastName, String gender, String city, String country, String weight, String height) {
+        /*
         user = new User(firstName, lastName, gender, city, country, weight, height);
         user_name.setText(firstName + " " + lastName);
         if(userImageFile != null){
@@ -148,9 +151,11 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         }
         Bundle fragment_bundle = new Bundle();
         fragment_bundle.putParcelable("user_data", user);
+        */
+
         Fragment displayUserFragment = new DisplayUserFragment();
 
-        displayUserFragment.setArguments(fragment_bundle);
+        //displayUserFragment.setArguments(fragment_bundle);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_container, displayUserFragment).addToBackStack("Profile");
         ft.commit();
@@ -239,5 +244,17 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         }
 
         super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    private void selectViewToDisplay(User user){
+        if(user == null){
+            System.out.println("Null");
+        }
+        if(user.equals(null)){
+            System.out.println("Null");
+        }
+        else{
+            System.out.println("Not null");
+        }
     }
 }

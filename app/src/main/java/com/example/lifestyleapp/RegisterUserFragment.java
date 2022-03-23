@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.io.FileNotFoundException;
 
@@ -31,6 +32,9 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
     private ImageView profilePicture;
     private ButtonListener listener;
     private View view;
+
+    // View model
+    private UsersViewModel usersViewModel;
 
     @Nullable
     @Override
@@ -49,11 +53,18 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         //Get the elements from the layout.
         registerLayout(view);
 
+        usersViewModel = new ViewModelProvider(requireActivity()).get(UsersViewModel.class);
+        usersViewModel.getSelected().observe(getViewLifecycleOwner(), user -> {
+            autoFill(user);
+        });
+
         //If there are arguments from the Drawer Activity, use it to fill out the input fields.
+
+        /*
         if (getArguments() != null) {
             User user_data = getArguments().getParcelable("user_data");
             autoFill(user_data);
-        }
+        }*/
 
         return view;
     }
@@ -145,6 +156,10 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         String country = countryView.getText().toString();
         String weight = weightView.getText().toString();
         String height = heightView.getText().toString();
+
+        User updatedUser = new User(firstName, lastName, sex, city, country, weight, height);
+
+        usersViewModel.select(updatedUser);
 
         listener.submitButtonClick(firstName, lastName, sex, city, country, weight, height);
     }
