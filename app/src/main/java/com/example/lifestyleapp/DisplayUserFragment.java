@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.io.FileNotFoundException;
 
@@ -21,6 +22,7 @@ public class DisplayUserFragment extends Fragment {
     private TextView firstNameDisplay, lastNameDisplay, heightDisplay, weightDisplay, cityDisplay, countryDisplay, sexDisplay;
     private ImageView userImage;
     private ButtonListener listener;
+    private UsersViewModel userViewModel;
 
     @Nullable
     @Override
@@ -47,6 +49,11 @@ public class DisplayUserFragment extends Fragment {
         this.weightDisplay = view.findViewById(R.id.tvDisplayWeight);
         this.userImage = view.findViewById(R.id.profilePicture);
 
+        userViewModel = new ViewModelProvider(requireActivity()).get(UsersViewModel.class);
+        userViewModel.getSelected().observe(getViewLifecycleOwner(), user->{
+            fillUserInfo(user);
+        });
+
         if (getArguments() != null) {
             fillUserInfo();
         }
@@ -60,6 +67,37 @@ public class DisplayUserFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void fillUserInfo(User user) {
+        //User user = getArguments().getParcelable("user_data");
+        String firstName = user.getFirstName();
+        String lastName = user.getLastName();
+        String city = user.getCity();
+        String country = user.getCountry();
+        String sex = user.getGender();
+        String height = user.getHeight();
+        String weight = user.getWeight();
+
+        firstNameDisplay.setText(firstName);
+        lastNameDisplay.setText(lastName);
+        cityDisplay.setText(city);
+        countryDisplay.setText(country);
+        sexDisplay.setText(sex);
+        heightDisplay.setText(height);
+        weightDisplay.setText(weight);
+
+        //It's possible that the image has not been set, so check to see if it's in the User class.
+        if(!user.getImageFileName().matches("")){
+            //The try/catch block is mostly for openFileInput; it's possible the filepath doesn't exist
+            //even if it is in the User class.
+            try {
+                Bitmap image = BitmapFactory.decodeStream(getActivity().openFileInput(user.getImageFileName()));
+                userImage.setImageBitmap(image);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void fillUserInfo() {

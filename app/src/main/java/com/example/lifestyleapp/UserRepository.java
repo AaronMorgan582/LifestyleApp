@@ -29,6 +29,14 @@ public class UserRepository {
     public void loadUser(String str){
         User user = new User("Gabriel", "Garcia-Marquez", "Male", "Aracataca", "Colombia", "80", "67");
         existingUsers.put("gabo@hotmail.com", user);
-        this.user = existingUsers.get(str);
+
+        if(existingUsers.containsKey(str)){
+            this.user = existingUsers.get(str);
+        }
+        else{
+            this.user = new User("","","","","","","");
+        }
+
+
     }
 }
