@@ -6,12 +6,20 @@ import androidx.lifecycle.ViewModel;
 
 public class UsersViewModel extends ViewModel {
     private MutableLiveData<User> selected;
-    private UserRepository userData;
+    private UserRepository userRepository;
+    /*
+    public UsersViewModel(String str){
+        userData = UserRepository.getInstance(str);
+        selected = userData.getData(str);
 
-    public UsersViewModel(User user){
-        userData = UserRepository.getInstance(user);
-        selected = userData.getData();
-
+    }
+*/
+    public void initActiveUser(String str){
+        if(selected != null) {
+            return;
+        }
+        userRepository = UserRepository.getInstance(str);
+        selected = userRepository.getData(str);
     }
 
     public void select(User user){
@@ -21,15 +29,5 @@ public class UsersViewModel extends ViewModel {
         return selected;
     }
 
-    public LiveData<User> getUser(){
-        if(selected == null){
-            selected = new MutableLiveData<User>();
-            loadUserFromDB();
-        }
-        return selected;
-    }
 
-    private void loadUserFromDB(){
-        System.out.println("Loading User");
-    }
 }

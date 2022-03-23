@@ -31,11 +31,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCity"
+        app:layout_constraintTop_toBottomOf="@+id/emailTextEdit"
         app:layout_constraintVertical_bias="0.244" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editTextCity"
+        android:id="@+id/emailTextEdit"
         android:layout_width="341dp"
         android:layout_height="40dp"
         android:layout_marginTop="40dp"

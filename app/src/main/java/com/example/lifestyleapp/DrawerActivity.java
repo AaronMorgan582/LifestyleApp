@@ -63,8 +63,14 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        Intent intent = getIntent();
+        String str = intent.getExtras().getString("EMAIL");
+
+        // Handle the view model activity
         UsersViewModel model = new ViewModelProvider(this).get(UsersViewModel.class);
-        model.getUser().observe(this, user ->{
+        model.initActiveUser(str);
+
+        model.getSelected().observe(this, user ->{
             // something happens here. Retrieve the found user from the db
             // what happens if doesn't exist?
             if(user != null){

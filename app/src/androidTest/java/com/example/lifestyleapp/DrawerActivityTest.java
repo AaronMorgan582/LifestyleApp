@@ -7,26 +7,17 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.matcher.ViewMatchers.isChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withInputType;
 import static com.example.lifestyleapp.EspressoTestMatchers.hasDrawable;
 import static com.example.lifestyleapp.EspressoTestMatchers.noDrawable;
-import static com.example.lifestyleapp.EspressoTestMatchers.withDrawable;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.*;
-
-import static java.util.regex.Pattern.matches;
-
-import android.view.Gravity;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.Espresso;
-import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.contrib.DrawerActions;
 import androidx.test.espresso.contrib.NavigationViewActions;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import org.hamcrest.Matcher;
 
 import org.junit.After;
 import org.junit.Test;
@@ -109,8 +100,8 @@ public class DrawerActivityTest {
 
         Espresso.closeSoftKeyboard();
 
-        onView(withId(R.id.editTextCity)).perform((typeText(user.getCity())));
-        onView(withId(R.id.editTextCity)).check(matches(withText(user.getCity())));
+        onView(withId(R.id.emailTextEdit)).perform((typeText(user.getCity())));
+        onView(withId(R.id.emailTextEdit)).check(matches(withText(user.getCity())));
 
         Espresso.closeSoftKeyboard();
 
@@ -158,7 +149,7 @@ public class DrawerActivityTest {
 
         Espresso.closeSoftKeyboard();
 
-        onView(withId(R.id.editTextCity)).perform((typeText("Some City")));
+        onView(withId(R.id.emailTextEdit)).perform((typeText("Some City")));
 
         Espresso.closeSoftKeyboard();
 
@@ -190,7 +181,7 @@ public class DrawerActivityTest {
 
         Espresso.closeSoftKeyboard();
 
-        onView(withId(R.id.editTextCity))
+        onView(withId(R.id.emailTextEdit))
                 .perform((typeText("Some City")));
 
         Espresso.closeSoftKeyboard();
