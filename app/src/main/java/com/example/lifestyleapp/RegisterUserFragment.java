@@ -105,7 +105,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         //Layout elements: Edit Text
         firstNameView = view.findViewById(R.id.editTextFirstName);
         lastNameView = view.findViewById(R.id.editTextLastName);
-        cityView = view.findViewById(R.id.editTextCity);
+        cityView = view.findViewById(R.id.emailTextEdit);
         countryView = view.findViewById(R.id.editTextCountry);
         heightView = view.findViewById(R.id.editTextHeight);
         weightView = view.findViewById(R.id.editTextWeight);

@@ -1,38 +1,23 @@
 package com.example.lifestyleapp;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.AdapterView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class RegisterUserActivity extends AppCompatActivity {
@@ -108,7 +93,7 @@ public class RegisterUserActivity extends AppCompatActivity {
 
         firstNameView = (EditText) findViewById(R.id.editTextFirstName);
         lastNameView = (EditText) findViewById(R.id.editTextLastName);
-        cityView = (EditText) findViewById(R.id.editTextCity);
+        cityView = (EditText) findViewById(R.id.emailTextEdit);
         countryView = (EditText) findViewById(R.id.editTextCountry);
         heightView = (EditText) findViewById(R.id.editTextHeight);
         weightView = (EditText) findViewById(R.id.editTextWeight);

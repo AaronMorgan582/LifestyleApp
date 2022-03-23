@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -47,16 +48,38 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         drawerLayout = findViewById(R.id.drawer_layout);
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
+
         user_name = headerView.findViewById(R.id.navHeaderUserName);
         profilePicture = headerView.findViewById(R.id.navHeaderProfPic);
+
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        Intent intent = getIntent();
+        String str = intent.getExtras().getString("EMAIL");
+
+        // Handle the view model activity
+        UsersViewModel model = new ViewModelProvider(this).get(UsersViewModel.class);
+        model.initActiveUser(str);
+
+        model.getSelected().observe(this, user ->{
+            // something happens here. Retrieve the found user from the db
+            // what happens if doesn't exist?
+            if(user != null){
+                // send to home screen
+            }
+            else{
+                // send to register user fragment
+            }
+        });
 
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RegisterUserFragment()).commit();
