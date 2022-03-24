@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,23 +38,10 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
         bmi_calculate = view.findViewById(R.id.fr_buttonBMI);
         bmi_calculate.setOnClickListener(this);
 
-        if(getArguments() != null){
-            User user_data = getArguments().getParcelable("user_data");
-            if(!user_data.getHeight().matches("")){
-                try {
-                    String feet = String.valueOf(Integer.parseInt(user_data.getHeight()) / 12);
-                    String inches = String.valueOf(Integer.parseInt(user_data.getHeight()) % 12);
-                    height.setText(feet);
-                    height2.setText(inches);
-                }catch(Exception e){
-                    height.setText("");
-                    height2.setText("");
-                }
-            }
-            if(!user_data.getWeight().matches("")){
-                weight.setText(user_data.getWeight());
-            }
-        }
+        UsersViewModel model = new ViewModelProvider(requireActivity()).get(UsersViewModel.class);
+        model.getSelected().observe(getViewLifecycleOwner(), user -> {
+            populateBMIInformation(user);
+        });
 
         return view;
     }
@@ -104,7 +92,29 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
             return value;
 
         }
-
         return 0;
+    }
+
+    private void populateBMIInformation(User user){
+        if(!user.getHeight().matches("")){
+            try {
+                String feet = String.valueOf(Integer.parseInt(user.getHeight()) / 12);
+                String inches = String.valueOf(Integer.parseInt(user.getHeight()) % 12);
+                height.setText(feet);
+                height2.setText(inches);
+            }catch(Exception e){
+                height.setText("");
+                height2.setText("");
+            }
+
+        }
+        if(!user.getWeight().matches("")){
+            weight.setText(user.getWeight());
+        }
+
+    }
+
+    private double convertToInches(String inches){
+        return 1.0;
     }
 }
