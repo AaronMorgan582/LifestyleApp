@@ -158,6 +158,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         String height = heightView.getText().toString();
 
         User updatedUser = new User(firstName, lastName, sex, city, country, weight, height);
+        updatedUser.setRegistered(true);
 
         usersViewModel.select(updatedUser);
 

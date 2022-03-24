@@ -71,19 +71,22 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         model.initActiveUser(str);
 
         model.getSelected().observe(this, user ->{
-            // something happens here. Retrieve the found user from the db
-            // what happens if doesn't exist?
 
-            if(user == null){
-
+            if(user.isRegistered()){
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+                navigationView.setCheckedItem(R.id.nav_home);
+            }
+            else{
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RegisterUserFragment()).commit();
+                navigationView.setCheckedItem(R.id.nav_profile);
             }
         });
 
+        /*
         if(savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RegisterUserFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_profile);
-        }
 
+        }
+    */
     }
 
     @Override

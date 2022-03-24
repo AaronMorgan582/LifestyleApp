@@ -28,6 +28,7 @@ public class UserRepository {
 
     public void loadUser(String str){
         User user = new User("Gabriel", "Garcia-Marquez", "Male", "Aracataca", "Colombia", "80", "67");
+        user.setRegistered(true);
         existingUsers.put("gabo@hotmail.com", user);
 
         if(existingUsers.containsKey(str)){
@@ -35,6 +36,7 @@ public class UserRepository {
         }
         else{
             this.user = new User("","","","","","","");
+            this.user.setRegistered(false);
         }
 
 

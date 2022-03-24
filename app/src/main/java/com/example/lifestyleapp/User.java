@@ -12,6 +12,16 @@ public class User implements Parcelable {
     private String country;
     private String weight;
     private String height;
+    private boolean isRegistered;
+
+    public void setRegistered(boolean registered) {
+        isRegistered = registered;
+    }
+
+    public boolean isRegistered() {
+        return isRegistered;
+    }
+
 
     //This is the string that is associated with finding the user's picture they took with the
     //camera. It's defaulted to blank because it's not necessary to fill in.

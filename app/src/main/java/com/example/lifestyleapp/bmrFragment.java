@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,15 +71,11 @@ public class bmrFragment extends Fragment implements AdapterView.OnItemSelectedL
         bmr_calculate.setOnClickListener(this);
         calories_calculate.setOnClickListener(this);
 
-        if(getArguments() != null){
-            User user_data = getArguments().getParcelable("user_data");
-            if(!user_data.getHeight().matches("")){
-                height.setText(user_data.getHeight());
-            }
-            if(!user_data.getWeight().matches("")){
-                weight.setText(user_data.getWeight());
-            }
-        }
+
+        UsersViewModel model = new ViewModelProvider(requireActivity()).get(UsersViewModel.class);
+        model.getSelected().observe(getViewLifecycleOwner(), user -> {
+            populateBMRInformation(user);
+        });
 
         return view;
     }
@@ -210,5 +207,20 @@ public class bmrFragment extends Fragment implements AdapterView.OnItemSelectedL
         }
 
         return 0;
+    }
+
+    /**
+     * Populates the fields for BMR calculation given the user
+     * that is coming from the model view
+     * @param user
+     */
+    private void populateBMRInformation(User user){
+        if(!user.getHeight().matches("")){
+            height.setText(user.getHeight());
+        }
+        if(!user.getWeight().matches("")){
+            weight.setText(user.getWeight());
+        }
+
     }
 }
