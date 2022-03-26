@@ -42,8 +42,6 @@ public class UserTable {
     @ColumnInfo(name = "country")
     private String country;
 
-    @ColumnInfo(name = "user_image")
-    private Bitmap userImage;
 
     public UserTable(@NonNull String firstName, @NonNull String lastName, @NonNull String age, @NonNull String height,
                      @NonNull String weight, @NonNull String sex, @NonNull String city, @NonNull String country){
@@ -90,9 +88,6 @@ public class UserTable {
         return country;
     }
 
-    public Bitmap getUserImage(){
-        return userImage;
-    }
 
     public void setFirstName(@NonNull String firstName) {
         this.firstName = firstName;
@@ -124,9 +119,5 @@ public class UserTable {
 
     public void setCountry(@NonNull String country) {
         this.country = country;
-    }
-
-    public void setUserImage(Bitmap userImage) {
-        this.userImage = userImage;
     }
 }
