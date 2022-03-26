@@ -1,5 +1,7 @@
 package com.example.lifestyleapp;
 
+import android.app.Application;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -8,13 +10,17 @@ import java.util.HashMap;
 public class UserRepository {
 
     private static UserRepository instance;
+    private UserDao userDao;
     private User user;
     private HashMap<String, User> existingUsers = new HashMap<>();
 
-
-    public static UserRepository getInstance(String str){
+    private UserRepository(Application application){
+        AppDatabase db = AppDatabase.getDatabase(application);
+        userDao = db.userDao();
+    }
+    public static synchronized UserRepository getInstance(Application application){
         if(instance == null){
-            instance = new UserRepository();
+            instance = new UserRepository(application);
         }
         return instance;
     }
