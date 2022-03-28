@@ -28,7 +28,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
 
     private RadioGroup sexButtonGroup;
     private RadioButton sexRadioButton, maleRadioButton, femaleRadioButton;
-    private EditText firstNameView, lastNameView, cityView, countryView, heightView, weightView;
+    private EditText firstNameView, lastNameView, ageView, cityView, countryView, heightView, weightView;
     private ImageView profilePicture;
     private ButtonListener listener;
     private View view;
@@ -90,13 +90,14 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
     private void autoFill(User user) {
         firstNameView.setText(user.getFirstName());
         lastNameView.setText(user.getLastName());
+        ageView.setText(user.getAge());
         cityView.setText(user.getCity());
         countryView.setText(user.getCountry());
         heightView.setText(user.getHeight());
         weightView.setText(user.getWeight());
-        if (user.getGender().matches("Female")) {
+        if (user.getSex().matches("Female")) {
             femaleRadioButton.setChecked(true);
-        } else if (user.getGender().matches("Male")) {
+        } else if (user.getSex().matches("Male")) {
             maleRadioButton.setChecked(true);
         }
         //It's possible that the image has not been set, so check to see if it's in the User class.
@@ -116,6 +117,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         //Layout elements: Edit Text
         firstNameView = view.findViewById(R.id.editTextFirstName);
         lastNameView = view.findViewById(R.id.editTextLastName);
+        ageView = view.findViewById(R.id.editTextAge);
         cityView = view.findViewById(R.id.emailTextEdit);
         countryView = view.findViewById(R.id.editTextCountry);
         heightView = view.findViewById(R.id.editTextHeight);
@@ -139,6 +141,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
     private void gatherInputAndSubmit() {
         String firstName = firstNameView.getText().toString();
         String lastName = lastNameView.getText().toString();
+        String age = ageView.getText().toString();
         String sex = "";
 
         //Get the selection from the radio group.
@@ -157,7 +160,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         String weight = weightView.getText().toString();
         String height = heightView.getText().toString();
 
-        User updatedUser = new User(firstName, lastName, sex, city, country, weight, height);
+        User updatedUser = new User(firstName, lastName, age, sex, city, country, weight, height);
         updatedUser.setRegistered(true);
 
         usersViewModel.select(updatedUser);

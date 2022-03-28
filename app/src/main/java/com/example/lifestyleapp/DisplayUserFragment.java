@@ -75,7 +75,7 @@ public class DisplayUserFragment extends Fragment {
         String lastName = user.getLastName();
         String city = user.getCity();
         String country = user.getCountry();
-        String sex = user.getGender();
+        String sex = user.getSex();
         String height = user.getHeight();
         String weight = user.getWeight();
 
@@ -106,7 +106,7 @@ public class DisplayUserFragment extends Fragment {
         String lastName = user.getLastName();
         String city = user.getCity();
         String country = user.getCountry();
-        String sex = user.getGender();
+        String sex = user.getSex();
         String height = user.getHeight();
         String weight = user.getWeight();
 
