@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 //TODO: If adding a Weather Table, add the class to the "entities" set.
-@Database(entities = {UserTable.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase instance;
     public abstract UserDao userDao();
@@ -34,7 +34,7 @@ public abstract class AppDatabase extends RoomDatabase {
             //Sets up some fake data to see if the database gets set up correctly.
             databaseExecutor.execute(()->{
                 UserDao dao = instance.userDao();
-                UserTable userTable = new UserTable("Fake", "Person", "123", "600",
+                User userTable = new User("Fake", "Person", "123", "600",
                         "600", "Male", "Gondor", "MiddleEarth");
                 dao.insert(userTable);
             });

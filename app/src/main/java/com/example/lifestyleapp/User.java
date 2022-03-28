@@ -4,14 +4,46 @@ import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "user_table")
 public class User implements Parcelable {
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "first_name")
     private String firstName;
+
+    @NonNull
+    @ColumnInfo(name = "last_name")
     private String lastName;
-    private String gender;
-    private String city;
-    private String country;
-    private String weight;
+
+    @NonNull
+    @ColumnInfo(name = "age")
+    private String age;
+
+    @NonNull
+    @ColumnInfo(name = "height")
     private String height;
+
+    @NonNull
+    @ColumnInfo(name = "weight")
+    private String weight;
+
+    @NonNull
+    @ColumnInfo(name = "sex")
+    private String sex;
+
+    @NonNull
+    @ColumnInfo(name = "city")
+    private String city;
+
+    @NonNull
+    @ColumnInfo(name = "country")
+    private String country;
+
     private boolean isRegistered;
 
     public void setRegistered(boolean registered) {
@@ -25,14 +57,15 @@ public class User implements Parcelable {
 
     //This is the string that is associated with finding the user's picture they took with the
     //camera. It's defaulted to blank because it's not necessary to fill in.
-    private String fileName = "";
+    private String imageFileName = "";
 
-    public User(String firstName, String lastName, String gender,
+    public User(String firstName, String lastName, String age, String sex,
                 String city, String country, String weight, String height){
 
         this.firstName = firstName;
         this.lastName = lastName;
-        this.gender = gender;
+        this.age = age;
+        this.sex = sex;
         this.city = city;
         this.country = country;
         this.weight = weight;
@@ -44,15 +77,76 @@ public class User implements Parcelable {
         //for generating the string for the fileName.
     }
 
+    public String getFirstName(){ return this.firstName; }
+    public String getLastName(){ return this.lastName; }
+    public String getAge(){ return this.age; }
+    public String getSex(){ return this.sex; }
+    public String getCity(){
+        return this.city;
+    }
+    public String getCountry(){
+        return this.country;
+    }
+    public String getWeight(){
+        return this.weight;
+    }
+    public String getHeight(){
+        return this.height;
+    }
+    public String getImageFileName() { return this.imageFileName; }
+
+    public void setFirstName(@NonNull String firstName) {
+        this.firstName = firstName;
+    }
+    public void setLastName(@NonNull String lastName) {
+        this.lastName = lastName;
+    }
+    public void setAge(@NonNull String age) {
+        this.age = age;
+    }
+    public void setHeight(@NonNull String height) {
+        this.height = height;
+    }
+    public void setWeight(@NonNull String weight) {
+        this.weight = weight;
+    }
+    public void setSex(@NonNull String sex) {
+        this.sex = sex;
+    }
+    public void setCity(@NonNull String city) {
+        this.city = city;
+    }
+    public void setCountry(@NonNull String country) {
+        this.country = country;
+    }
+    public void setImageFileName(String file) { this.imageFileName = file; }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(firstName);
+        parcel.writeString(lastName);
+        parcel.writeString(sex);
+        parcel.writeString(city);
+        parcel.writeString(country);
+        parcel.writeString(weight);
+        parcel.writeString(height);
+        parcel.writeString(imageFileName);
+    }
+
     protected User(Parcel in) {
         firstName = in.readString();
         lastName = in.readString();
-        gender = in.readString();
+        sex = in.readString();
         city = in.readString();
         country = in.readString();
         weight = in.readString();
         height = in.readString();
-        fileName = in.readString();
+        imageFileName = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -66,45 +160,4 @@ public class User implements Parcelable {
             return new User[size];
         }
     };
-
-    public String getFirstName(){
-        return this.firstName;
-    }
-    public String getLastName(){
-        return this.lastName;
-    }
-    public String getGender(){
-        return this.gender;
-    }
-    public String getCity(){
-        return this.city;
-    }
-    public String getCountry(){
-        return this.country;
-    }
-    public String getWeight(){
-        return this.weight;
-    }
-    public String getHeight(){
-        return this.height;
-    }
-    public String getImageFileName() { return this.fileName; }
-    public void setImageFileName(String file) { this.fileName = file; }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(firstName);
-        parcel.writeString(lastName);
-        parcel.writeString(gender);
-        parcel.writeString(city);
-        parcel.writeString(country);
-        parcel.writeString(weight);
-        parcel.writeString(height);
-        parcel.writeString(fileName);
-    }
 }

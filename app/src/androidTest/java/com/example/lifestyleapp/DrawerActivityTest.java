@@ -26,7 +26,7 @@ import org.junit.runner.RunWith;
 @RunWith(value = AndroidJUnit4.class)
 public class DrawerActivityTest {
     ActivityScenario scenario;
-    User user = new User("Alejandro ", "Serrano", "Male", "Guayaquil", "Ecuador", "110", "110");
+    User user = new User("Alejandro ", "Serrano", "25", "Male", "Guayaquil", "Ecuador", "110", "110");
 
     /**
      * Checks overall navigation from the Drawer Layout.
@@ -123,7 +123,7 @@ public class DrawerActivityTest {
         onView(withId(R.id.tvDisplayWeight)).check(matches(withText(user.getWeight())));
         onView(withId(R.id.tvDisplayCity)).check(matches(withText(user.getCity())));
         onView(withId(R.id.tvDisplayCountry)).check(matches(withText(user.getCountry())));
-        onView(withId(R.id.tvDisplaySex)).check(matches(withText(user.getGender())));
+        onView(withId(R.id.tvDisplaySex)).check(matches(withText(user.getSex())));
 
         onView(withId(R.id.profilePicture)).check(matches(hasDrawable()));
     }

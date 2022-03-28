@@ -10,8 +10,9 @@ import java.util.List;
 
 @Dao
 public interface UserDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(UserTable userTable);
+    void insert(User user);
 
     @Query("SELECT * from user_table ORDER BY first_name ASC")
     LiveData<List<UserTable>> getAll();

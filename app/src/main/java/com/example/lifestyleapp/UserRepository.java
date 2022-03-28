@@ -33,7 +33,7 @@ public class UserRepository {
     }
 
     public void loadUser(String str){
-        User user = new User("Gabriel", "Garcia-Marquez", "Male", "Aracataca", "Colombia", "80", "67");
+        User user = new User("Gabriel", "Garcia-Marquez", "30","Male", "Aracataca", "Colombia", "80", "67");
         user.setRegistered(true);
         existingUsers.put("gabo@hotmail.com", user);
 
@@ -41,7 +41,7 @@ public class UserRepository {
             this.user = existingUsers.get(str);
         }
         else{
-            this.user = new User("","","","","","","");
+            this.user = new User("","","","","","","","");
             this.user.setRegistered(false);
         }
 

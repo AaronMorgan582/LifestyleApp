@@ -210,12 +210,13 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         return fileName;
     }
 
-    @Override
+/*    @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         if(user != null){
             outState.putString("first_name", user.getFirstName());
             outState.putString("last_name", user.getLastName());
-            outState.putString("gender", user.getGender());
+            outState.putString("age", user.getAge());
+            outState.putString("gender", user.getSex());
             outState.putString("city", user.getCity());
             outState.putString("country", user.getCountry());
             outState.putString("weight", user.getWeight());
@@ -229,6 +230,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         String first_name = savedInstanceState.getString("first_name");
         String last_name = savedInstanceState.getString("last_name");
+        String age = savedInstanceState.getString("age");
         String gender = savedInstanceState.getString("gender");
         String city = savedInstanceState.getString("city");
         String country = savedInstanceState.getString("country");
@@ -236,7 +238,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         String height = savedInstanceState.getString("height");
         String filepath = savedInstanceState.getString("image_filepath");
 
-        user = new User(first_name, last_name, gender, city, country, weight, height);
+        user = new User(first_name, last_name, age, gender, city, country, weight, height);
         user.setImageFileName(filepath);
         user_name.setText(first_name + " " + last_name);
         try {
@@ -247,7 +249,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         }
 
         super.onRestoreInstanceState(savedInstanceState);
-    }
+    }*/
 
     private void selectViewToDisplay(User user){
         if(user == null){

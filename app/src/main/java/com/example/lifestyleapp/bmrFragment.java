@@ -221,6 +221,9 @@ public class bmrFragment extends Fragment implements AdapterView.OnItemSelectedL
         if(!user.getWeight().matches("")){
             weight.setText(user.getWeight());
         }
+        if(!user.getAge().matches("")){
+            age.setText(user.getAge());
+        }
 
     }
 }
