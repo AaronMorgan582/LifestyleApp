@@ -34,8 +34,8 @@ public abstract class AppDatabase extends RoomDatabase {
             //Sets up some fake data to see if the database gets set up correctly.
             databaseExecutor.execute(()->{
                 UserDao dao = instance.userDao();
-                User userTable = new User("Fake", "Person", "123", "600",
-                        "600", "Male", "Gondor", "MiddleEarth");
+                User userTable = new User("Fake", "Person", "123", "Male",
+                        "Gondor", "MiddleEartch", "80", "110");
                 dao.insert(userTable);
             });
         }

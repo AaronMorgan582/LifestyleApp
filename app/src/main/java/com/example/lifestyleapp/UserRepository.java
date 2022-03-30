@@ -1,21 +1,29 @@
 package com.example.lifestyleapp;
 
 import android.app.Application;
+import android.os.Handler;
+import android.os.Looper;
 
+import androidx.core.os.HandlerCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.HashMap;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class UserRepository {
 
     private static UserRepository instance;
     private UserDao userDao;
-    private User user;
-    private HashMap<String, User> existingUsers = new HashMap<>();
+    public User user;
+    private final Executor executor = Executors.newSingleThreadExecutor();
+    private Handler mainThreadHandler = HandlerCompat.createAsync(Looper.getMainLooper());
+    AppDatabase db;
+    MutableLiveData<User> mUser;
 
     private UserRepository(Application application){
-        AppDatabase db = AppDatabase.getDatabase(application);
+        db = AppDatabase.getDatabase(application);
         userDao = db.userDao();
     }
     public static synchronized UserRepository getInstance(Application application){
@@ -26,25 +34,40 @@ public class UserRepository {
     }
 
     public MutableLiveData<User> getData(String str){
+        mUser = new MutableLiveData<>();
         loadUser(str);
-        MutableLiveData<User> user = new MutableLiveData<>();
-        user.setValue(this.user);
-        return user;
+       // mUser.setValue(this.user);
+        return mUser;
     }
 
-    public void loadUser(String str){
-        User user = new User("Gabriel", "Garcia-Marquez", "30","Male", "Aracataca", "Colombia", "80", "67");
-        user.setRegistered(true);
-        existingUsers.put("gabo@hotmail.com", user);
+    private void loadUser(String str){
+        final User[] retrievedUser = new User[1];
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                retrievedUser[0] = userDao.getActiveUser(str);
+                postToMainThread(retrievedUser[0]);
+            }
+        });
+    }
 
-        if(existingUsers.containsKey(str)){
-            this.user = existingUsers.get(str);
-        }
-        else{
-            this.user = new User("","","","","","","","");
-            this.user.setRegistered(false);
-        }
+    private void postToMainThread(User user){
+        mainThreadHandler.post(()->{
+            if(user != null){
+                mUser.setValue(user);
+            }else{
+                mUser.setValue(new User("", "", "", "", "", "", "",""));
+            }
+        });
+    }
 
+    public void insertUserToDB(User user){
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                userDao.insert(user);
+            }
+        });
 
     }
 }

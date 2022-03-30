@@ -15,6 +15,7 @@ public class UsersViewModel extends AndroidViewModel {
     public UsersViewModel(Application application){
         super(application);
         userRepository = UserRepository.getInstance(application);
+        UserDao userDao = AppDatabase.getDatabase(application).userDao();
     }
 
     public void initActiveUser(String str){
@@ -29,6 +30,9 @@ public class UsersViewModel extends AndroidViewModel {
     }
     public LiveData<User> getSelected(){
         return selected;
+    }
+    public void insert(User user){
+        userRepository.insertUserToDB(user);
     }
 
 

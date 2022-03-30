@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.room.Room;
 
 import java.io.FileNotFoundException;
 
@@ -32,6 +33,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
     private ImageView profilePicture;
     private ButtonListener listener;
     private View view;
+    AppDatabase db;
 
     // View model
     private UsersViewModel usersViewModel;
@@ -57,6 +59,8 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         usersViewModel.getSelected().observe(getViewLifecycleOwner(), user -> {
             autoFill(user);
         });
+
+
 
         //If there are arguments from the Drawer Activity, use it to fill out the input fields.
 
@@ -164,6 +168,8 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         updatedUser.setRegistered(true);
 
         usersViewModel.select(updatedUser);
+        usersViewModel.insert(updatedUser);
+
 
         listener.submitButtonClick(firstName, lastName, sex, city, country, weight, height);
     }
