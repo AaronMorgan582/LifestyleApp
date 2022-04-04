@@ -4,6 +4,8 @@ import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.os.HandlerCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -12,7 +14,10 @@ import java.util.HashMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class UserRepository {
+import kotlin.Unit;
+import kotlin.coroutines.Continuation;
+
+public class UserRepository implements UserRepositoryInterface{
 
     private static UserRepository instance;
     private UserDao userDao;
@@ -33,6 +38,7 @@ public class UserRepository {
         return instance;
     }
 
+    @Override
     public MutableLiveData<User> getData(String str){
         mUser = new MutableLiveData<>();
         loadUser(str);
@@ -61,6 +67,7 @@ public class UserRepository {
         });
     }
 
+    @Override
     public void insertUserToDB(User user){
         executor.execute(new Runnable() {
             @Override
@@ -70,4 +77,5 @@ public class UserRepository {
         });
 
     }
+
 }
