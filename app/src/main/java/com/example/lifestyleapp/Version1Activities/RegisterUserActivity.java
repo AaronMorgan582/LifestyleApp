@@ -1,4 +1,4 @@
-package com.example.lifestyleapp;
+package com.example.lifestyleapp.Version1Activities;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -18,6 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.lifestyleapp.DrawerActivity;
+import com.example.lifestyleapp.R;
 
 
 public class RegisterUserActivity extends AppCompatActivity {
@@ -45,7 +48,7 @@ public class RegisterUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Submit button
-        setContentView(R.layout.activity_register_user);
+        setContentView(R.layout.fragment_register_user);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 110);
 
         this.submitButton = (Button) findViewById(R.id.button);

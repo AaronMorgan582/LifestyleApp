@@ -19,7 +19,8 @@ import androidx.lifecycle.ViewModelProvider;
 import java.io.FileNotFoundException;
 
 public class DisplayUserFragment extends Fragment {
-    private TextView firstNameDisplay, lastNameDisplay, heightDisplay, weightDisplay, cityDisplay, countryDisplay, sexDisplay;
+    private TextView firstNameDisplay, lastNameDisplay, heightDisplay,
+            ageDisplay, weightDisplay, cityDisplay, countryDisplay, sexDisplay;
     private ImageView userImage;
     private ButtonListener listener;
     private UsersViewModel userViewModel;
@@ -28,7 +29,7 @@ public class DisplayUserFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.activity_display_user_info, container, false);
+        View view = inflater.inflate(R.layout.fragment_display_user_info, container, false);
 
         //Get the context that this fragment is attached to (which should be the DrawerActivity).
         Context context = container.getContext();
@@ -42,6 +43,7 @@ public class DisplayUserFragment extends Fragment {
         Button editProfile = view.findViewById(R.id.buttonEditProfile);
         this.firstNameDisplay = view.findViewById(R.id.tvDisplayFirstName);
         this.lastNameDisplay =  view.findViewById(R.id.tvDisplayLastName);
+        this.ageDisplay = view.findViewById(R.id.tvDisplayAge);
         this.cityDisplay = view.findViewById(R.id.tvDisplayCity);
         this.countryDisplay = view.findViewById(R.id.tvDisplayCountry);
         this.sexDisplay = view.findViewById(R.id.tvDisplaySex);
@@ -53,10 +55,6 @@ public class DisplayUserFragment extends Fragment {
         userViewModel.getSelected().observe(getViewLifecycleOwner(), user->{
             fillUserInfo(user);
         });
-
-        if (getArguments() != null) {
-            fillUserInfo();
-        }
 
         //When the Edit Profile button is clicked, signal DrawerActivity to activate the Register User Fragment.
         editProfile.setOnClickListener(new View.OnClickListener() {
@@ -70,9 +68,9 @@ public class DisplayUserFragment extends Fragment {
     }
 
     private void fillUserInfo(User user) {
-        //User user = getArguments().getParcelable("user_data");
         String firstName = user.getFirstName();
         String lastName = user.getLastName();
+        String age = user.getAge();
         String city = user.getCity();
         String country = user.getCountry();
         String sex = user.getSex();
@@ -81,37 +79,7 @@ public class DisplayUserFragment extends Fragment {
 
         firstNameDisplay.setText(firstName);
         lastNameDisplay.setText(lastName);
-        cityDisplay.setText(city);
-        countryDisplay.setText(country);
-        sexDisplay.setText(sex);
-        heightDisplay.setText(height);
-        weightDisplay.setText(weight);
-
-        //It's possible that the image has not been set, so check to see if it's in the User class.
-        if(!user.getImageFileName().matches("")){
-            //The try/catch block is mostly for openFileInput; it's possible the filepath doesn't exist
-            //even if it is in the User class.
-            try {
-                Bitmap image = BitmapFactory.decodeStream(getActivity().openFileInput(user.getImageFileName()));
-                userImage.setImageBitmap(image);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private void fillUserInfo() {
-        User user = getArguments().getParcelable("user_data");
-        String firstName = user.getFirstName();
-        String lastName = user.getLastName();
-        String city = user.getCity();
-        String country = user.getCountry();
-        String sex = user.getSex();
-        String height = user.getHeight();
-        String weight = user.getWeight();
-
-        firstNameDisplay.setText(firstName);
-        lastNameDisplay.setText(lastName);
+        ageDisplay.setText(age);
         cityDisplay.setText(city);
         countryDisplay.setText(country);
         sexDisplay.setText(sex);

@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/editProfileView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".DisplayUserInfoActivity"
-    android:id="@+id/editProfileView">
+    tools:context=".Version1Activities.DisplayUserInfoActivity">
 
     <TextView
         android:id="@+id/userDisplayTitle"
@@ -14,10 +14,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-condensed"
         android:text="@string/profile_header"
         android:textColor="@color/white"
         android:textSize="40sp"
-        android:fontFamily="sans-serif-condensed"
         android:textStyle="italic"
         app:layout_constraintEnd_toStartOf="@+id/profilePicture"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,6 @@
         android:id="@+id/tvFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="88dp"
         android:paddingBottom="4dp"
         android:text="@string/first_name_field"
@@ -52,13 +51,13 @@
         android:id="@+id/tvDisplayFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="4dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="88dp"
+        android:layout_marginStart="24dp"
+        android:paddingBottom="4dp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/tvDisplayLastName"
+        app:layout_constraintStart_toEndOf="@+id/tvFirstName"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvFirstName"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
@@ -68,7 +67,7 @@
         android:paddingBottom="4dp"
         android:text="@string/last_name_field"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/tvHeight"
+        app:layout_constraintBottom_toTopOf="@+id/tvAge"
         app:layout_constraintStart_toStartOf="@+id/tvFirstName"
         app:layout_constraintTop_toBottomOf="@+id/tvFirstName" />
 
@@ -78,7 +77,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="4dp"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/tvDisplayHeight"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplayAge"
         app:layout_constraintStart_toStartOf="@+id/tvDisplayFirstName"
         app:layout_constraintTop_toBottomOf="@+id/tvDisplayFirstName" />
 
@@ -90,8 +89,8 @@
         android:text="@string/height_field"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/tvWeight"
-        app:layout_constraintStart_toStartOf="@+id/tvLastName"
-        app:layout_constraintTop_toBottomOf="@+id/tvLastName" />
+        app:layout_constraintStart_toStartOf="@+id/tvAge"
+        app:layout_constraintTop_toBottomOf="@+id/tvAge" />
 
     <TextView
         android:id="@+id/tvDisplayHeight"
@@ -100,8 +99,8 @@
         android:paddingBottom="4dp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/tvDisplayWeight"
-        app:layout_constraintStart_toStartOf="@+id/tvDisplayLastName"
-        app:layout_constraintTop_toBottomOf="@+id/tvDisplayLastName" />
+        app:layout_constraintStart_toStartOf="@+id/tvDisplayAge"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayAge" />
 
     <TextView
         android:id="@+id/tvWeight"
@@ -195,5 +194,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/tvAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
+        android:text="Age:"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/tvHeight"
+        app:layout_constraintStart_toStartOf="@+id/tvLastName"
+        app:layout_constraintTop_toBottomOf="@+id/tvLastName" />
+
+    <TextView
+        android:id="@+id/tvDisplayAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplayHeight"
+        app:layout_constraintStart_toStartOf="@+id/tvDisplayLastName"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayLastName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

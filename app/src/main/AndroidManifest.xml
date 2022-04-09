@@ -35,19 +35,19 @@
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             />
         <activity
-            android:name=".DisplayUserInfoActivity"
+            android:name=".Version1Activities.DisplayUserInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterUserActivity"
+            android:name=".Version1Activities.RegisterUserActivity"
             android:exported="false" />
         <activity
-            android:name=".GoalsActivity"
+            android:name=".Version1Activities.GoalsActivity"
             android:exported="false" />
         <activity
-            android:name=".BMIActivity"
+            android:name=".Version1Activities.BMIActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Version1Activities.MainActivity"
             android:exported="false">
 
         </activity>

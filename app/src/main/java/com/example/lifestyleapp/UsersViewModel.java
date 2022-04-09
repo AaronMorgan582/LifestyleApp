@@ -5,9 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-//TODO: Still need to define an insert() for this class to enter new users into the database.
 public class UsersViewModel extends AndroidViewModel {
     private MutableLiveData<User> selected;
     private UserRepository userRepository;
@@ -34,6 +32,4 @@ public class UsersViewModel extends AndroidViewModel {
     public void insert(User user){
         userRepository.insertUserToDB(user);
     }
-
-
 }

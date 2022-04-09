@@ -74,6 +74,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
             if(user.isRegistered()){
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+                user_name.setText(user.getFirstName());
                 navigationView.setCheckedItem(R.id.nav_home);
             }
             else{
@@ -81,12 +82,6 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                 navigationView.setCheckedItem(R.id.nav_profile);
             }
         });
-
-        /*
-        if(savedInstanceState == null){
-
-        }
-    */
     }
 
     @Override
@@ -97,29 +92,14 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                 break;
             case R.id.nav_profile:
                 DisplayUserFragment displayUserFragment = new DisplayUserFragment();
-                if(user != null){
-                    Bundle fragment_bundle = new Bundle();
-                    fragment_bundle.putParcelable("user_data", user);
-                    displayUserFragment.setArguments(fragment_bundle);
-                }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, displayUserFragment).addToBackStack("Profile").commit();
                 break;
             case R.id.nav_bmi:
                 bmiFragment bmi = new bmiFragment();
-                if(user != null){
-                    Bundle fragment_bundle = new Bundle();
-                    fragment_bundle.putParcelable("user_data", user);
-                    bmi.setArguments(fragment_bundle);
-                }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, bmi).addToBackStack("BMI").commit();
                 break;
             case R.id.nav_calories:
                 bmrFragment fitness_goals = new bmrFragment();
-                if(user != null){
-                    Bundle fragment_bundle = new Bundle();
-                    fragment_bundle.putParcelable("user_data", user);
-                    fitness_goals.setArguments(fragment_bundle);
-                }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fitness_goals).addToBackStack("Goals").commit();
                 break;
         }
@@ -129,36 +109,14 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     @Override
     public void editProfileClick() {
         Fragment register_fragment = new RegisterUserFragment();
-
-        /*
-        if(user != null){
-            Bundle fragment_bundle = new Bundle();
-            fragment_bundle.putParcelable("user_data", user);
-            register_fragment.setArguments(fragment_bundle);
-        }
-
-         */
-
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_container, register_fragment).addToBackStack("Register User");
         ft.commit();
     }
 
     @Override
-    public void submitButtonClick(String firstName, String lastName, String gender, String city, String country, String weight, String height) {
-        /*
-        user = new User(firstName, lastName, gender, city, country, weight, height);
-        user_name.setText(firstName + " " + lastName);
-        if(userImageFile != null){
-            user.setImageFileName(userImageFile);
-        }
-        Bundle fragment_bundle = new Bundle();
-        fragment_bundle.putParcelable("user_data", user);
-        */
-
+    public void submitButtonClick() {
         Fragment displayUserFragment = new DisplayUserFragment();
-
-        //displayUserFragment.setArguments(fragment_bundle);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_container, displayUserFragment).addToBackStack("Profile");
         ft.commit();
@@ -209,47 +167,6 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         }
         return fileName;
     }
-
-/*    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        if(user != null){
-            outState.putString("first_name", user.getFirstName());
-            outState.putString("last_name", user.getLastName());
-            outState.putString("age", user.getAge());
-            outState.putString("gender", user.getSex());
-            outState.putString("city", user.getCity());
-            outState.putString("country", user.getCountry());
-            outState.putString("weight", user.getWeight());
-            outState.putString("height", user.getHeight());
-            outState.putString("image_filepath", user.getImageFileName());
-        }
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        String first_name = savedInstanceState.getString("first_name");
-        String last_name = savedInstanceState.getString("last_name");
-        String age = savedInstanceState.getString("age");
-        String gender = savedInstanceState.getString("gender");
-        String city = savedInstanceState.getString("city");
-        String country = savedInstanceState.getString("country");
-        String weight = savedInstanceState.getString("weight");
-        String height = savedInstanceState.getString("height");
-        String filepath = savedInstanceState.getString("image_filepath");
-
-        user = new User(first_name, last_name, age, gender, city, country, weight, height);
-        user.setImageFileName(filepath);
-        user_name.setText(first_name + " " + last_name);
-        try {
-            Bitmap image = BitmapFactory.decodeStream(openFileInput(filepath));
-            profilePicture.setImageBitmap(image);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        super.onRestoreInstanceState(savedInstanceState);
-    }*/
 
     private void selectViewToDisplay(User user){
         if(user == null){
