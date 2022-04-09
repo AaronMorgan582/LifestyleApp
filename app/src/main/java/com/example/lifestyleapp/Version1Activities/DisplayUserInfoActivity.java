@@ -1,16 +1,15 @@
-package com.example.lifestyleapp;
+package com.example.lifestyleapp.Version1Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.lifestyleapp.R;
 
 public class DisplayUserInfoActivity extends AppCompatActivity {
 
@@ -20,7 +19,7 @@ public class DisplayUserInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_user_info);
+        setContentView(R.layout.fragment_display_user_info);
         this.editProfile = (Button) findViewById(R.id.buttonEditProfile);
         Intent receivedIntent = getIntent();
         String receivedFirstName = receivedIntent.getStringExtra("USER_FIRST_NAME");

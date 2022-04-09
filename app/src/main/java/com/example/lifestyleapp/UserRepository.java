@@ -3,12 +3,8 @@ package com.example.lifestyleapp;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
-
 import androidx.core.os.HandlerCompat;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-
-import java.util.HashMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -36,7 +32,6 @@ public class UserRepository {
     public MutableLiveData<User> getData(String str){
         mUser = new MutableLiveData<>();
         loadUser(str);
-       // mUser.setValue(this.user);
         return mUser;
     }
 
@@ -68,6 +63,5 @@ public class UserRepository {
                 userDao.insert(user);
             }
         });
-
     }
 }

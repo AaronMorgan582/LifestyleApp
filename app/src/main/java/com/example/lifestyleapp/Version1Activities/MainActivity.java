@@ -1,18 +1,14 @@
-package com.example.lifestyleapp;
+package com.example.lifestyleapp.Version1Activities;
 
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
@@ -20,9 +16,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 
+import com.example.lifestyleapp.DrawerActivity;
+import com.example.lifestyleapp.R;
+import com.example.lifestyleapp.Version1Activities.BMIActivity;
+import com.example.lifestyleapp.Version1Activities.GoalsActivity;
+import com.example.lifestyleapp.Version1Activities.RegisterUserActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;

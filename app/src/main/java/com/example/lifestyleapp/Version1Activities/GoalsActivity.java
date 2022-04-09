@@ -1,4 +1,4 @@
-package com.example.lifestyleapp;
+package com.example.lifestyleapp.Version1Activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.lifestyleapp.R;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.lifestyleapp;
+package com.example.lifestyleapp.Version1Activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,7 +6,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.lifestyleapp.RegisterUserActivity;
+
+import com.example.lifestyleapp.R;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

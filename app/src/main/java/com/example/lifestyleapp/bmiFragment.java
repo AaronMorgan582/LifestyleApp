@@ -27,8 +27,8 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_bmi, container, false);
 
         height = view.findViewById(R.id.fr_bmiEditTextHeight);
@@ -90,7 +90,6 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
             double height = inches*12 + pounds;
             value = (years/height/height)*703;
             return value;
-
         }
         return 0;
     }
@@ -106,15 +105,9 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
                 height.setText("");
                 height2.setText("");
             }
-
         }
         if(!user.getWeight().matches("")){
             weight.setText(user.getWeight());
         }
-
-    }
-
-    private double convertToInches(String inches){
-        return 1.0;
     }
 }

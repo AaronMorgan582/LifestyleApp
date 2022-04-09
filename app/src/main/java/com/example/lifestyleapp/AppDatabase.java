@@ -11,7 +11,6 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-//TODO: If adding a Weather Table, add the class to the "entities" set.
 @Database(entities = {User.class,Weather.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase instance;
@@ -36,7 +35,7 @@ public abstract class AppDatabase extends RoomDatabase {
             databaseExecutor.execute(()->{
                 UserDao dao = instance.userDao();
                 User userTable = new User("Fake", "Person", "123", "Male",
-                        "Gondor", "MiddleEartch", "80", "110");
+                        "Gondor", "MiddleEarth", "80", "110");
                 dao.insert(userTable);
             });
         }

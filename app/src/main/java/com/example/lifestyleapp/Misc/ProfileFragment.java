@@ -1,10 +1,9 @@
-package com.example.lifestyleapp;
+package com.example.lifestyleapp.Misc;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Debug;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,9 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.lifestyleapp.R;
+import com.example.lifestyleapp.Version1Activities.RegisterUserActivity;
 
 public class ProfileFragment extends Fragment {
 
@@ -39,7 +41,6 @@ public class ProfileFragment extends Fragment {
             tv_weight.setText(""+weight);
             tv_firstName.setText(""+firstName);
         }
-
 
         editProfileBtn = view.findViewById(R.id.editBtn);
         editProfileBtn.setOnClickListener(new View.OnClickListener() {

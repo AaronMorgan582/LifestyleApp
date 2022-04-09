@@ -1,6 +1,4 @@
 package com.example.lifestyleapp;
-
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,11 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.room.Room;
 
 import java.io.FileNotFoundException;
-
-
 
 public class RegisterUserFragment extends Fragment implements View.OnClickListener {
 
@@ -42,7 +37,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.activity_register_user, container, false);
+        view = inflater.inflate(R.layout.fragment_register_user, container, false);
 
         //Ensure that the activity coupled with this fragment has the ButtonListener interface implemented.
         Context context = container.getContext();
@@ -59,16 +54,6 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         usersViewModel.getSelected().observe(getViewLifecycleOwner(), user -> {
             autoFill(user);
         });
-
-
-
-        //If there are arguments from the Drawer Activity, use it to fill out the input fields.
-
-        /*
-        if (getArguments() != null) {
-            User user_data = getArguments().getParcelable("user_data");
-            autoFill(user_data);
-        }*/
 
         return view;
     }
@@ -91,6 +76,11 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         }
     }
 
+    /**
+     * Fills in the given information with what is available, if the user has already
+     * entered his/her information.
+     * @param user
+     */
     private void autoFill(User user) {
         firstNameView.setText(user.getFirstName());
         lastNameView.setText(user.getLastName());
@@ -117,6 +107,10 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         }
     }
 
+    /**
+     * Maps the the various layout elements to variables found in this class.
+     * @param view
+     */
     private void registerLayout(View view) {
         //Layout elements: Edit Text
         firstNameView = view.findViewById(R.id.editTextFirstName);
@@ -170,8 +164,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         usersViewModel.select(updatedUser);
         usersViewModel.insert(updatedUser);
 
-
-        listener.submitButtonClick(firstName, lastName, sex, city, country, weight, height);
+        listener.submitButtonClick();
     }
 
     /**
