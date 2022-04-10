@@ -147,7 +147,6 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         }
     }
 
-
     /**
      * This method uses a byte array stream to write the image to the app's internal storage.
      * Does not save the image externally.
@@ -166,17 +165,5 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
             fileName = null;
         }
         return fileName;
-    }
-
-    private void selectViewToDisplay(User user){
-        if(user == null){
-            System.out.println("Null");
-        }
-        if(user.equals(null)){
-            System.out.println("Null");
-        }
-        else{
-            System.out.println("Not null");
-        }
     }
 }

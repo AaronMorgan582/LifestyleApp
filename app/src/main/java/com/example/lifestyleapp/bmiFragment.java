@@ -58,6 +58,10 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
             }
         }
     }
+
+    /**
+     * Verifies the input needed to calculate BMI is present and of the correct type.
+     */
     public boolean checkBMIInput(){
         heightString = height.getText().toString();
         height2String = height2.getText().toString();
@@ -80,6 +84,9 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
         return true;
     }
 
+    /**
+     * The function used to calculate Body Mass Index.
+     */
     private double calculateBMI(){
 
         if(checkBMIInput()){
@@ -94,6 +101,11 @@ public class bmiFragment extends Fragment implements View.OnClickListener{
         return 0;
     }
 
+    /**
+     * If available, fills in the information that this fragment uses if the user has previously
+     * registered.
+     * @param user the registered user
+     */
     private void populateBMIInformation(User user){
         if(!user.getHeight().matches("")){
             try {

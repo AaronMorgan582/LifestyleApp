@@ -79,7 +79,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
     /**
      * Fills in the given information with what is available, if the user has already
      * entered his/her information.
-     * @param user
+     * @param user the registered user
      */
     private void autoFill(User user) {
         firstNameView.setText(user.getFirstName());
@@ -109,7 +109,7 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
 
     /**
      * Maps the the various layout elements to variables found in this class.
-     * @param view
+     * @param view the current view
      */
     private void registerLayout(View view) {
         //Layout elements: Edit Text
@@ -136,6 +136,10 @@ public class RegisterUserFragment extends Fragment implements View.OnClickListen
         profilePicture = view.findViewById(R.id.profilePicView);
     }
 
+    /**
+     * Helper function that is called when the Submit button is clicked. This function saves
+     * the information entered by the user and inserts it into the ViewModel.
+     */
     private void gatherInputAndSubmit() {
         String firstName = firstNameView.getText().toString();
         String lastName = lastNameView.getText().toString();

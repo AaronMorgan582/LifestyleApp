@@ -114,6 +114,10 @@ public class bmrFragment extends Fragment implements AdapterView.OnItemSelectedL
         }
 
     }
+
+    /**
+     * Verifies the input needed to calculate BMR is present and of the correct type.
+     */
     private boolean checkBMRInput(){
         heightString = height.getText().toString();
         weightString = weight.getText().toString();
@@ -141,6 +145,9 @@ public class bmrFragment extends Fragment implements AdapterView.OnItemSelectedL
         return true;
     }
 
+    /**
+     * The function used to calculate Basal Metabolic Rate.
+     */
     private double calculateBMR(){
 
         if(checkBMRInput()){
@@ -181,6 +188,9 @@ public class bmrFragment extends Fragment implements AdapterView.OnItemSelectedL
         return 0;
     }
 
+    /**
+     * The function used to calculate the calories required to Lose/Maintain/Gain weight.
+     */
     private int calculateCalories(){
         amountString = amount.getText().toString();
 
@@ -212,7 +222,7 @@ public class bmrFragment extends Fragment implements AdapterView.OnItemSelectedL
     /**
      * Populates the fields for BMR calculation given the user
      * that is coming from the model view
-     * @param user
+     * @param user the registered user
      */
     private void populateBMRInformation(User user){
         if(!user.getHeight().matches("")){

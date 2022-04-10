@@ -67,6 +67,11 @@ public class DisplayUserFragment extends Fragment {
         return view;
     }
 
+    /**
+     * If available, fills in the information that this fragment uses if the user has previously
+     * registered.
+     * @param user the registered user
+     */
     private void fillUserInfo(User user) {
         String firstName = user.getFirstName();
         String lastName = user.getLastName();
