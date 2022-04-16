@@ -17,7 +17,7 @@ import org.junit.Test;
 public class RegisterUserFragmentTest extends TestCase {
 
     FragmentScenario scenario;
-    public User user = new User("Alejandro ", "Serrano", "Male", "Guayaquil", "Ecuador", "110", "110");
+    public User user = new User("Alejandro ", "Serrano", "28", "Male", "Guayaquil", "Ecuador", "110", "110");
     public void setUp() throws Exception {
         super.setUp();
     }

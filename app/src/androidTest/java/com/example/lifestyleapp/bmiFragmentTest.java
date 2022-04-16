@@ -40,7 +40,7 @@ public class bmiFragmentTest {
     @Test
     public void testLaunch(){
 
-        User testuser = new User("Alejandro ", "Serrano", "Male", "Guayaquil", "Ecuador", "110", "110");
+        User testuser = new User("Alejandro ", "Serrano","28", "Male", "Guayaquil", "Ecuador", "110", "110");
         Bundle bundle = new Bundle();
         bundle.putParcelable("user_data", testuser);
         fragmentScenario = FragmentScenario.launchInContainer(new bmiFragment().getClass(), null, R.style.Base_Theme_AppCompat);
@@ -91,7 +91,7 @@ public class bmiFragmentTest {
     }
     @Test
     public void testWithUserBundle(){
-        User testuser = new User("Alejandro ", "Serrano", "Male", "Guayaquil", "Ecuador", "160", "67");
+        User testuser = new User("Alejandro ", "Serrano", "28", "Male", "Guayaquil", "Ecuador", "160", "67");
         Bundle bundle = new Bundle();
         bundle.putParcelable("user_data", testuser);
         String bmi = "25.1";
@@ -101,7 +101,7 @@ public class bmiFragmentTest {
     }
     @Test
     public void testWithUserBundleAndBadData(){
-        User testuser = new User("Alejandro ", "Serrano", "Male", "Guayaquil", "Ecuador", "b", "67");
+        User testuser = new User("Alejandro ", "Serrano", "28", "Male", "Guayaquil", "Ecuador", "b", "67");
         Bundle bundle = new Bundle();
         bundle.putParcelable("user_data", testuser);
         fragmentScenario = FragmentScenario.launchInContainer(new bmiFragment().getClass(), bundle, R.style.Base_Theme_AppCompat);
@@ -111,7 +111,7 @@ public class bmiFragmentTest {
 
     @Test
     public void testWithUserBundleAndBadData2(){
-        User testuser = new User("Alejandro ", "Serrano", "Male", "Guayaquil", "Ecuador", "110", "b");
+        User testuser = new User("Alejandro ", "Serrano", "28","Male", "Guayaquil", "Ecuador", "110", "b");
         Bundle bundle = new Bundle();
         bundle.putParcelable("user_data", testuser);
         fragmentScenario = FragmentScenario.launchInContainer(new bmiFragment().getClass(), bundle, R.style.Base_Theme_AppCompat);
