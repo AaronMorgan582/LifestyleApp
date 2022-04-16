@@ -11,6 +11,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -42,13 +43,12 @@ public class UserRepository implements UserRepositoryInterface{
     public MutableLiveData<User> getData(String str){
         mUser = new MutableLiveData<>();
         loadUser(str);
-       // mUser.setValue(this.user);
         return mUser;
     }
 
     private void loadUser(String str){
         final User[] retrievedUser = new User[1];
-        executor.execute(new Runnable() {
+        AppDatabase.databaseExecutor.execute(new Runnable() {
             @Override
             public void run() {
                 retrievedUser[0] = userDao.getActiveUser(str);
@@ -69,7 +69,7 @@ public class UserRepository implements UserRepositoryInterface{
 
     @Override
     public void insertUserToDB(User user){
-        executor.execute(new Runnable() {
+        AppDatabase.databaseExecutor.execute(new Runnable() {
             @Override
             public void run() {
                 userDao.insert(user);

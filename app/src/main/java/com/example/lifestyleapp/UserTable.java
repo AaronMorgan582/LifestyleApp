@@ -43,6 +43,7 @@ public class UserTable {
     private String country;
 
 
+
     public UserTable(@NonNull String firstName, @NonNull String lastName, @NonNull String age, @NonNull String height,
                      @NonNull String weight, @NonNull String sex, @NonNull String city, @NonNull String country){
 

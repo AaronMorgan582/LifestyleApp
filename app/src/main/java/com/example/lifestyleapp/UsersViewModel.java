@@ -19,14 +19,19 @@ public class UsersViewModel extends AndroidViewModel {
     }
 
     public void initActiveUser(String str){
+        /*
         if(selected != null) {
             return;
         }
+
+         */
         selected = userRepository.getData(str);
     }
 
     public void select(User user){
+
         selected.setValue(user);
+
     }
     public LiveData<User> getSelected(){
         return selected;

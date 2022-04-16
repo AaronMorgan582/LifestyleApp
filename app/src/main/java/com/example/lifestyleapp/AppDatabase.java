@@ -17,7 +17,7 @@ public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase instance;
     public abstract UserDao userDao();
     public abstract WeatherDao weatherDao();
-    static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(4);
+    public static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(4);
 
     static synchronized AppDatabase getDatabase(final Context context){
         if(instance == null){
