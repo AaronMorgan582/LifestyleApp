@@ -52,7 +52,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="277dp"
                 android:layout_height="39dp"
-                android:text="Be as white as any other person in Utah. Go hike and get those Insta pics."
+                android:text="Click the button below to find hikes near your location!"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView5"
                 app:layout_constraintStart_toStartOf="@+id/imageView5"
