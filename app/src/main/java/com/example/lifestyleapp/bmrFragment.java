@@ -82,7 +82,9 @@ public class bmrFragment extends Fragment implements AdapterView.OnItemSelectedL
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        ((TextView) adapterView.getChildAt(0)).setTextColor(Color.WHITE);
+        if(((TextView) adapterView.getChildAt(0)) != null){
+            ((TextView) adapterView.getChildAt(0)).setTextColor(Color.WHITE);
+        }
         this.goal = adapterView.getItemAtPosition(i).toString();
 
     }

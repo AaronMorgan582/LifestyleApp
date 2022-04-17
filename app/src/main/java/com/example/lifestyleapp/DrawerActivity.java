@@ -37,7 +37,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private TextView user_name;
     private DrawerLayout drawerLayout;
-    private User user;
+    private String userName;
     private String userImageFile;
     private ImageView profilePicture;
 
@@ -71,16 +71,18 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         model.initActiveUser(str);
 
         model.getSelected().observe(this, user ->{
+            if(savedInstanceState == null){
+                if(user.isRegistered()){
+                    user_name.setText(user.getFirstName());
+                    userName = (String) user_name.getText();
+                    navigationView.setCheckedItem(R.id.nav_home);
+                }
+                else{
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RegisterUserFragment()).commit();
+                    navigationView.setCheckedItem(R.id.nav_profile);
+                }
+            }
 
-            if(user.isRegistered()){
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-                user_name.setText(user.getFirstName());
-                navigationView.setCheckedItem(R.id.nav_home);
-            }
-            else{
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RegisterUserFragment()).commit();
-                navigationView.setCheckedItem(R.id.nav_profile);
-            }
         });
     }
 
@@ -165,5 +167,34 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
             fileName = null;
         }
         return fileName;
+    }
+
+        @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("first_name", userName);
+        outState.putString("image_filepath", userImageFile);
+
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+
+        String first_name = savedInstanceState.getString("first_name");
+        String filepath = savedInstanceState.getString("image_filepath");
+        userName = first_name;
+        userImageFile = filepath;
+
+        user_name.setText(first_name);
+        if(userImageFile != null){
+            try {
+                Bitmap image = BitmapFactory.decodeStream(openFileInput(userImageFile));
+                profilePicture.setImageBitmap(image);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }
