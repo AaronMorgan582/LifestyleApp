@@ -1,98 +1,40 @@
 package com.example.lifestyleapp;
 
-import android.graphics.Bitmap;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "weather_table_old")
+@Entity(tableName = "weather_table")
 public class WeatherTable {
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "city_name")
-    private String city;
+    @ColumnInfo(name = "location")
+    private String location;
 
     @NonNull
-    @ColumnInfo(name = "x_cord")
-    private String x;
+    @ColumnInfo(name = "weatherdata")
+    private String weatherJson;
 
-    @NonNull
-    @ColumnInfo(name = "y_cord")
-    private String y;
-
-    @NonNull
-    @ColumnInfo(name = "temp_data")
-    private String temp;
-
-    @NonNull
-    @ColumnInfo(name = "hum_data")
-    private String hum;
-
-    @NonNull
-    @ColumnInfo(name = "pres_data")
-    private String pres;
-
-
-    public WeatherTable(@NonNull String city, @NonNull String x, @NonNull String y, @NonNull String temp,
-                     @NonNull String hum, @NonNull String pres){
-
-        this.city=city;
-        this.x=x;
-        this.y=y;
-        this.temp=temp;
-        this.hum=hum;
-        this.pres=pres;
+    public WeatherTable(@NonNull String location, @NonNull String weatherJson){
+        this.location = location;
+        this.weatherJson = weatherJson;
     }
 
-    public String getCity(){
-        return city;
+    public void setLocation(String location){
+        this.location = location;
     }
 
-    public String getX(){
-        return x;
+    public void setWeatherJson(String weatherdata){
+        this.weatherJson = weatherdata;
     }
 
-    public String getY(){
-        return y;
+    public String getLocation(){
+        return location;
     }
 
-    public String getTemp(){
-        return temp;
+    public String getWeatherJson(){
+        return weatherJson;
     }
-
-    public String getHum(){
-        return hum;
-    }
-
-    public String getPres(){
-        return pres;
-    }
-
-
-    public void setCity(@NonNull String city) {
-        this.city = city;
-    }
-
-    public void setX(@NonNull String x) {
-        this.x = x;
-    }
-
-    public void setY(@NonNull String y) {
-        this.y = y;
-    }
-
-    public void setTemp(@NonNull String temp) {
-        this.temp = temp;
-    }
-
-    public void setHum(@NonNull String hum) {
-        this.hum = hum;
-    }
-
-    public void setPres(@NonNull String pres) {
-        this.pres = pres;
-    }
-
 }

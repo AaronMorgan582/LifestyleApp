@@ -10,14 +10,12 @@ import java.util.List;
 
 @Dao
 public interface WeatherDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(Weather weather);
+    void insert(WeatherTable weatherTable);
 
-    @Query("SELECT * from weather_table ORDER BY city_name ASC")
+    @Query("DELETE FROM weather_table")
+    void deleteAll();
+
+    @Query("SELECT * from weather_table ORDER BY weatherdata ASC")
     LiveData<List<WeatherTable>> getAll();
-
-    @Query("SELECT * FROM weather_table where city_name = :city")
-    Weather getWeather(String city);
-
 }

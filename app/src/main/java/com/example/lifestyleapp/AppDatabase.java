@@ -11,11 +11,10 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class,Weather.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase instance;
     public abstract UserDao userDao();
-    public abstract WeatherDao weatherDao();
     static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(4);
 
     static synchronized AppDatabase getDatabase(final Context context){

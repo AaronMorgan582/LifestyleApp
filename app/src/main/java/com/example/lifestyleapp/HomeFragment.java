@@ -52,6 +52,7 @@ public class HomeFragment extends Fragment {
     TextView hikes,weather;
     public static double locx=0;
     public static double locy=0;
+    public static String  city="";
 
     @Nullable
     @Override
@@ -173,7 +174,7 @@ client.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>(
 
                         JSONArray ob = response.getJSONArray("weather");
                         JSONObject o = ob.optJSONObject(0);
-
+                        city=response.getString("name");
                         JSONObject ob2 = response.getJSONObject("main");
                         String tempvalue = ob2.getString("temp");
                         double tempvaluedouble = Double.parseDouble(tempvalue);
