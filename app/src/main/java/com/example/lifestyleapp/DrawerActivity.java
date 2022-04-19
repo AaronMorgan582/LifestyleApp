@@ -75,6 +75,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                 if(user.isRegistered()){
                     user_name.setText(user.getFirstName());
                     userName = (String) user_name.getText();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                     navigationView.setCheckedItem(R.id.nav_home);
                 }
                 else{
