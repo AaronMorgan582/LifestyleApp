@@ -147,7 +147,7 @@ client.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>(
 
                     } catch (Exception e) {
                         e.printStackTrace();
-                        hikes.setText("Error loading hikes");
+                        hikes.setText("Click the button below to find hikes near your location!");
                     }
 
                 }
@@ -156,7 +156,7 @@ client.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>(
                 public void onErrorResponse(VolleyError error) {
 
 
-                    hikes.setText("Error loading hikes");
+                    hikes.setText("Click the button below to find hikes near your location!");
                     error.printStackTrace();
 
                 }
@@ -229,7 +229,7 @@ client.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>(
 
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                hikes.setText("Error loading hikes");
+                                hikes.setText("Click the button below to find hikes near your location!");
                             }
 
                         }
@@ -237,7 +237,7 @@ client.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>(
                         @Override
                         public void onErrorResponse(VolleyError error) {
 
-                            hikes.setText("Error loading hikes");
+                            hikes.setText("Click the button below to find hikes near your location!");
 
                             error.printStackTrace();
 
