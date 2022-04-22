@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GestureDetectorCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import android.view.GestureDetector;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -17,17 +19,21 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.GestureDetector;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lifestyleapp.Version1Activities.MainActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Handles the layout of the application.
@@ -40,6 +46,8 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     private String userName;
     private String userImageFile;
     private ImageView profilePicture;
+
+    private GestureDetectorCompat gestureDetectorCompat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +71,15 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        gestureDetectorCompat = new GestureDetectorCompat(this, new DetectGesture());
+
+        drawerLayout.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return gestureDetectorCompat.onTouchEvent(motionEvent);
+            }
+        });
+
         Intent intent = getIntent();
         String str = intent.getExtras().getString("EMAIL");
 
@@ -71,12 +88,14 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         model.initActiveUser(str);
 
         model.getSelected().observe(this, user ->{
+
             if(savedInstanceState == null){
                 if(user.isRegistered()){
                     user_name.setText(user.getFirstName());
                     userName = (String) user_name.getText();
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                     navigationView.setCheckedItem(R.id.nav_home);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                 }
                 else{
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RegisterUserFragment()).commit();
@@ -85,6 +104,8 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
             }
 
         });
+
+
     }
 
     @Override
@@ -197,5 +218,19 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         }
 
         super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    private class DetectGesture extends GestureDetector.SimpleOnGestureListener{
+        @Override
+        public void onLongPress(MotionEvent e) {
+            Toast.makeText(DrawerActivity.this, "Step counter", Toast.LENGTH_SHORT).show();
+            super.onLongPress(e);
+        }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gestureDetectorCompat.onTouchEvent(event);
+        return super.onTouchEvent(event);
     }
 }
