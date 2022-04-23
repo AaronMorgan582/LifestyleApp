@@ -10,6 +10,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.view.GestureDetector;
 
 import android.content.ActivityNotFoundException;
@@ -20,6 +25,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.GestureDetector;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -38,7 +44,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * Handles the layout of the application.
  */
-public class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ButtonListener{
+public class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ButtonListener, SensorEventListener{
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private TextView user_name;
@@ -46,6 +52,9 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     private String userName;
     private String userImageFile;
     private ImageView profilePicture;
+    private MenuItem stepsDisplay;
+    private SensorManager sensorManager;
+    private boolean running = false;
 
     private GestureDetectorCompat gestureDetectorCompat;
 
@@ -62,6 +71,10 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
 
+        //Grab the menu so the title text can be set
+        Menu menu = navigationView.getMenu();
+        stepsDisplay = menu.findItem(R.id.step_counter);
+
         user_name = headerView.findViewById(R.id.navHeaderUserName);
         profilePicture = headerView.findViewById(R.id.navHeaderProfPic);
 
@@ -70,6 +83,11 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        //Sensor
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        //Gesture
 
         gestureDetectorCompat = new GestureDetectorCompat(this, new DetectGesture());
 
@@ -232,5 +250,35 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     public boolean onTouchEvent(MotionEvent event) {
         gestureDetectorCompat.onTouchEvent(event);
         return super.onTouchEvent(event);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        running = true;
+        Sensor stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        if(stepSensor!=null){
+            sensorManager.registerListener(this,stepSensor,SensorManager.SENSOR_DELAY_NORMAL);
+        }else{
+            Toast.makeText(this, "Sensor not found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        running = false;
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event){
+        if(running){
+            stepsDisplay.setTitle("Daily Steps: " + String.valueOf(event.values[0]));
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
     }
 }

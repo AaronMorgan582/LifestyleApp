@@ -19,6 +19,10 @@
             android:icon="@drawable/ic_bmi"
             android:title="Calculate BMI"
             />
-
+        <item android:id="@+id/step_counter"
+            android:icon="@drawable/ic_baseline_fitness_center_24"
+            android:title="Daily Steps"
+            />
     </group>
+
 </menu>
