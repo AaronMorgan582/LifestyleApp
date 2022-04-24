@@ -297,4 +297,11 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
+
+    //Needed for ScrollViews to detect the long press gesture.
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev){
+        super.dispatchTouchEvent(ev);
+        return gestureDetectorCompat.onTouchEvent(ev);
+    }
 }
