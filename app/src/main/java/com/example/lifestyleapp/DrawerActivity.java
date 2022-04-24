@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.test.espresso.remote.EspressoRemoteMessage;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -54,6 +55,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     private ImageView profilePicture;
     private MenuItem stepsDisplay;
     private SensorManager sensorManager;
+    private Sensor stepSensor;
     private boolean running = false;
 
     private GestureDetectorCompat gestureDetectorCompat;
@@ -213,6 +215,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putString("first_name", userName);
         outState.putString("image_filepath", userImageFile);
+        outState.putBoolean("steps_activated", running);
 
         super.onSaveInstanceState(outState);
     }
@@ -222,8 +225,10 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
         String first_name = savedInstanceState.getString("first_name");
         String filepath = savedInstanceState.getString("image_filepath");
+        Boolean isRunning = savedInstanceState.getBoolean("steps_activated");
         userName = first_name;
         userImageFile = filepath;
+        running = isRunning;
 
         user_name.setText(first_name);
         if(userImageFile != null){
@@ -241,7 +246,15 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     private class DetectGesture extends GestureDetector.SimpleOnGestureListener{
         @Override
         public void onLongPress(MotionEvent e) {
-            Toast.makeText(DrawerActivity.this, "Step counter", Toast.LENGTH_SHORT).show();
+            if(running){
+                running = false;
+                Toast.makeText(DrawerActivity.this, "Step counter stopped.", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                running = true;
+                Toast.makeText(DrawerActivity.this, "Step counter started", Toast.LENGTH_SHORT).show();
+            }
+
             super.onLongPress(e);
         }
     }
@@ -255,19 +268,22 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     @Override
     protected void onResume() {
         super.onResume();
-        running = true;
-        Sensor stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if(stepSensor!=null){
-            sensorManager.registerListener(this,stepSensor,SensorManager.SENSOR_DELAY_NORMAL);
-        }else{
-            Toast.makeText(this, "Sensor not found", Toast.LENGTH_SHORT).show();
+        if(running){
+            stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+            if(stepSensor!=null){
+                sensorManager.registerListener(this,stepSensor,SensorManager.SENSOR_DELAY_NORMAL);
+            }else{
+                Toast.makeText(this, "Sensor not found", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        running = false;
+        if(stepSensor!=null){
+            sensorManager.unregisterListener(this);
+        }
     }
 
     @Override
