@@ -1,0 +1,49 @@
+{
+    "UserAgent": "aws-amplify-cli/0.1.0",
+    "Version": "0.1.0",
+    "IdentityManager": {
+        "Default": {}
+    },
+    "CredentialsProvider": {
+        "CognitoIdentity": {
+            "Default": {
+                "PoolId": "us-west-1:950352e5-d6a0-4c47-87f0-ae6fb545c09e",
+                "Region": "us-west-1"
+            }
+        }
+    },
+    "CognitoUserPool": {
+        "Default": {
+            "PoolId": "us-west-1_A3kxap82y",
+            "AppClientId": "4csjn87u0agt3ahe5ohk12a8hd",
+            "Region": "us-west-1"
+        }
+    },
+    "Auth": {
+        "Default": {
+            "authenticationFlowType": "USER_SRP_AUTH",
+            "socialProviders": [],
+            "usernameAttributes": [],
+            "signupAttributes": [
+                "EMAIL"
+            ],
+            "passwordProtectionSettings": {
+                "passwordPolicyMinLength": 8,
+                "passwordPolicyCharacters": []
+            },
+            "mfaConfiguration": "OFF",
+            "mfaTypes": [
+                "SMS"
+            ],
+            "verificationMechanisms": [
+                "EMAIL"
+            ]
+        }
+    },
+    "S3TransferUtility": {
+        "Default": {
+            "Bucket": "lifestyleapp1de6d3cac89341d2ae73c1af8ea0abb664436-dev",
+            "Region": "us-west-1"
+        }
+    }
+}
