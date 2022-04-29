@@ -1,0 +1,18 @@
+{
+  "resourceName": "s3d6489e72",
+  "policyUUID": "d6489e72",
+  "bucketName": "lifestyleapp1de6d3cac89341d2ae73c1af8ea0abb6",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

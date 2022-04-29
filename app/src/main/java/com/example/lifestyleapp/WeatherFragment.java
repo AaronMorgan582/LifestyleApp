@@ -19,16 +19,29 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.os.Environment;
 import android.os.Looper;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import static com.example.lifestyleapp.HomeFragment.city;
 
+import com.amplifyframework.core.Amplify;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 
 public class WeatherFragment extends Fragment {
@@ -99,6 +112,7 @@ public class WeatherFragment extends Fragment {
                 humid.setText("Humidity : " + weatherData.getCurrentCondition().getHumidity() + "%");
                 pres.setText("Pressure : " + weatherData.getCurrentCondition().getPressure() + " Pa");
                 place.setText(city);
+
             }
         }
     };

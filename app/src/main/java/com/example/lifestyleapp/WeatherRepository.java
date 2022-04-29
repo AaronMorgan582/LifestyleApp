@@ -3,12 +3,16 @@ package com.example.lifestyleapp;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import androidx.core.os.HandlerCompat;
 import androidx.lifecycle.MutableLiveData;
 
+import com.amplifyframework.core.Amplify;
+
 import org.json.JSONException;
 
+import java.io.File;
 import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -48,7 +52,28 @@ public class WeatherRepository {
             WeatherRoomDatabase.databaseExecutor.execute(() -> {
                 mWeatherDao.insert(weatherTable);
             });
+            uploadFile();
         }
+    }
+
+    private void uploadFile() {
+
+
+
+        File exampleFile = null;
+        try {
+            exampleFile = new File("/data/data/com.example.lifestyleapp/databases/weather.db");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        Amplify.Storage.uploadFile(
+                "weather.db",
+                exampleFile,
+                result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
+                storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
+        );
     }
 
     public MutableLiveData<com.example.lifestyleapp.WeatherData> getData() {
