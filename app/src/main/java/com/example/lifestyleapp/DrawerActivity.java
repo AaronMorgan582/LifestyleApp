@@ -109,13 +109,13 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
         model.getSelected().observe(this, user ->{
 
+
             if(savedInstanceState == null){
                 if(user.isRegistered()){
                     user_name.setText(user.getFirstName());
                     userName = (String) user_name.getText();
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                     navigationView.setCheckedItem(R.id.nav_home);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                 }
                 else{
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RegisterUserFragment()).commit();
@@ -125,8 +125,8 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
         });
 
-
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

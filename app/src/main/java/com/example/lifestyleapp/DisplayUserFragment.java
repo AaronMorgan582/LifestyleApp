@@ -84,12 +84,15 @@ public class DisplayUserFragment extends Fragment {
 
         firstNameDisplay.setText(firstName);
         lastNameDisplay.setText(lastName);
+
         ageDisplay.setText(age);
         cityDisplay.setText(city);
         countryDisplay.setText(country);
         sexDisplay.setText(sex);
         heightDisplay.setText(height);
         weightDisplay.setText(weight);
+
+
 
         //It's possible that the image has not been set, so check to see if it's in the User class.
         if(!user.getImageFileName().matches("")){
