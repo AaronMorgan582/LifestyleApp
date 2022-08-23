@@ -14,5 +14,7 @@ to store information about the user as well as weather data.
 Authors:
 
 Alejandro Rubio
+
 Alejandro Serrano
+
 Aaron Morgan
