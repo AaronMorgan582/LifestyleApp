@@ -12,7 +12,7 @@ The app is meant to be "fitness" oriented, and includes these features:
 
 - Storage of profile data
 
-The app is a demonstration of MVVC - Data is housed in View Models and passed along to various Activities and Fragments. The app also utilizes a database
+The app is a demonstration of MVVM - Data is housed in View Models and passed along to various Activities and Fragments. The app also utilizes a database
 to store information about the user as well as weather data.
 
 Authors:
